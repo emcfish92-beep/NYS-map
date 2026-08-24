@@ -1,4 +1,4 @@
-const CACHE_NAME = "outdoor-map-v1";
+const CACHE_NAME = "outdoor-map-v2";
 
 const APP_FILES = [
   "./",
