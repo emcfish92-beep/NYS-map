@@ -11,6 +11,12 @@
 
   <title>New York Outdoor Map</title>
 
+  <link rel="manifest" href="./manifest.json">
+
+  <link rel="apple-touch-icon" href="./icon-192.png">
+
+  <meta name="theme-color" content="#2E8B57">
+
   <!-- Load the MapLibre CSS -->
   <link
     rel="stylesheet"
@@ -639,6 +645,26 @@ places.forEach(place => {
 
 });
 
+console.log("Reached service worker section");
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./service-worker.js")
+      .then(registration => {
+        console.log(
+          "Service worker registered:",
+          registration.scope
+        );
+      })
+      .catch(error => {
+        console.error(
+          "Service worker registration failed:",
+          error
+        );
+      });
+  });
+}
   </script>
 
 </body>
