@@ -222,5 +222,12 @@ export const places = [
     visited: true,
     coordinates: [-119.5383, 37.8651],
     description: "National Park, -119.5383, 37.8651."
+  },
+  {
+    name: "Witches Gulch",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [43.67557],
+    description: "Hiking Spot, 43.67557."
   }
 ];
