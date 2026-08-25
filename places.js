@@ -236,5 +236,33 @@ export const places = [
     visited: false,
     coordinates: [-74.43528, 41.91639],
     description: "Swimming Spot, -74.43528, 41.91639."
+  },
+  {
+    name: "Falls View Park",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-73.711204, 42.785387],
+    description: "Waterfall, -73.711204, 42.785387."
+  },
+  {
+    name: "Ludlowville Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-76.54334, 42.54695],
+    description: "Waterfall, -76.54334, 42.54695."
+  },
+  {
+    name: "Beacon Rock SP",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-122.0093, 45.6570],
+    description: "State Park, -122.0093, 45.6570."
+  },
+  {
+    name: "Split Rock Falls",
+    category: "Swimming_spot",
+    visited: false,
+    coordinates: [-73.6579, 44.1242],
+    description: "Swimming spot and waterfall, -73.6579, 44.1242."
   }
 ];
