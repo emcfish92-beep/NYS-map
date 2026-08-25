@@ -229,5 +229,12 @@ export const places = [
     visited: false,
     coordinates: [-89.80134, 43.67557],
     description: "Hiking Spot, -89.80134, 43.67557."
+  },
+  {
+    name: "Peekamoose Blue Hole",
+    category: "Swimming_spot",
+    visited: false,
+    coordinates: [-74.43528, 41.91639],
+    description: "Swimming Spot, -74.43528, 41.91639."
   }
 ];
