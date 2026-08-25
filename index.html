@@ -199,6 +199,73 @@
     border-top: 1px solid #AAAAAA;
     margin: 10px 0;
 }
+
+@media (max-width: 600px) {
+
+  #legend {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    max-height: 25vh;
+
+    box-sizing: border-box;
+
+    background-color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 14px 14px 0 0;
+
+    border: 1px solid #2E8B57;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+
+    overflow-y: auto;
+
+    z-index: 10;
+  }
+
+  #legend h3 {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+  }
+
+  #legend .legend-items {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    column-gap: 14px;
+    row-gap: 5px;
+  }
+
+  .legend-item {
+    margin-bottom: 0;
+    font-size: 11px;
+  }
+
+  .legend-color,
+  .visited-example {
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+
+    flex-shrink: 0;
+  }
+
+  .legend-divider {
+    grid-column: 1 / -1;
+
+    border-top: 1px solid #AAAAAA;
+
+    margin: 4px 0;
+  }
+}
   </style>
 
 </head>
@@ -206,9 +273,11 @@
 <body>
 
   <!-- MapLibre places the map inside this element -->
-  <div id="map"></div>
+<div id="map"></div>
 <div id="legend">
   <h3>Map Key</h3>
+
+  <div class="legend-items">
 
   <div class="legend-item">
     <span class="legend-color campsite-color"></span>
@@ -281,7 +350,8 @@
     <span class="visited-example"></span>
     Visited
   </div>
-
+  
+ </div>
 
 </div>
   <!--
