@@ -1,4 +1,4 @@
-const CACHE_NAME = "outdoor-map-v2";
+const CACHE_NAME = "outdoor-map-v3";
 
 const APP_FILES = [
   "./manifest.json",
@@ -75,31 +75,33 @@ self.addEventListener("fetch", event => {
 
     If there is no internet, fall back to cache.
   */
-  if (
-    request.mode === "navigate" ||
-    url.pathname.endsWith("/places.js")
-  ) {
+if (
+  request.mode === "navigate" ||
+  url.pathname.endsWith("/places.js")
+) {
 
-    event.respondWith(
-      fetch(request)
-        .then(response => {
+  event.respondWith(
+    fetch(request, {
+      cache: "no-store"
+    })
+      .then(response => {
 
-          const copy = response.clone();
+        const copy = response.clone();
 
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(request, copy);
-            });
+        caches.open(CACHE_NAME)
+          .then(cache => {
+            cache.put(request, copy);
+          });
 
-          return response;
-        })
-        .catch(() => {
-          return caches.match(request);
-        })
-    );
+        return response;
+      })
+      .catch(() => {
+        return caches.match(request);
+      })
+  );
 
-    return;
-  }
+  return;
+}
 
 
   /*
