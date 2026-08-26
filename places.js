@@ -15,70 +15,70 @@ export const places = [
   },
   {
     name: "Harlem Road",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.79075, 42.86751],
     description: "Kayak launch, -78.79075, 42.86751."
   },
   {
     name: "Amherst Veterans Boat Ramp",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.80166, 43.06455],
     description: "Kayak launch, -78.80166, 43.06455."
   },
   {
     name: "Wilkeson Point Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.88216, 42.87074],
     description: "Kayak launch, -78.88216, 42.87074."
   },
   {
     name: "Woods Creek Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.971774, 43.057857],
     description: "Kayak launch, -78.971774, 43.057857."
   },
   {
     name: "Eagle Overlook Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.997752, 43.052848],
     description: "Kayak launch, -78.997752, 43.052848."
   },
   {
     name: "Griffon Park Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.952589, 43.074641],
     description: "Kayak launch, -78.952589, 43.074641."
   },
   {
     name: "Whitehaven Overlook Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-79.020511, 43.017213],
     description: "Kayak launch, -79.020511, 43.017213."
   },
   {
     name: "Fix Road Overlook Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-79.002696, 42.982518],
     description: "Kayak launch, -79.002696, 42.982518."
   },
   {
     name: "West Canal Park and Marina Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.8218, 43.0520],
     description: "Kayak launch, -78.8218, 43.0520."
   },
   {
     name: "Amherst Veteran's Boat Ramp",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.8026, 43.0651],
     description: "Kayak launch, -78.8026, 43.0651."
@@ -99,42 +99,42 @@ export const places = [
   },
   {
     name: "Mutual Riverfront Park Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: true,
     coordinates: [-78.86004, 42.86452],
     description: "Kayak launch, -78.86004, 42.86452, Been."
   },
   {
     name: "Ohio Street Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.86838, 42.86576],
     description: "Kayak launch, -78.86838, 42.86576."
   },
   {
     name: "Eastern Park Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: true,
     coordinates: [-78.8679, 43.0146],
     description: "Kayak launch, -78.8679, 43.0146, Been."
   },
   {
     name: "Niagara and Sweeney Streets Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.86307, 43.02348],
-    description: "Kayak launch, -78.86307, 43.02348."
+    description: "Kayak Launch, -78.86307, 43.02348."
   },
   {
     name: "Ellicot Creek Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.823700, 43.023970],
     description: "Kayak launch, -78.823700, 43.023970."
   },
   {
     name: "North Tonawanda Kayak Launch",
-    category: "Kayak_launch",
+    category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.827359, 43.038304],
     description: "Kayak launch, 78.827359, 43.038304."
@@ -232,7 +232,7 @@ export const places = [
   },
   {
     name: "Peekamoose Blue Hole",
-    category: "Swimming_spot",
+    category: "Swimming_Spot",
     visited: false,
     coordinates: [-74.43528, 41.91639],
     description: "Swimming Spot, -74.43528, 41.91639."
@@ -260,7 +260,7 @@ export const places = [
   },
   {
     name: "Split Rock Falls",
-    category: "Swimming_spot",
+    category: "Swimming_Spot",
     visited: false,
     coordinates: [-73.6579, 44.1242],
     description: "Swimming spot and waterfall, -73.6579, 44.1242."
