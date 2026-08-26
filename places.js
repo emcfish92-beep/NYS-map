@@ -264,5 +264,33 @@ export const places = [
     visited: false,
     coordinates: [-73.6579, 44.1242],
     description: "Swimming spot and waterfall, -73.6579, 44.1242."
+  },
+  {
+    name: "Nelson Kennedy Ledges SP",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-81.039201, 41.328462],
+    description: "State Park, -81.039201, 41.328462."
+  },
+  {
+    name: "Green Lakes SP",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-75.973, 43.049],
+    description: "State Park, -75.973, 43.049."
+  },
+  {
+    name: "Sycamore SP",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-84.3678, 39.8139],
+    description: "State Park, -84.3678, 39.8139."
+  },
+  {
+    name: "Orient Beach SP",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-72.2451, 41.1536],
+    description: "State Park, -72.2451, 41.1536."
   }
 ];
