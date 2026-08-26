@@ -85,7 +85,7 @@ export const places = [
   },
   {
     name: "Beaver Island SP Kayak Launch",
-    category: "Kayak Launch",
+    category: "Kayak_Launch",
     visited: true,
     coordinates: [-78.956336, 42.959553],
     description: "Kayak Launch, -78.956336, 42.959553."
