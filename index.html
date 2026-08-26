@@ -280,6 +280,14 @@
     margin: 4px 0;
   }
 }
+
+@media (max-width: 600px) {
+
+  .maplibregl-ctrl-bottom-right {
+    bottom: 25vh;
+  }
+
+}
   </style>
 
 </head>
@@ -433,6 +441,14 @@
     map.addControl(
       new maplibregl.NavigationControl(),
       "top-right"
+    );
+
+    map.addControl(
+      new maplibregl.ScaleControl({
+        maxWidth: 100,
+        unit: "metric"
+      }),
+      "bottom-right"
     );
     
     map.addControl(
