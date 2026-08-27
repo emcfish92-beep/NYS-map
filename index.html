@@ -216,78 +216,206 @@
 
 @media (max-width: 600px) {
 
+  /* =========================
+     SLIDING MOBILE LEGEND
+     ========================= */
+
   #legend {
-    position: absolute;
+    position: fixed;
 
     left: 0;
     right: 0;
     bottom: 0;
 
     width: 100%;
-    max-height: 25vh;
 
     box-sizing: border-box;
 
-    background-color: rgb(200, 249, 201);
+    background-color: #1C1C1E;
+    color: white;
 
-    padding: 10px 14px;
+    border: none;
+    border-radius: 22px 22px 0 0;
 
-    border-radius: 14px 14px 0 0;
+    padding: 0;
 
-    border: 1px solid #2E8B57;
+    z-index: 1000;
 
-    font-family: Arial, sans-serif;
-    font-size: 11px;
+    max-height: 65vh;
 
-    overflow-y: auto;
+    overflow: hidden;
 
-    z-index: 10;
+    /* Keep only the top 64px visible when closed */
+    transform: translateY(calc(100% - 64px));
+
+    transition: transform 0.3s ease;
   }
 
-  #legend h3 {
-    margin: 0 0 8px 0;
-    font-size: 13px;
+
+  /* This class is added by JavaScript when open */
+  #legend.open {
+    transform: translateY(0);
   }
+
+
+  /* =========================
+     DRAG / TITLE AREA
+     ========================= */
+
+  #legend-handle {
+    height: 64px;
+
+    box-sizing: border-box;
+
+    padding: 7px 18px 10px 18px;
+
+    cursor: grab;
+
+    user-select: none;
+    touch-action: none;
+  }
+
+
+  .drag-handle {
+    width: 42px;
+    height: 5px;
+
+    background-color: #8A8A8A;
+
+    border-radius: 10px;
+
+    margin: 0 auto 7px auto;
+  }
+
+
+  .legend-title-row {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 34px;
+  }
+
+
+  #legend .legend-title-row h3 {
+    margin: 0;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+  }
+
+
+  #legend-chevron {
+    position: absolute;
+
+    right: 5px;
+
+    color: white;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    transition: transform 0.3s ease;
+  }
+
+
+  #legend.open #legend-chevron {
+    transform: rotate(180deg);
+  }
+
+
+  /* =========================
+     LEGEND CONTENT
+     ========================= */
 
   #legend .legend-items {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    column-gap: 14px;
-    row-gap: 5px;
+    column-gap: 16px;
+    row-gap: 10px;
+
+    padding: 10px 18px 20px 18px;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+
+    max-height: calc(65vh - 64px);
   }
 
-  .legend-item {
-    margin-bottom: 0;
-    font-size: 11px;
+
+  #legend .legend-item {
+    display: flex;
+
+    align-items: center;
+
+    margin: 0;
+
+    color: white;
+
+    font-size: 12px;
+
+    min-width: 0;
   }
 
-  .legend-color,
-  .visited-example {
-    width: 12px;
-    height: 12px;
-    margin-right: 6px;
+
+  #legend .legend-color,
+  #legend .visited-example {
+    width: 19px;
+    height: 19px;
+
+    margin-right: 8px;
 
     flex-shrink: 0;
+
+    border-radius: 50%;
   }
 
-  .legend-divider {
+
+  /* Divider above Visited */
+  #legend .legend-divider {
     grid-column: 1 / -1;
 
-    border-top: 1px solid #AAAAAA;
+    border-top: 1px solid #555555;
 
-    margin: 4px 0;
+    margin: 5px 0 0 0;
   }
-}
 
-@media (max-width: 600px) {
 
+  /* Make Visited occupy its own full row */
+  #legend .legend-divider + .legend-item {
+    grid-column: 1 / -1;
+  }
+
+
+  /* Visited symbol */
+  #legend .visited-example {
+    background-color: #222222;
+
+    border: 3px solid white;
+
+    box-sizing: border-box;
+  }
+
+
+  /* Move the scale bar just above the collapsed legend */
   .maplibregl-ctrl-bottom-right {
-    bottom: 25vh;
+    bottom: 70px;
   }
 
 }
+
   </style>
 
 </head>
@@ -297,7 +425,19 @@
   <!-- MapLibre places the map inside this element -->
 <div id="map"></div>
 <div id="legend">
-  <h3>Map Key</h3>
+  <div id="legend-handle">
+
+  <div class="drag-handle"></div>
+
+  <div class="legend-title-row">
+
+    <h3>MAP LEGEND</h3>
+
+    <span id="legend-chevron">⌃</span>
+
+  </div>
+
+</div>
 
   <div class="legend-items">
 
@@ -551,6 +691,141 @@ places.forEach(place => {
 });
 
 console.log("Reached service worker section");
+
+/* =========================
+   MOBILE SLIDING LEGEND
+   ========================= */
+
+const legend = document.getElementById("legend");
+const legendHandle = document.getElementById("legend-handle");
+
+let legendDragging = false;
+let legendStartY = 0;
+let legendStartTranslate = 0;
+
+
+function getLegendClosedPosition() {
+
+  const legendHeight = legend.offsetHeight;
+  const handleHeight = legendHandle.offsetHeight;
+
+  return legendHeight - handleHeight;
+}
+
+
+function openLegend() {
+
+  legend.classList.add("open");
+
+  legend.style.transform = "translateY(0px)";
+}
+
+
+function closeLegend() {
+
+  legend.classList.remove("open");
+
+  legend.style.transform = "";
+}
+
+
+function toggleLegend() {
+
+  if (legend.classList.contains("open")) {
+
+    closeLegend();
+
+  } else {
+
+    openLegend();
+
+  }
+}
+
+
+legendHandle.addEventListener("pointerdown", event => {
+
+  legendDragging = true;
+
+  legendStartY = event.clientY;
+
+  const closedPosition = getLegendClosedPosition();
+
+  legendStartTranslate =
+    legend.classList.contains("open")
+      ? 0
+      : closedPosition;
+
+  legend.style.transition = "none";
+
+  legendHandle.setPointerCapture(event.pointerId);
+});
+
+
+legendHandle.addEventListener("pointermove", event => {
+
+  if (!legendDragging) {
+    return;
+  }
+
+  const movement = event.clientY - legendStartY;
+
+  const closedPosition = getLegendClosedPosition();
+
+  let newPosition =
+    legendStartTranslate + movement;
+
+
+  if (newPosition < 0) {
+    newPosition = 0;
+  }
+
+
+  if (newPosition > closedPosition) {
+    newPosition = closedPosition;
+  }
+
+
+  legend.style.transform =
+    `translateY(${newPosition}px)`;
+});
+
+
+legendHandle.addEventListener("pointerup", event => {
+
+  if (!legendDragging) {
+    return;
+  }
+
+  legendDragging = false;
+
+  legend.style.transition =
+    "transform 0.3s ease";
+
+
+  const movement =
+    event.clientY - legendStartY;
+
+
+  if (Math.abs(movement) < 10) {
+
+    toggleLegend();
+
+    return;
+  }
+
+
+  if (movement < 0) {
+
+    openLegend();
+
+  } else {
+
+    closeLegend();
+
+  }
+
+});
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
