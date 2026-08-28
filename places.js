@@ -364,9 +364,86 @@ export const places = [
   },
   {
     name: "Channel Islands National Park",
-    category: "Natural_Park",
+    category: "National_Park",
     visited: false,
     coordinates: [-119.772949, 33.998028],
     description: "National Park, -119.772949, 33.998028."
+  },
+  {
+    name: "Acadia National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-68.21, 44.35],
+    description: "National Park, -68.21, 44.35."
+  },
+  {
+    name: "American Samoa National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-14.25, 170.68],
+    description: "National Park, -14.25, 170.68."
+  },
+  {
+    name: "Arches National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-38.68, 109.57],
+    description: "National Park, -38.68, 109.57."
+  },
+  {
+    name: "Badlands National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-43.75, 102.50],
+    description: "National Park, -43.75, 102.50."
+  },
+  {
+    name: "Big Bend National park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-29.25, 103.25],
+    description: "National Park, -29.25, 103.25."
+  },
+  {
+    name: "Biscayne National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-25.65, 80.08],
+    description: "National Park, -25.65, 80.08."
+  },
+  {
+    name: "Black Canyon of the Gunnison National park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-38.57, 107.72],
+    description: "National Park, -38.57, 107.72."
+  },
+  {
+    name: "Bryce Canyon National Park",
+    category: "National_Park",
+    visited: true,
+    coordinates: [-37.57, 112.18],
+    description: "National Park, -37.57, 112.18."
+  },
+  {
+    name: "Canyonlands National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-38.20, 109.93],
+    description: "National Park, -38.20, 109.93."
+  },
+  {
+    name: "Capitol Reef National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-38.20, 111.17],
+    description: "National Park, -38.20, 111.17."
+  },
+  {
+    name: "Carlsbad Caverns National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-32.17, 104.44],
+    description: "National Park, ."
   }
 ];
