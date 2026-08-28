@@ -298,5 +298,75 @@ export const places = [
     visited: false,
     coordinates: [-72.2451, 41.1536],
     description: "State Park, -72.2451, 41.1536."
+  },
+  {
+    name: "Berkely Springs SP",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-78.22817, 39.62639],
+    description: "Hot Springs, -78.22817, 39.62639."
+  },
+  {
+    name: "N Rocks Via Ferrata",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-79.4722, 38.7005],
+    description: "Via Ferrata nrocks.com, -79.4722, 38.7005."
+  },
+  {
+    name: "Howe Caverns",
+    category: "Cave",
+    visited: false,
+    coordinates: [-74.3986, 42.6962],
+    description: "Cave, -74.3986, 42.6962."
+  },
+  {
+    name: "Lampson Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-75.07135, 44.40540],
+    description: "Waterfall, -75.07135, 44.40540."
+  },
+  {
+    name: "Pictured Rocks National Shoreline",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-86.3125, 46.5622],
+    description: "Shoreline, -86.3125, 46.5622."
+  },
+  {
+    name: "Vernooy Kill Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-74.34633, 41.86411],
+    description: "Waterfall, -74.34633, 41.86411."
+  },
+  {
+    name: "Glacial Caves",
+    category: "Cave",
+    visited: false,
+    coordinates: [-71.6279, 44.0379],
+    description: "Cave, -71.6279, 44.0379."
+  },
+  {
+    name: "High Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-77.6923, 45.8587],
+    description: "Waterfall, -77.6923, 45.8587."
+  },
+  {
+    name: "Zoar Valley Whitewater Rafting",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-78.93499, 42.46271],
+    description: "Whitewater Rafting Comapny, -78.93499, 42.46271."
+  },
+  {
+    name: "Channel Islands National Park",
+    category: "Natural_Park",
+    visited: false,
+    coordinates: [-119.772949, 33.998028],
+    description: "National Park, -119.772949, 33.998028."
   }
 ];
