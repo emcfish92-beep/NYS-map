@@ -85,6 +85,19 @@
   margin-right: 8px;
   border-radius: 50%;
   border: 1px solid #555;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.legend-color svg {
+  width: 12px;
+  height: 12px;
+
+  stroke: white;
+  stroke-width: 2.5;
+
+  pointer-events: none;
 }
 
 .Campsite-color {
@@ -116,11 +129,11 @@
 }
 
 .XC_skiing-color {
-  background-color: #E0A800;
+  background-color: #ceb361;
 }
 
 .Waterfall-color {
-  background-color: #D946A8;
+  background-color: #efe521;
 }
 
 .Snow_Shoe-color {
@@ -132,7 +145,7 @@
 }
 
 .Monroe_County_Park-color {
-  background-color: #efe521;
+  background-color: #D946A8;
 }
 
 .National_Park-color {
@@ -168,16 +181,22 @@
     cursor: pointer;
 }
 
-.marker-center {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: rgb(255, 255, 255);
+.custom-marker svg {
+  width: 14px;
+  height: 14px;
+
+  stroke: white;
+
+  stroke-width: 2.5;
+
+  pointer-events: none;
 }
 
-.marker-center.visited {
-    background-color: black;
+.custom-marker.visited-marker {
+  outline: 3px solid white;
+  outline-offset: 2px;
 }
+
 /* Visited symbol shown in the map key */
 
 .visited-example {
@@ -442,82 +461,114 @@
   <div class="legend-items">
 
   <div class="legend-item">
-    <span class="legend-color Campsite-color"></span>
+    <span class="legend-color Campsite-color">
+      <i data-lucide="tent"></i>
+    </span>
     Campsites
   </div>
 
   <div class="legend-item">
-    <span class="legend-color Swimming_Spot-color"></span>
+    <span class="legend-color Swimming_Spot-color">
+      <i data-lucide="waves-ladder"></i>
+    </span>
     Swimming Holes
   </div>
 
   <div class="legend-item">
-    <span class="legend-color Kayak_Launch-color"></span>
+    <span class="legend-color Kayak_Launch-color">
+      <i data-lucide="kayak"></i>
+    </span>
     Kayak Launches
   </div>
 
   <div class="legend-item">
-    <span class="legend-color Hiking_Spot-color"></span>
+    <span class="legend-color Hiking_Spot-color">
+      <i data-lucide="mountain"></i>
+    </span>
     Hiking Spot
   </div>
 
   <div class="legend-item">
-    <span class="legend-color Downhill_Skiing-color"></span>
+    <span class="legend-color Downhill_Skiing-color">
+      <i data-lucide="cable-car"></i>
+    </span>
     Downhill Skiing
   </div>
 
   <div class="legend-item">
-    <span class="legend-color State_Park-color"></span>
+    <span class="legend-color State_Park-color">
+      <i data-lucide="trees"></i>
+    </span>
     State Park
   </div>
   
   <div class="legend-item">
-    <span class="legend-color Erie_County_Park-color"></span>
+    <span class="legend-color Erie_County_Park-color">
+      <i data-lucide="shrub"></i>
+    </span>
     Erie County Park
   </div>
 
   <div class="legend-item">
-    <span class="legend-color XC_skiing-color"></span>
+    <span class="legend-color XC_Skiing-color">
+      <i data-lucide="cloud-snow"></i>
+    </span>
     Cross Country Skiing
   </div>
 
   <div class="legend-item">
-    <span class="legend-color Waterfall-color"></span>
+    <span class="legend-color Waterfall-color">
+      <i data-lucide="zodiac-aquarius"></i>
+    </span>
     Waterfall
   </div>
 
   <div class="legend-item">
-    <span class="legend-color Adventure_Activity-color"></span>
+    <span class="legend-color Adventure_Activity-color">
+      <i data-lucide="tent-tree"></i>
+    </span>
     Adventure Activity
   </div>
 
   <div class="legend-item">
-    <span class="legend-color Snow_Shoe-color"></span>
+    <span class="legend-color Snow_Shoe-color">
+      <i data-lucide="snowflake"></i>
+    </span>
     Snow Shoe
   </div>
 
   <div class="legend-item">
-    <span class="legend-color Monroe_County_Park-color"></span>
+    <span class="legend-color Monroe_County_Park-color">
+      <i data-lucide="pentagon"></i>
+    </span>
     Monroe County Park
   </div>
 
   <div class="legend-item">
-    <span class="legend-color National_Park-color"></span>
+    <span class="legend-color National_Park-color">
+      <i data-lucide="binoculars"></i>
+    </span>
     National Park
   </div>
 
   <div class="legend-item">
-    <span class="legend-color National_Forest-color"></span>
+    <span class="legend-color National_Forest-color">
+      <i data-lucide="tree-pine"></i>
+    </span>
     National Forest
   </div>
 
   <div class="legend-item">
-    <span class="legend-color Cave-color"></span>
+    <span class="legend-color Cave-color">
+      <i data-lucide="flashlight"></i>
+    </span>
     Cave
   </div>
 
   <div class="legend-item">
-    <span class="legend-color Natural_Monument-color"></span>
+    <span class="legend-color Natural_Monument-color">
+      <i data-lucide="shell"></i>
+    </span>
     Natural Monument
   </div>
 
@@ -535,6 +586,9 @@
   <!--
     Version 6 of MapLibre must be loaded as a module.
   -->
+  
+  <script src="https://unpkg.com/lucide@1.0.0"></script>
+  
   <script type="module">
 
     /*
@@ -619,17 +673,37 @@ const categoryColors = {
   Downhill_Skiing: "#7c55a5",
   State_Park: "#d64545",
   Erie_County_Park: "#00afc1",
-  XC_Skiing: "#E0A800",
-  Waterfall: "#D946A8",
+  XC_Skiing: "#ceb361",
+  Waterfall: "#efe521",
   Snow_Shoe: "#0baa2d",
   Adventure_Activity: "#6B7280",
-  Monroe_County_Park: "#efe521",
+  Monroe_County_Park: "#D946A8",
   National_Park: "#a76ad0",
   Hiking_Spot: "#8C5A3C",
   National_Forest: "#629de6",
   Cave: "#220634",
-  Natural_Moneument: "#cb2a6d"
+  Natural_Monument: "#cb2a6d"
 };
+
+const categoryIcons = {
+  Campsite: "tent",
+  Swimming_Spot: "waves-ladder",
+  Kayak_Launch: "kayak",
+  Downhill_Skiing: "cable-car",
+  State_Park: "trees",
+  Erie_County_Park: "shrub",
+  XC_Skiing: "cloud-snow",
+  Waterfall: "zodiac-aquarius",
+  Snow_Shoe: "snowflake",
+  Adventure_Activity: "tent-tree",
+  Monroe_County_Park: "pentagon",
+  National_Park: "binoculars",
+  Hiking_Spot: "mountain",
+  National_Forest: "tree-pine",
+  Cave: "flashlight",
+  Natural_Monument: "shell"
+};
+
 
 /*
   Repeat the marker-building process
@@ -642,26 +716,21 @@ places.forEach(place => {
   const markerElement = document.createElement("div");
 
   markerElement.className = "custom-marker";
+  if (place.visited === true) {
+  markerElement.classList.add("visited-marker");
+  }
 
   markerElement.style.backgroundColor =
     categoryColors[place.category];
 
+  const markerIcon = document.createElement("i");
 
-  // Create the small center circle
-  const centerDot = document.createElement("div");
+  markerIcon.setAttribute(
+    "data-lucide",
+    categoryIcons[place.category]
+  );
 
-  centerDot.className = "marker-center";
-
-
-  // If we have visited this place,
-  // make the center dot black
-  if (place.visited === true) {
-    centerDot.classList.add("visited");
-  }
-
-
-  // Put the center dot inside the colored marker
-  markerElement.appendChild(centerDot);
+  markerElement.appendChild(markerIcon);
 
 
   // Add the completed marker to the map
@@ -689,6 +758,8 @@ places.forEach(place => {
     .addTo(map);
 
 });
+
+lucide.createIcons();
 
 console.log("Reached service worker section");
 
