@@ -233,6 +233,44 @@
     margin: 10px 0;
 }
 
+.popup-gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 8px;
+
+  width: 100%;
+  margin-bottom: 10px;
+
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.popup-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.popup-photo {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 180px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  scroll-snap-align: start;
+}
+
+.popup-content {
+  padding: 2px 4px;
+}
+
+.popup-content h3 {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
 @media (max-width: 600px) {
 
   /* =========================
@@ -716,13 +754,17 @@ places.forEach(place => {
   const markerElement = document.createElement("div");
 
   markerElement.className = "custom-marker";
+
+  // Add white ring if this place has been visited
   if (place.visited === true) {
-  markerElement.classList.add("visited-marker");
+    markerElement.classList.add("visited-marker");
   }
 
+  // Give the marker its category color
   markerElement.style.backgroundColor =
     categoryColors[place.category];
 
+  // Create the Lucide icon
   const markerIcon = document.createElement("i");
 
   markerIcon.setAttribute(
@@ -738,23 +780,55 @@ places.forEach(place => {
     element: markerElement
   })
     .setLngLat(place.coordinates)
+
     .setPopup(
-  new maplibregl.Popup().setHTML(`
-    <h3>${place.name}</h3>
+      new maplibregl.Popup({
+        maxWidth: "320px"
+      }).setHTML(`
 
-    <p>
-      <strong>Category:</strong>
-      ${place.category}
-    </p>
+        ${
+          place.photos && place.photos.length > 0
+            ? `
+              <div class="popup-gallery">
 
-    <p>
-      <strong>Visited:</strong>
-      ${place.visited ? "Yes" : "No"}
-    </p>
+                ${place.photos
+                  .map(
+                    photo => `
+                      <img
+                        src="${photo}"
+                        class="popup-photo"
+                        alt="${place.name}"
+                      >
+                    `
+                  )
+                  .join("")}
 
-    <p>${place.description}</p>
-  `)
-)
+              </div>
+            `
+            : ""
+        }
+
+        <div class="popup-content">
+
+          <h3>${place.name}</h3>
+
+          <p>
+            <strong>Category:</strong>
+            ${place.category.replaceAll("_", " ")}
+          </p>
+
+          <p>
+            <strong>Visited:</strong>
+            ${place.visited ? "Yes" : "No"}
+          </p>
+
+          <p>${place.description}</p>
+
+        </div>
+
+      `)
+    )
+
     .addTo(map);
 
 });
