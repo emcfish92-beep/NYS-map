@@ -445,5 +445,104 @@ export const places = [
     visited: false,
     coordinates: [-104.44, 32.174212],
     description: "National Park, -104.44, 32.174212."
+  },
+  {
+    name: "Channel Islands National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-119.42, 34.01],
+    description: "National Park, -119.42, 34.01."
+  },
+  {
+    name: "Congaree National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-80.78, 33.79],
+    description: "National Park, -80.78, 33.79."
+  },
+  {
+    name: "Crater Lake National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-122.10, 42.94],
+    description: "National Park, -122.10, 42.94."
+  },
+  {
+    name: "Death Valley National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-116.87, 36.46],
+    description: "National Park, ."
+  },
+  {
+    name: "Denali National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-150.50, 63.33],
+    description: "National Park, -150.50, 63.33."
+  },
+  {
+    name: "Dry Tortugas National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-82.87, 24.63],
+    description: "National Park, -82.87, 24.63."
+  },
+  {
+    name: "Everglades National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-80.87, 25.29],
+    description: "National Park, -80.87, 25.29."
+  },
+  {
+    name: "Gates of the Arctic National Park and Preserve",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-153.30, 67.78],
+    description: "National Park, -153.30, 67.78."
+  },
+  {
+    name: "Gateway Arch National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-90.19, 38.63],
+    description: "National Park, -90.19, 38.63."
+  },
+  {
+    name: "Glacier National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-113.80, 48.70],
+    description: "National Park, -113.80, 48.70."
+  },
+  {
+    name: "Glacier Bay National Park and Preserve",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-137.00, 58.67],
+    description: "National Park, ."
+  },
+  {
+    name: "Grand Canyon National Park",
+    category: "National_Park",
+    visited: true,
+    coordinates: [-112.11, 36.10],
+    description: "National Park, -112.11, 36.10."
+  },
+  {
+    name: "Grand Teton National Park",
+    category: "National_Park",
+    visited: true,
+    coordinates: [-110.68, 43.79],
+    description: "National Park, -110.68, 43.79."
+  },
+  {
+    name: "Great Basin National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-114.30, 38.98],
+    description: "National Park, -114.30, 38.98."
   }
+  
 ];
