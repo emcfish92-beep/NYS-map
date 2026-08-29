@@ -373,77 +373,77 @@ export const places = [
     name: "Acadia National Park",
     category: "National_Park",
     visited: false,
-    coordinates: [-68.21, 44.35],
-    description: "National Park, -68.21, 44.35."
+    coordinates: [-68.2734, 44.3389],
+    description: "National Park, -68.2734, 44.3389."
   },
   {
     name: "American Samoa National Park",
     category: "National_Park",
     visited: false,
-    coordinates: [-14.25, 170.68],
-    description: "National Park, -14.25, 170.68."
+    coordinates: [-170.68, 14.28],
+    description: "National Park, -170.68, 14.28."
   },
   {
     name: "Arches National Park",
     category: "National_Park",
     visited: false,
-    coordinates: [-38.68, 109.57],
-    description: "National Park, -38.68, 109.57."
+    coordinates: [-109.620345, 38.616391],
+    description: "National Park, -109.620345, 38.616391."
   },
   {
     name: "Badlands National Park",
     category: "National_Park",
     visited: false,
-    coordinates: [-43.75, 102.50],
-    description: "National Park, -43.75, 102.50."
+    coordinates: [-102.3397, 43.8554],
+    description: "National Park, -102.3397, 43.8554."
   },
   {
     name: "Big Bend National park",
     category: "National_Park",
     visited: false,
-    coordinates: [-29.25, 103.25],
-    description: "National Park, -29.25, 103.25."
+    coordinates: [-103.2298, 29.2977],
+    description: "National Park, -103.2298, 29.2977."
   },
   {
     name: "Biscayne National Park",
     category: "National_Park",
     visited: false,
-    coordinates: [-25.65, 80.08],
-    description: "National Park, -25.65, 80.08."
+    coordinates: [-80.08, 25.65],
+    description: "National Park, -80.08, 25.65."
   },
   {
     name: "Black Canyon of the Gunnison National park",
     category: "National_Park",
     visited: false,
-    coordinates: [-38.57, 107.72],
-    description: "National Park, -38.57, 107.72."
+    coordinates: [-107.72, 38.57],
+    description: "National Park, -107.72, 38.57."
   },
   {
     name: "Bryce Canyon National Park",
     category: "National_Park",
     visited: true,
-    coordinates: [-37.57, 112.18],
-    description: "National Park, -37.57, 112.18."
+    coordinates: [-122.18, 37.57],
+    description: "National Park, -122.18, 37.57."
   },
   {
     name: "Canyonlands National Park",
     category: "National_Park",
     visited: false,
-    coordinates: [-38.20, 109.93],
-    description: "National Park, -38.20, 109.93."
+    coordinates: [-109.93, 38.20],
+    description: "National Park, -109.93, 38.20."
   },
   {
     name: "Capitol Reef National Park",
     category: "National_Park",
     visited: false,
-    coordinates: [-38.20, 111.17],
-    description: "National Park, -38.20, 111.17."
+    coordinates: [-111.17, 38.2],
+    description: "National Park, -111.17, 38.2."
   },
   {
     name: "Carlsbad Caverns National Park",
     category: "National_Park",
     visited: false,
-    coordinates: [-32.17, 104.44],
-    description: "National Park, ."
+    coordinates: [-104.44, 32.174212],
+    description: "National Park, -104.44, 32.174212."
   }
 ];
