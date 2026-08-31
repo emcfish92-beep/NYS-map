@@ -197,36 +197,7 @@
   stroke-width: 3;
 }
 
-/* Visited symbol shown in the map key */
 
-.visited-example {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-
-    border-radius: 50%;
-    border: 1px solid #555;
-    background-color: white;
-
-    position: relative;
-    flex-shrink: 0;
-}
-
-.visited-example::after {
-    content: "";
-
-    width: 7px;
-    height: 7px;
-
-    background-color: black;
-    border-radius: 50%;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-}
 
 .legend-divider {
     border-top: 1px solid #AAAAAA;
@@ -269,6 +240,59 @@
 .popup-content h3 {
   margin-top: 4px;
   margin-bottom: 8px;
+}
+
+/* Visited legend example */
+
+#legend .visited-demo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+#legend .visited-demo-circle {
+  width: 20px;
+  height: 20px;
+
+  background-color: #2878b5;
+
+  border-radius: 50%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid #555;
+  box-sizing: border-box;
+}
+
+#legend .visited-demo-circle svg {
+  width: 13px;
+  height: 13px;
+
+  fill: none;
+  stroke-width: 2.7;
+
+  pointer-events: none;
+}
+
+#legend .visited-star-white {
+  stroke: white;
+}
+
+#legend .visited-star-black {
+  stroke: black;
+}
+
+#legend .visited-demo-arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+#legend .visited-demo-label {
+  margin-left: 2px;
 }
 
 @media (max-width: 600px) {
@@ -434,42 +458,6 @@
   gap: 7px;
 }
 
-#legend .visited-example {
-  width: 19px;
-  height: 19px;
-  border-radius: 50%;
-  background-color: #2878b5;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  flex-shrink: 0;
-}
-
-#legend .visited-example svg {
-  width: 12px;
-  height: 12px;
-  stroke-width: 2.5;
-  pointer-events: none;
-}
-
-/* Before visiting = white icon */
-#legend .unvisited-example svg {
-  stroke: white;
-}
-
-/* After visiting = black icon */
-#legend .visited-example-black svg {
-  stroke: black;
-}
-
-#legend .visited-arrow {
-  color: white;
-  font-size: 17px;
-  line-height: 1;
-}
-
 
   /* Divider above Visited */
   #legend .legend-divider {
@@ -487,24 +475,7 @@
   }
 
 
-  /* Visited symbol */
-  #legend .visited-example {
-    background-color: white;
-    border: 1px solid #777;
-    box-sizing: border-box;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #legend .visited-example svg {
-    width: 12px;
-    height: 12px;
-    stroke: black;
-    stroke-width: 3;
-    pointer-events: none;
-  }
+  
 
 
   /* Move the scale bar just above the collapsed legend */
@@ -654,21 +625,21 @@
 
   <div class="legend-divider"></div>
 
-  <div class="legend-item visited-key">
+  <div class="legend-item visited-demo">
 
-    <span class="visited-example unvisited-example">
-      <i data-lucide="star"></i>
+    <span class="visited-demo-circle">
+      <i data-lucide="star" class="visited-star-white"></i>
     </span>
 
-    <span class="visited-arrow">→</span>
+    <span class="visited-demo-arrow">→</span>
 
-    <span class="visited-example visited-example-black">
-    <i data-lucide="star"></i>
+    <span class="visited-demo-circle">
+    <i data-lucide="star" class="visited-star-black"></i>
     </span>
 
-    <span>Visited</span>
+    <span class="visited-demo-label">Visited</span>
 
-  </div>
+</div>
   
  </div>
 
