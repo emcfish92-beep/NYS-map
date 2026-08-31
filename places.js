@@ -543,6 +543,238 @@ export const places = [
     visited: false,
     coordinates: [-114.30, 38.98],
     description: "National Park, -114.30, 38.98."
+  },
+  {
+    name: "Great Sand Dunes National Park and Preserve",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-105.51, 37.73],
+    description: "National Park, -105.51, 37.73."
+  },
+  {
+    name: "Guadalupe Mountains National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-104.87, 31.92],
+    description: "National Park, -104.87, 31.92."
+  },
+  {
+    name: "Haleakala National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-156.17, 20.72],
+    description: "National Park, -156.17, 20.72."
+  },
+  {
+    name: "Hawai'i Volcanoes National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-155.29, 19.42],
+    description: "National Park, -155.29, 19.42."
+  },
+  {
+    name: "Hot Springs National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-93.05, 34.52],
+    description: "National Park, -93.05, 34.52."
+  },
+  {
+    name: "Isle Royale National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-88.90, 48.10],
+    description: "National Park, -88.90, 48.10."
+  },
+  {
+    name: "Joshua Tree National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-115.90, 33.88],
+    description: "National Park, -115.90, 33.88."
+  },
+  {
+    name: "Katmai National Park and Preserve",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-155.00, 58.50],
+    description: "National Park, -155.00, 58.50."
+  },
+  {
+    name: "Kenai Fjords National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-149.65, 59.92],
+    description: "National Park, -149.65, 59.92."
+  },
+  {
+    name: "Kings Canyon National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-118.55, 36.80],
+    description: "National Park, -118.55, 36.80."
+  },
+  {
+    name: "Kobuk Valley National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-159.28, 67.55],
+    description: "National Park, -159.28, 67.55."
+  },
+  {
+    name: "Lake Clark National Park and Preserve",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-153.42, 60.97],
+    description: "National Park, -153.42, 60.97."
+  },
+  {
+    name: "Lassen Volcanic National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-121.51, 40.49],
+    description: "National Park, -121.51, 40.49."
+  },
+  {
+    name: "Mesa Verde National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-108.49, 37.18],
+    description: "National Park, -108.49, 37.18."
+  },
+  {
+    name: "Mount Ranier National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-121.75, 46.85],
+    description: "National Park, -121.75, 46.85."
+  },
+  {
+    name: "New River Gorge National Park and Preserve",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-81.08, 37.87],
+    description: "National Park, -81.08, 37.87."
+  },
+  {
+    name: "North Cascades National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-121.20, 48.70],
+    description: "National Park, -121.20, 48.70."
+  },
+  {
+    name: "Olympic National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-123.50, 47.97],
+    description: "National Park, -123.50, 47.97."
+  },
+  {
+    name: "Petrified Forest National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-109.78, 35.07],
+    description: "National Park, -109.78, 35.07."
+  },
+  {
+    name: "Pinnacles National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-121.20, 36.49],
+    description: "National Park, -121.20, 36.49."
+  },
+  {
+    name: "Redwood National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-124.00, 41.28],
+    description: "National Park, -124.00, 41.28."
+  },
+  {
+    name: "Rocky Mountain National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-105.69, 40.34],
+    description: "National Park, -105.69, 40.34."
+  },
+  {
+    name: "Saguaro National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-111.17, 32.25],
+    description: "National Park, -111.17, 32.25."
+  },
+  {
+    name: "Sequoia National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-118.57, 36.43],
+    description: "National Park, -118.57, 36.43."
+  },
+  {
+    name: "Shanandoah National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-78.35, 38.53],
+    description: "National Park, -78.35, 38.53."
+  },
+  {
+    name: "Theodore Roosevelt National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-103.45, 46.97],
+    description: "National Park, -103.45, 46.97."
+  },
+  {
+    name: "Virgin Islands National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-64.73, 18.33],
+    description: "National Park, -64.73, 18.33."
+  },
+  {
+    name: "Voyageurs National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-92.88, 48.50],
+    description: "National Park, -92.88, 48.50."
+  },
+  {
+    name: "White Sands National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-106.17, 32.78],
+    description: "National Park, -106.17, 32.78."
+  },
+  {
+    name: "Wind Cave National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-103.48, 43.57],
+    description: "National Park, -103.48, 43.57."
+  },
+  {
+    name: "Wrangrell-St. Elias National Park and Preserve",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-142.99, 61.71],
+    description: "National Park, -142.99, 61.71."
+  },
+  {
+    name: "Yellowstone National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-110.50, 44.60],
+    description: "National Park, -110.50, 44.60."
+  },
+  {
+    name: "Zion National Park",
+    category: "National_Park",
+    visited: false,
+    coordinates: [-113.05, 37.30],
+    description: "National Park, -113.05, 37.30."
   }
+  
   
 ];

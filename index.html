@@ -192,9 +192,9 @@
   pointer-events: none;
 }
 
-.custom-marker.visited-marker {
-  outline: 3px solid white;
-  outline-offset: 2px;
+.custom-marker.visited-marker svg {
+  stroke: #1a1a1a;
+  stroke-width: 3;
 }
 
 /* Visited symbol shown in the map key */
@@ -428,16 +428,47 @@
 
 
   #legend .legend-color,
-  #legend .visited-example {
-    width: 19px;
-    height: 19px;
+  #legend .visited-key {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
 
-    margin-right: 8px;
+#legend .visited-example {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background-color: #2878b5;
 
-    flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    border-radius: 50%;
-  }
+  flex-shrink: 0;
+}
+
+#legend .visited-example svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.5;
+  pointer-events: none;
+}
+
+/* Before visiting = white icon */
+#legend .unvisited-example svg {
+  stroke: white;
+}
+
+/* After visiting = black icon */
+#legend .visited-example-black svg {
+  stroke: black;
+}
+
+#legend .visited-arrow {
+  color: white;
+  font-size: 17px;
+  line-height: 1;
+}
 
 
   /* Divider above Visited */
@@ -458,11 +489,21 @@
 
   /* Visited symbol */
   #legend .visited-example {
-    background-color: #222222;
-
-    border: 3px solid white;
-
+    background-color: white;
+    border: 1px solid #777;
     box-sizing: border-box;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #legend .visited-example svg {
+    width: 12px;
+    height: 12px;
+    stroke: black;
+    stroke-width: 3;
+    pointer-events: none;
   }
 
 
@@ -613,9 +654,20 @@
 
   <div class="legend-divider"></div>
 
-  <div class="legend-item">
-    <span class="visited-example"></span>
-    Visited
+  <div class="legend-item visited-key">
+
+    <span class="visited-example unvisited-example">
+      <i data-lucide="star"></i>
+    </span>
+
+    <span class="visited-arrow">→</span>
+
+    <span class="visited-example visited-example-black">
+    <i data-lucide="star"></i>
+    </span>
+
+    <span>Visited</span>
+
   </div>
   
  </div>
