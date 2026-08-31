@@ -197,7 +197,36 @@
   stroke-width: 3;
 }
 
+/* Visited symbol shown in the map key */
 
+.visited-example {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+
+    border-radius: 50%;
+    border: 1px solid #555;
+    background-color: white;
+
+    position: relative;
+    flex-shrink: 0;
+}
+
+.visited-example::after {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    background-color: black;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
 
 .legend-divider {
     border-top: 1px solid #AAAAAA;
@@ -675,7 +704,7 @@
       /*
         Map style, from maptiler.
       */
-      style: "https://api.maptiler.com/maps/outdoor-v4/style.json?key=uoXI4BPW3yTAen7xNVDd",
+      style: "https://api.maptiler.com/maps/01a0586c-4149-7dec-b097-0562b63a12fa/style.json?key=uoXI4BPW3yTAen7xNVDd",
     
 
       /*
