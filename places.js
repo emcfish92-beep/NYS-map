@@ -4,7 +4,13 @@ export const places = [
     category: "State_Park",
     visited: true,
     coordinates: [-77.98333, 42.63472],
-    description: "NYS Park, -77.98333, 42.63472, Been."
+    description: "NYS Park, -77.98333, 42.63472, Been.",
+    photos: [
+        "images/Letchworth 1.jpg",
+        "images/Letchworth 2.jpg",
+        "images/Letchworth 3.jpg",
+        "images/Letchworth 4.jpg"
+    ]
   },
   {
     name: "Franklin Gulf",
@@ -774,7 +780,260 @@ export const places = [
     visited: false,
     coordinates: [-113.05, 37.30],
     description: "National Park, -113.05, 37.30."
+  },
+  {
+    name: "Sojourner Truth State Park",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-73.9741448, 41.9466636],
+    description: "State Park, -73.9741448, 41.9466636."
+  },
+  {
+    name: "Robert G Wehle State Park",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-76.270821, 43.873272],
+    description: "State Park, -76.270821, 43.873272."
+  },
+  {
+    name: "Buena Vista Rock Bridge",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-79.545158, 37.628887],
+    description: "Natural bridge, -79.545158, 37.628887."
+  },
+  {
+    name: "Cuyahoga Falls Tubing",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-81.4398, 41.1444],
+    description: "Tubing guided experience, -81.4398, 41.1444."
+  },
+  {
+    name: "Heidelberg Project",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-83.02089, 42.35868],
+    description: "Street of Mad Houses, -83.02089, 42.35868."
+  },
+  {
+    name: "Colchester Causeway",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.31251, 44.5912],
+    description: "Causeway with trail down the middle, -73.31251, 44.5912."
+  },
+  {
+    name: "Clifton Gorge State Nature Preserve",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-83.8328, 39.7996],
+    description: "State Nature Preserve, -83.8328, 39.7996."
+  },
+  {
+    name: "Penn's Cave",
+    category: "Cave",
+    visited: false,
+    coordinates: [-77.60944, 40.88278],
+    description: "Cave, -77.60944, 40.88278."
+  },
+  {
+    name: "Kelley's Island State Park",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-82.6980, 41.6020],
+    description: "State Park, -82.6980, 41.6020."
+  },
+  {
+    name: "Harriet Hollister Spencer State Recreation Area",
+    category: "XC_Skiing",
+    visited: false,
+    coordinates: [-77.525607, 42.69458],
+    description: "XC Skiing, -77.525607, 42.69458."
+  },
+  {
+    name: "Glass City Riverwalk",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-83.5391, 41.6494],
+    description: "Rollerskating, -83.5391, 41.6494."
+  },
+  {
+    name: "Hocking Hilla SP",
+    category: "State_Park",
+    visited: true,
+    coordinates: [-82.53889, 39.43056],
+    description: "State Park, -82.53889, 39.43056."
+  },
+  {
+    name: "Chimney Top",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.25578, 38.97306],
+    description: "Point on North Fork Mountain Trail, -79.25578, 38.97306."
+  },
+  {
+    name: "Warm Springs Pools",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: true,
+    coordinates: [-79.7808, 38.0536],
+    description: "Host Spring, part of Omni Spa, -79.7808, 38.0536."
+  },
+  {
+    name: "Natural Stone Bridge and Caves",
+    category: "Cave",
+    visited: false,
+    coordinates: [-73.8523, 43.7475],
+    description: "Cave, -73.8523, 43.7475."
+  },
+  {
+    name: "RMSC Cumming Nature Centre",
+    category: "XC_Skiing",
+    visited: false,
+    coordinates: [-77.455609, 42.705932],
+    description: "XC ski area, -77.455609, 42.705932."
+  },
+  {
+    name: "Mendon Ponds County Park",
+    category: "Monroe_County_Park",
+    visited: true,
+    coordinates: [-77.5639, 43.0156],
+    description: "Monroe County Park, -77.5639, 43.0156."
+  },
+  {
+    name: "Mendon Ponds XC Skiing",
+    category: "XC_Skiing",
+    visited: false,
+    coordinates: [-77.5665, 43.0153],
+    description: "XC ski area, -77.5665, 43.0153."
+  },
+  {
+    name: "Shadow Pines XC Ski Loop",
+    category: "XC_Skiing",
+    visited: false,
+    coordinates: [-77.470, 43.140],
+    description: "XC Ski Area, -77.470, 43.140."
+  },
+  {
+    name: "Webster Park XC Ski Loop",
+    category: "XC_Skiing",
+    visited: false,
+    coordinates: [-77.4510, 43.2598],
+    description: "XC Ski loop, -77.4510, 43.2598."
+  },
+  {
+    name: "Horse Cave",
+    category: "Cave",
+    visited: false,
+    coordinates: [-85.9073, 37.1796],
+    description: "Cave, -85.9073, 37.1796."
+  },
+  {
+    name: "Devil's Den Rock Formation",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-77.24239, 39.79151],
+    description: "Rocky Ridge, -77.24239, 39.79151."
+  },
+  {
+    name: "Alpine Slides, Seven Springs Mountain Resort",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-79.302750, 40.019829],
+    description: "Summer Alpine Slide, -79.302750, 40.019829."
+  },
+  {
+    name: "Seven Springs Mountain Resort",
+    category: "Downhill_Skiing",
+    visited: false,
+    coordinates: [-79.29278, 40.02306],
+    description: "Ski area, -79.29278, 40.02306."
+  },
+  {
+    name: "George Bridge",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-77.74677, 43.01921],
+    description: "Swimming Hole, -77.74677, 43.01921."
+  },
+  {
+    name: "Wintergreen Gorge",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-79.9977, 42.1257],
+    description: "Swimming Hole, -79.9977, 42.1257."
+  },
+  {
+    name: "The Basin, Franconia Notch",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-71.6813, 44.1193],
+    description: "Swimming Hole, -71.6813, 44.1193."
+  },
+  {
+    name: "Sacandaga River Gorge Rapids",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-73.86722, 43.31139],
+    description: "White Water Rafting Company, -73.86722, 43.31139."
+  },
+  {
+    name: "God's Thumb",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-123.99773, 45.01088],
+    description: "Rock Formation, -123.99773, 45.01088."
+  },
+  {
+    name: "Bilger's Rocks",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-78.5931, 40.9933],
+    description: "Rock Formation, -78.5931, 40.9933."
+  },
+  {
+    name: "Ausable Chasm",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-73.46111, 44.52917],
+    description: "Gorge with rafting, -73.46111, 44.52917."
+  },
+  {
+    name: "Rock City Gardens Lookout Mountain",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-85.3503, 34.9733],
+    description: "Rock Formations, ticketed, -85.3503, 34.9733."
+  },
+  {
+    name: "Kaaterskill Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-74.0706, 42.1911],
+    description: "Waterfalls, -74.0706, 42.1911."
+  },
+  {
+    name: "Birch Knob",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-82.45806, 37.23806],
+    description: "Lookout, -82.45806, 37.23806."
+  },
+  {
+    name: "Devil's Tower National Monument",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-104.715279, 44.590279],
+    description: "Huge Rock Tower, -104.715279, 44.590279."
+  },
+  {
+    name: "The Black Moshannon Lake",
+    category: "Lake",
+    visited: false,
+    coordinates: [-78.0569, 40.9122],
+    description: "Lake, -78.0569, 40.9122."
   }
+  
   
   
 ];
