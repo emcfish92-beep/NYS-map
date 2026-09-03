@@ -17,14 +17,21 @@ export const places = [
     category: "Erie_County_Park",
     visited: true,
     coordinates: [-78.9394795, 42.6056156],
-    description: "Erie County Park, -78.9394795, 42.6056156, Been."
+    description: "Erie County Park, -78.9394795, 42.6056156, Been.",
+    photos: [
+        "images/Franklin_Gulf_1.jpg",
+        "images/Franklin_Gulf_2.jpg"
+    ]
   },
   {
     name: "Harlem Road",
     category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.79075, 42.86751],
-    description: "Kayak launch, -78.79075, 42.86751."
+    description: "Kayak launch, -78.79075, 42.86751.",
+    photos: [
+        "images/Harlem_Road_1.jpg"
+    ]
   },
   {
     name: "Amherst Veterans Boat Ramp",
@@ -1032,6 +1039,181 @@ export const places = [
     visited: false,
     coordinates: [-78.0569, 40.9122],
     description: "Lake, -78.0569, 40.9122."
+  },
+  {
+    name: "Chestnut Ridge Park",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.7628, 42.7139],
+    description: "Erie County Park, -78.7628, 42.7139."
+  },
+  {
+    name: "Akron Falls Park",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.4923, 43.0151],
+    description: "Erie County Park, -78.4923, 43.0151."
+  },
+  {
+    name: "Como Lake Park",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.6638, 42.8889],
+    description: "Erie County Park, -78.6638, 42.8889."
+  },
+  {
+    name: "Emery Park",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.6180, 42.7155],
+    description: "Erie County Park, -78.6180, 42.7155."
+  },
+  {
+    name: "Bennet Beach Park",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-79.0593, 42.6581],
+    description: "Erie County Park, -79.0593, 42.6581."
+  },
+  {
+    name: "Black Rock Canal",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.906, 42.946],
+    description: "Erie County Park, -78.906, 42.946."
+  },
+  {
+    name: "Boston Forest",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.82, 42.54],
+    description: "Erie County Park, -78.82, 42.54."
+  },
+  {
+    name: "Bureau of Forestry",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.5513419, 42.5521200],
+    description: "Erie County Park, -78.5513419, 42.5521200."
+  },
+  {
+    name: "Eighteen Mile Creek",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.9665, 42.7115],
+    description: "Erie County Park, -78.9665, 42.7115."
+  },
+  {
+    name: "Ellicot Creek",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.83306, 43.02278],
+    description: "Erie County Park, ."
+  },
+  {
+    name: "Elma Meadows Park",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.5947, 42.8212],
+    description: "Erie County Park, -78.5947, 42.8212."
+  },
+  {
+    name: "Elma Meadows",
+    category: "XC_Skiing",
+    visited: true,
+    coordinates: [-78.6059, 42.8228],
+    description: "Erie County Park, -78.6059, 42.8228."
+  },
+  {
+    name: "Grover Cleveland Golf Course",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.8089, 42.9614],
+    description: "Erie County Park, -78.8089, 42.9614."
+  },
+  {
+    name: "Grover Cleveland XC Ski Loop",
+    category: "XC_Skiing",
+    visited: true,
+    coordinates: [-78.80917, 42.96111],
+    description: "Erie County Park, -78.80917, 42.96111."
+  },
+  {
+    name: "Isle View",
+    category: "Erie_County_Park",
+    visited: false,
+    coordinates: [-78.910203, 43.009570],
+    description: "Erie County Park, ."
+  },
+  {
+    name: "Red Jacket Natural Habitat Park",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.8524, 42.8590],
+    description: "Erie County Park, -78.8524, 42.8590."
+  },
+  {
+    name: "Scoby Dam",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.70025, 42.48120],
+    description: "Erie County Park, -78.70025, 42.48120."
+  },
+  {
+    name: "Seneca Bluffa Natural Habitat Park",
+    category: "Erie_County_Park",
+    visited: false,
+    coordinates: [-78.8129, 42.8631],
+    description: "Erie County Park, -78.8129, 42.8631."
+  },
+  {
+    name: "Hunter's Creek",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.6416, 42.7766],
+    description: "Erie County Park, -78.6416, 42.7766."
+  },
+  {
+    name: "Sprague Brook Park",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.6315, 42.5917],
+    description: "Erie County Park, -78.6315, 42.5917."
+  },
+  {
+    name: "Sprague Brook XC Skiing",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.6314, 42.5916],
+    description: "Erie County Park, -78.6314, 42.5916."
+  },
+  {
+    name: "Thomas F. Higgins Natural Habitat Park",
+    category: "Erie_County_Park",
+    visited: false,
+    coordinates: [-78.8257, 42.8609],
+    description: "Erie County Park, -78.8257, 42.8609."
+  },
+  {
+    name: "Tow Path Park",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-78.907437, 42.940113],
+    description: "Erie County Park, -78.907437, 42.940113."
+  },
+  {
+    name: "Wendt Beach Park",
+    category: "Erie_County_Park",
+    visited: true,
+    coordinates: [-79.0517, 42.6761],
+    description: "Erie County Park, -79.0517, 42.6761."
+  },
+  {
+    name: "Willowdale Park",
+    category: "Erie_County_Park",
+    visited: false,
+    coordinates: [-78.7705, 42.9796],
+    description: "Erie County Park, -78.7705, 42.9796."
   }
   
   

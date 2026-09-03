@@ -757,14 +757,7 @@
       "bottom-right"
     );
     
-    map.addControl(
-      new GeocodingControl({
-        apiKey: mapTilerKey,
-        maplibregl: maplibregl,
-        placeholder: "Search for a place"
-      }),
-      "top-left"
-    );
+    
 
     /*
     /*
@@ -826,6 +819,9 @@ const categoryIcons = {
   once for every item in the places list.
 */
 console.log("Places loaded:", places);
+
+const placeMarkers = new Map();
+
 places.forEach(place => {
 
   // Create the colored outer circle
@@ -854,7 +850,7 @@ places.forEach(place => {
 
 
   // Add the completed marker to the map
-  new maplibregl.Marker({
+  const marker = new maplibregl.Marker({
     element: markerElement
   })
     .setLngLat(place.coordinates)
@@ -909,9 +905,234 @@ places.forEach(place => {
 
     .addTo(map);
 
+  placeMarkers.set(place.name, marker);
+
 });
 
 lucide.createIcons();
+
+/* --------------------------------------------------
+   SEARCH BAR - searches only places in places.js
+-------------------------------------------------- */
+
+class PlaceSearchControl {
+
+  onAdd(map) {
+
+    this.map = map;
+
+    this.container = document.createElement("div");
+    this.container.className =
+      "maplibregl-ctrl maplibregl-ctrl-group place-search-control";
+
+    this.searchBox = document.createElement("div");
+    this.searchBox.className = "place-search-box";
+
+    this.searchIcon = document.createElement("span");
+    this.searchIcon.className = "place-search-icon";
+    this.searchIcon.innerHTML = "⌕";
+
+    this.input = document.createElement("input");
+    this.input.type = "text";
+    this.input.placeholder = "Search my places";
+    this.input.autocomplete = "off";
+
+    this.results = document.createElement("div");
+    this.results.className = "place-search-results";
+
+    this.searchBox.appendChild(this.searchIcon);
+    this.searchBox.appendChild(this.input);
+
+    this.container.appendChild(this.searchBox);
+    this.container.appendChild(this.results);
+
+
+    /* Search while typing */
+
+    this.input.addEventListener("input", () => {
+
+      const searchText =
+        this.input.value.trim().toLowerCase();
+
+      this.results.innerHTML = "";
+
+      if (searchText.length === 0) {
+        this.results.style.display = "none";
+        return;
+      }
+
+
+      /* Search name, category and description */
+
+      const matches = places.filter(place => {
+
+        const name =
+          place.name.toLowerCase();
+
+        const category =
+          place.category
+            .replaceAll("_", " ")
+            .toLowerCase();
+
+        const description =
+          place.description
+            ? place.description.toLowerCase()
+            : "";
+
+        return (
+          name.includes(searchText) ||
+          category.includes(searchText) ||
+          description.includes(searchText)
+        );
+
+      });
+
+
+      if (matches.length === 0) {
+
+        const noResult =
+          document.createElement("div");
+
+        noResult.className =
+          "place-search-no-result";
+
+        noResult.textContent =
+          "No places found";
+
+        this.results.appendChild(noResult);
+
+        this.results.style.display = "block";
+
+        return;
+      }
+
+
+      matches.forEach(place => {
+
+        const result =
+          document.createElement("button");
+
+        result.type = "button";
+        result.className =
+          "place-search-result";
+
+
+        const placeName =
+          document.createElement("span");
+
+        placeName.className =
+          "place-search-result-name";
+
+        placeName.textContent =
+          place.name;
+
+
+        const placeCategory =
+          document.createElement("span");
+
+        placeCategory.className =
+          "place-search-result-category";
+
+        placeCategory.textContent =
+          place.category.replaceAll("_", " ");
+
+
+        result.appendChild(placeName);
+        result.appendChild(placeCategory);
+
+
+        /* What happens when a result is clicked */
+
+        result.addEventListener("click", () => {
+
+          this.input.value = place.name;
+
+          this.results.style.display = "none";
+
+
+          /* Close any popup already open */
+
+          document
+            .querySelectorAll(".maplibregl-popup")
+            .forEach(popup => popup.remove());
+
+
+          /* Smoothly zoom to selected place */
+
+          map.flyTo({
+            center: place.coordinates,
+            zoom: 14,
+            duration: 1500,
+            essential: true
+          });
+
+
+          /* Find its marker */
+
+          const marker =
+            placeMarkers.get(place.name);
+
+
+          /* Open popup when zoom finishes */
+
+          map.once("moveend", () => {
+
+            if (marker) {
+
+              marker.togglePopup();
+
+            }
+
+          });
+
+        });
+
+
+        this.results.appendChild(result);
+
+      });
+
+
+      this.results.style.display = "block";
+
+    });
+
+
+    /* Stop map dragging when using search */
+
+    this.container.addEventListener(
+      "mousedown",
+      event => event.stopPropagation()
+    );
+
+    this.container.addEventListener(
+      "touchstart",
+      event => event.stopPropagation()
+    );
+
+
+    return this.container;
+
+  }
+
+
+  onRemove() {
+
+    this.container.remove();
+
+    this.map = undefined;
+
+  }
+
+}
+
+
+/* Add search bar to upper-left corner */
+
+map.addControl(
+  new PlaceSearchControl(),
+  "top-left"
+);
 
 console.log("Reached service worker section");
 
