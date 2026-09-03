@@ -1214,6 +1214,62 @@ export const places = [
     visited: false,
     coordinates: [-78.7705, 42.9796],
     description: "Erie County Park, -78.7705, 42.9796."
+  },
+  {
+    name: "Bristol Mountain",
+    category: "Downhill_Skiing",
+    visited: false,
+    coordinates: [-77.404444, 42.745],
+    description: "Ski Area, -77.404444, 42.745."
+  },
+  {
+    name: "Royalton Ravine",
+    category: "Niagara_County_Park",
+    visited: false,
+    coordinates: [-78.57523, 43.18636],
+    description: "niagara County Park, -78.57523, 43.18636."
+  },
+  {
+    name: "Niagara Falls",
+    category: "Waterfall",
+    visited: true,
+    coordinates: [-79.0642, 43.0815],
+    description: "Niagara County Park, -79.0642, 43.0815."
+  },
+  {
+    name: "Marilla Bridges Trail",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-78.740365, 41.954484],
+    description: "Hiking loop with covered bridge, -78.740365, 41.954484."
+  },
+  {
+    name: "Fish Creek Pond",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-74.3559, 44.3016],
+    description: "Campsite, -74.3559, 44.3016."
+  },
+  {
+    name: "Brown Tract Pond",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-74.7039, 43.8036],
+    description: "Campsite, -74.7039, 43.8036."
+  },
+  {
+    name: "Limekiln Lake SP",
+    category: "State_Park",
+    visited: false,
+    coordinates: [-74.79569, 43.71795],
+    description: "State Park, -74.7039, 43.71795."
+  },
+  {
+    name: "Limekiln Lake",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-74.7957, 43.7172],
+    description: "Campsite, -74.7957, 43.7172."
   }
   
   
