@@ -176,6 +176,218 @@
   background-color: #d15c02;
 }
 
+.Albany_County_Park-color {
+  background-color: #29b6c1;
+}
+
+.Allegany_County_Park-color {
+  background-color: #d74666;
+}
+
+.Bronx_County_Park-color {
+  background-color: #e8e538;
+}
+
+.Niagara_County_Park-color {
+  background-color: #7738cf;
+}
+
+.Alabama_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Alaska_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Arizona_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Arkansas_State_Park-color {
+  background-color: #7738cf;
+}
+
+.California_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Colorado_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Connecticut_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Delaware_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Florida_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Georgia_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Hawaii_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Idaho_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Illinois_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Indiana_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Kansas_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Kentucky_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Louisiana_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Maine_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Maryland_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Massachusetts_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Michigan_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Minnisota_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Mississippi_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Missouri_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Montana_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Nebraska_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Nevada_State_Park-color {
+  background-color: #7738cf;
+}
+
+.New_Hampshire_State_Park-color {
+  background-color: #7738cf;
+}
+
+.New_Jersey_State_Park-color {
+  background-color: #7738cf;
+}
+
+.New_Mexico_State_Park-color {
+  background-color: #7738cf;
+}
+
+.New_York_State_Park-color {
+  background-color: #7738cf;
+}
+
+.North_Carolina_State_Park-color {
+  background-color: #7738cf;
+}
+
+.North_Dakota_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Ohio_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Oklahoma_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Oregon_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Pennsylvania_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Rhode_Island_State_Park-color {
+  background-color: #7738cf;
+}
+
+.South_Carolina_State_Park-color {
+  background-color: #7738cf;
+}
+
+.South_Dakota_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Tennessee_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Texas_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Utah_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Vermont_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Virginia_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Washington_State_Park-color {
+  background-color: #7738cf;
+}
+
+.West_Virginia_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Wisconsin_State_Park-color {
+  background-color: #7738cf;
+}
+
+.Wyoming_State_Park-color {
+  background-color: #7738cf;
+}
+
 
 
 /* CUSTOM MAP MARKERS */
@@ -362,7 +574,7 @@
   padding: 3px 0;
 
   font-family: inherit;
-  font-size: 12px;
+  font-size: 14px;
 
   cursor: pointer;
 
@@ -432,16 +644,25 @@
 
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  column-gap: 16px;
-  row-gap: 9px;
+  column-gap: 18px;
+  row-gap: 10px;
 
   padding:
-    10px
-    0
-    8px
+    12px
+    12px
+    14px
     27px;
 
   box-sizing: border-box;
+
+  max-height: 420px;
+  overflow-y: auto;
+
+  margin-top: 6px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  scrollbar-width: thin;
 }
 
 
@@ -458,7 +679,145 @@
   font-size: 11px;
 }
 
+/* ==================================================
+   STATE PARKS EXPANDABLE LEGEND
+================================================== */
+
+#legend .state-parks-group {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+
+/* Main State Parks row */
+
+#legend .state-parks-toggle {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  border: none;
+  background: transparent;
+
+  color: inherit;
+
+  padding: 3px 0;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  cursor: pointer;
+  text-align: left;
+}
+
+
+/* Generic parent icon */
+
+#legend .state-parks-main-icon {
+  width: 19px;
+  height: 19px;
+
+  border-radius: 50%;
+
+  background-color: #6b7f5e;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  margin-right: 8px;
+}
+
+#legend .state-parks-main-icon svg {
+  width: 12px;
+  height: 12px;
+
+  stroke: white;
+  stroke-width: 2.5;
+
+  pointer-events: none;
+}
+
+
+/* Title */
+
+#legend .state-parks-title {
+  flex: 1;
+}
+
+
+/* Arrow */
+
+#legend #state-parks-chevron {
+  font-size: 22px;
+  line-height: 1;
+
+  margin-left: 6px;
+
+  transition: transform 0.25s ease;
+}
+
+
+/* Rotate arrow when open */
+
+#legend .state-parks-group.open #state-parks-chevron {
+  transform: rotate(90deg);
+}
+
+
+/* Expanded list of states */
+
+#legend #state-parks-sublegend {
+  display: none;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  column-gap: 18px;
+  row-gap: 10px;
+
+  padding:
+    12px
+    12px
+    14px
+    27px;
+
+  box-sizing: border-box;
+
+  max-height: 420px;
+  overflow-y: auto;
+
+  margin-top: 6px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  scrollbar-width: thin;
+}
+
+
+/* Show list when open */
+
+#legend .state-parks-group.open #state-parks-sublegend {
+  display: grid;
+}
+
+
+/* Slightly smaller sub-legend text */
+
+#legend #state-parks-sublegend .legend-item {
+  font-size: 10px;
+}
+
 @media (max-width: 600px) {
+
+  /* Larger scrollable County Parks and State Parks sub-legends */
+  #legend #county-parks-sublegend,
+  #legend #state-parks-sublegend {
+    max-height: 45vh;
+  }
+
 
   /* =========================
      SLIDING MOBILE LEGEND
@@ -708,12 +1067,386 @@
     Downhill Skiing
   </div>
 
-  <div class="legend-item">
-    <span class="legend-color State_Park-color">
+  <!-- Expandable State Parks legend group -->
+<div class="state-parks-group">
+
+  <button
+    id="state-parks-toggle"
+    class="state-parks-toggle"
+    type="button"
+    aria-expanded="false"
+  >
+
+    <span class="state-parks-main-icon">
       <i data-lucide="trees"></i>
     </span>
-    State Park
+
+    <span class="state-parks-title">
+      State Parks
+    </span>
+
+    <span id="state-parks-chevron">
+      ›
+    </span>
+
+  </button>
+
+
+  <div id="state-parks-sublegend">
+
+    <div class="legend-item">
+      <span class="legend-color New_York_State_Park-color">
+        <i data-lucide="dog"></i>
+      </span>
+      New York
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Pennsylvania_State_Park-color">
+        <i data-lucide="feather"></i>
+      </span>
+      Pennsylvania
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Vermont_State_Park-color">
+        <i data-lucide="database"></i>
+      </span>
+      Vermont
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Ohio_State_Park-color">
+        <i data-lucide="shrimp"></i>
+      </span>
+      Ohio
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Alabama_State_Park-color">
+        <i data-lucide="circle-star"></i>
+      </span>
+      Alabama
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Alaska_State_Park-color">
+        <i data-lucide="land-plot"></i>
+      </span>
+      Alaska
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Arizona_State_Park-color">
+        <i data-lucide="waves-ladder"></i>
+      </span>
+      Arizona
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Arkansas_State_Park-color">
+        <i data-lucide="diameter"></i>
+      </span>
+      Arkansas
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color California_State_Park-color">
+        <i data-lucide="heart"></i>
+      </span>
+      California
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Colorado_State_Park-color">
+        <i data-lucide="circle-dot-dashed"></i>
+      </span>
+      Colorado
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Connecticut_State_Park-color">
+        <i data-lucide="squares-exclude"></i>
+      </span>
+      Connecticut
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Delaware_State_Park-color">
+        <i data-lucide="pentagon"></i>
+      </span>
+      Delaware
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Ohio_State_Park-color">
+        <i data-lucide="shrimp"></i>
+      </span>
+      Ohio
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Florida_State_Park-color">
+        <i data-lucide="blend"></i>
+      </span>
+      Florida
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Georgia_State_Park-color">
+        <i data-lucide="parasol"></i>
+      </span>
+      Georgia
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Hawaii_State_Park-color">
+        <i data-lucide="triangle"></i>
+      </span>
+      Hawaii
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Idaho_State_Park-color">
+        <i data-lucide="ellipse"></i>
+      </span>
+      Idaho
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Illinois_State_Park-color">
+        <i data-lucide="circle-dot"></i>
+      </span>
+      Illinois
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Indiana_State_Park-color">
+        <i data-lucide="badge"></i>
+      </span>
+      Indiana
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Kansas_State_Park-color">
+        <i data-lucide="waypoints"></i>
+      </span>
+      Kansas
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Kentucky_State_Park-color">
+        <i data-lucide="circle-pile"></i>
+      </span>
+      Kentucky
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Louisiana_State_Park-color">
+        <i data-lucide="Octagon"></i>
+      </span>
+      Louisiana
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Maine_State_Park-color">
+        <i data-lucide="squircle-dashed"></i>
+      </span>
+      Maine
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Maryland_State_Park-color">
+        <i data-lucide="pyramid"></i>
+      </span>
+      Maryland
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Massachusetts_State_Park-color">
+        <i data-lucide="eclipse"></i>
+      </span>
+      Massachusetts
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Michigan_State_Park-color">
+        <i data-lucide="club"></i>
+      </span>
+      Michigan
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Minnesota_State_Park-color">
+        <i data-lucide="eye"></i>
+      </span>
+      Minnesota
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Mississippi_State_Park-color">
+        <i data-lucide="contrast"></i>
+      </span>
+      Mississippi
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Missouri_State_Park-color">
+        <i data-lucide="bug"></i>
+      </span>
+      Missouri
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Montana_State_Park-color">
+        <i data-lucide="cat"></i>
+      </span>
+      Montana
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Nebraska_State_Park-color">
+        <i data-lucide="origami"></i>
+      </span>
+      Nebraska
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Nevada_State_Park-color">
+        <i data-lucide="panda"></i>
+      </span>
+      Nevada
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color New_Hampshire_State_Park-color">
+        <i data-lucide="snail"></i>
+      </span>
+      New Hampshire
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color New_Jersey_State_Park-color">
+        <i data-lucide="squirrel"></i>
+      </span>
+      New Jersey
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color New_Mexico_State_Park-color">
+        <i data-lucide="rabbit"></i>
+      </span>
+      New_Mexico
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color North_Carolina_State_Park-color">
+        <i data-lucide="egg"></i>
+      </span>
+      North_Carolina
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color North_Dakota_State_Park-color">
+        <i data-lucide="worm"></i>
+      </span>
+      North Dakota
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Oklahoma_State_Park-color">
+        <i data-lucide="rat"></i>
+      </span>
+      Oklahoma
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Oregon_State_Park-color">
+        <i data-lucide="bird"></i>
+      </span>
+      Oregon
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Rhode_Island_State_Park-color">
+        <i data-lucide="fish"></i>
+      </span>
+      Rhode Island
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color South_Carolina_State_Park-color">
+        <i data-lucide="vegan"></i>
+      </span>
+      South Carolina
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Michigan_State_Park-color">
+        <i data-lucide="club"></i>
+      </span>
+      Michigan
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Tennessee_State_Park-color">
+        <i data-lucide="apple"></i>
+      </span>
+      Tennessee
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Texas_State_Park-color">
+        <i data-lucide="broccoli"></i>
+      </span>
+      Texas
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Utah_State_Park-color">
+        <i data-lucide="rocket"></i>
+      </span>
+      Utah
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Virginia_State_Park-color">
+        <i data-lucide="earth"></i>
+      </span>
+      Virginia
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Washington_State_Park-color">
+        <i data-lucide="eye-closed"></i>
+      </span>
+      Washington
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color West_Virginia_State_Park-color">
+        <i data-lucide="cloud-moon"></i>
+      </span>
+      West Virginia
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Wisconsin_State_Park-color">
+        <i data-lucide="cloud"></i>
+      </span>
+      Wisconsin
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Wyoming_State_Park-color">
+        <i data-lucide="cloud-sun-rain"></i>
+      </span>
+      Wyoming
+    </div>
+
   </div>
+
+</div>
 
   <!-- Expandable County Parks legend group -->
 <div class="county-parks-group">
@@ -761,6 +1494,34 @@
         <i data-lucide="sprout"></i>
       </span>
       Niagara County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Albany_County_Park-color">
+        <i data-lucide="leaf"></i>
+      </span>
+      Albany County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Allegany_County_Park-color">
+        <i data-lucide="rose"></i>
+      </span>
+      Allegany County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Bronx_County_Park-color">
+        <i data-lucide="flower-2"></i>
+      </span>
+      Bronx County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Broome_County_Park-color">
+        <i data-lucide="flower"></i>
+      </span>
+      Broome County Park
     </div>
 
   </div>
@@ -956,7 +1717,59 @@ const categoryColors = {
   Natural_Monument: "#cb2a6d",
   Non_Outdoor_Cool_Thing: "#b7c16d",
   Lake: "#098b7c",
-  Niagara_County_Park: "#d15c02"
+  Niagara_County_Park: "#d15c02",
+  Albany_County_Park: "#29b6c1",
+  Allegany_County_Park: "#d74666",
+  Bronx_County_Park: "#e8e538",
+  Broome_County_Park: "#7738cf",
+  Alabama_State_Park: "",
+  Alaska_State_Park: "",
+  Arizona_State_Park: "",
+  Arkansas_State_Park: "",
+  California_State_Park: "",
+  Colorado_State_Park: "",
+  Connecticut_State_Park: "",
+  Delaware_State_Park: "",
+  Florida_State_Park: "",
+  Georgia_State_Park: "",
+  Hawaii_State_Park: "",
+  Idaho_State_Park: "",
+  Illinois_State_Park: "",
+  Indiana_State_Park: "",
+  Kansas_State_Park: "",
+  Kentucky_State_Park: "",
+  Louisiana_State_Park: "",
+  Maine_State_Park: "",
+  Maryland_State_Park: "",
+  Massachusetts_State_Park: "",
+  Michigan_State_Park: "",
+  Minnisota_State_Park: "",
+  Mississippi_State_Park: "",
+  Missouri_State_Park: "",
+  Montana_State_Park: "",
+  Nebraska_State_Park: "",
+  Nevada_State_Park: "",
+  New_Hampshire_State_Park: "",
+  New_Mexico_State_Park: "",
+  New_York_State_Park: "",
+  North_Carolina_State_Park: "",
+  North_Dakota_State_Park: "",
+  Ohio_State_Park: "",
+  Oklahoma_State_Park: "",
+  Oregon_State_Park: "",
+  Pennsylvania_State_Park: "",
+  Rhode_Island_State_Park: "",
+  South_Carolina_State_Park: "",
+  South_Dakota_State_Park: "",
+  Tennessee_State_Park: "",
+  Texas_State_Park: "",
+  Utah_State_Park: "",
+  Vermont_State_Park: "",
+  Virginia_State_Park: "",
+  Washington_State_Park: "",
+  West_Virginia_State_Park: "",
+  Wisconsin_State_Park: "",
+  Wyoming_State_Park: ""
 };
 
 const categoryIcons = {
@@ -978,7 +1791,60 @@ const categoryIcons = {
   Natural_Monument: "shell",
   Non_Outdoor_Cool_Thing: "fan",
   Lake: "droplets",
-  Niagara_County_Park: "sprout"
+  Niagara_County_Park: "sprout",
+  Albany_County_Park: "leaf",
+  Allegany_County_Park: "rose",
+  Bronx_County_Park: "flower-2",
+  Broome_County_Park: "flower",
+  Alabama_State_Park: "circle-star",
+  Alaska_State_Park: "land-plot",
+  Arizona_State_Park: "waves-ladder",
+  Arkansas_State_Park: "diameter",
+  California_State_Park: "heart",
+  Colorado_State_Park: "circle-dot-dashed",
+  Connecticut_State_Park: "squares-exclude",
+  Delaware_State_Park: "pentagon",
+  Florida_State_Park: "blend",
+  Georgia_State_Park: "parasol",
+  Hawaii_State_Park: "triangle",
+  Idaho_State_Park: "ellipse",
+  Illinois_State_Park: "circle-dot",
+  Indiana_State_Park: "badge",
+  Kansas_State_Park: "waypoints",
+  Kentucky_State_Park: "circle-pile",
+  Louisiana_State_Park: "octagon",
+  Maine_State_Park: "squircle-dashed",
+  Maryland_State_Park: "pyramid",
+  Massachusetts_State_Park: "eclipse",
+  Michigan_State_Park: "club",
+  Minnisota_State_Park: "eye",
+  Mississippi_State_Park: "contrast",
+  Missouri_State_Park: "bug",
+  Montana_State_Park: "cat",
+  Nebraska_State_Park: "origami",
+  Nevada_State_Park: "panda",
+  New_Hampshire_State_Park: "snail",
+  New_Mexico_State_Park: "rabbit",
+  New_York_State_Park: "dog",
+  North_Carolina_State_Park: "egg",
+  North_Dakota_State_Park: "worm",
+  Ohio_State_Park: "shrimp",
+  Oklahoma_State_Park: "rat",
+  Oregon_State_Park: "bird",
+  Pennsylvania_State_Park: "feather",
+  Rhode_Island_State_Park: "fish",
+  South_Carolina_State_Park: "vegan",
+  South_Dakota_State_Park: "turtle",
+  Tennessee_State_Park: "apple",
+  Texas_State_Park: "broccoli",
+  Utah_State_Park: "rocket",
+  Vermont_State_Park: "database",
+  Virginia_State_Park: "earth",
+  Washington_State_Park: "eye-closed",
+  West_Virginia_State_Park: "cloud-moon",
+  Wisconsin_State_Park: "cloud",
+  Wyoming_State_Park: "cloud-sun-rain"
+
 };
 
 
@@ -1327,6 +2193,27 @@ countyParksToggle.addEventListener("click", event => {
     countyParksGroup.classList.toggle("open");
 
   countyParksToggle.setAttribute(
+    "aria-expanded",
+    isOpen
+  );
+
+});
+
+const stateParksToggle =
+  document.getElementById("state-parks-toggle");
+
+const stateParksGroup =
+  document.querySelector(".state-parks-group");
+
+
+stateParksToggle.addEventListener("click", event => {
+
+  event.stopPropagation();
+
+  const isOpen =
+    stateParksGroup.classList.toggle("open");
+
+  stateParksToggle.setAttribute(
     "aria-expanded",
     isOpen
   );
