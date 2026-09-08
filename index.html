@@ -336,6 +336,128 @@
   margin-left: 2px;
 }
 
+/* ==================================================
+   COUNTY PARKS EXPANDABLE LEGEND
+================================================== */
+
+#legend .county-parks-group {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+
+/* Main County Parks row */
+
+#legend .county-parks-toggle {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  border: none;
+  background: transparent;
+
+  color: inherit;
+
+  padding: 3px 0;
+
+  font-family: inherit;
+  font-size: 12px;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+
+/* Generic County Parks icon */
+
+#legend .county-parks-main-icon {
+  width: 19px;
+  height: 19px;
+
+  border-radius: 50%;
+
+  background-color: #5f7f68;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  margin-right: 8px;
+}
+
+#legend .county-parks-main-icon svg {
+  width: 12px;
+  height: 12px;
+
+  stroke: white;
+  stroke-width: 2.5;
+}
+
+
+/* County Parks text */
+
+#legend .county-parks-title {
+  flex: 1;
+}
+
+
+/* Small arrow on right */
+
+#legend #county-parks-chevron {
+  font-size: 22px;
+
+  line-height: 1;
+
+  margin-left: 6px;
+
+  transition: transform 0.25s ease;
+}
+
+
+/* Rotate arrow when open */
+
+#legend .county-parks-group.open #county-parks-chevron {
+  transform: rotate(90deg);
+}
+
+
+/* Hidden sub-legend */
+
+#legend #county-parks-sublegend {
+  display: none;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  column-gap: 16px;
+  row-gap: 9px;
+
+  padding:
+    10px
+    0
+    8px
+    27px;
+
+  box-sizing: border-box;
+}
+
+
+/* Show it when County Parks is opened */
+
+#legend .county-parks-group.open #county-parks-sublegend {
+  display: grid;
+}
+
+
+/* Slightly smaller text inside sub-legend */
+
+#legend #county-parks-sublegend .legend-item {
+  font-size: 11px;
+}
+
 @media (max-width: 600px) {
 
   /* =========================
@@ -592,13 +714,58 @@
     </span>
     State Park
   </div>
-  
-  <div class="legend-item">
-    <span class="legend-color Erie_County_Park-color">
-      <i data-lucide="shrub"></i>
+
+  <!-- Expandable County Parks legend group -->
+<div class="county-parks-group">
+
+  <button
+    id="county-parks-toggle"
+    class="county-parks-toggle"
+    type="button"
+    aria-expanded="false"
+  >
+
+    <span class="county-parks-main-icon">
+      <i data-lucide="trees"></i>
     </span>
-    Erie County Park
+
+    <span class="county-parks-title">
+      County Parks
+    </span>
+
+    <span id="county-parks-chevron">
+      ›
+    </span>
+
+  </button>
+
+
+  <div id="county-parks-sublegend">
+
+    <div class="legend-item">
+      <span class="legend-color Erie_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Erie County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Monroe_County_Park-color">
+        <i data-lucide="pentagon"></i>
+      </span>
+      Monroe County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Niagara_County_Park-color">
+        <i data-lucide="sprout"></i>
+      </span>
+      Niagara County Park
+    </div>
+
   </div>
+
+</div>
 
   <div class="legend-item">
     <span class="legend-color XC_Skiing-color">
@@ -626,13 +793,6 @@
       <i data-lucide="snowflake"></i>
     </span>
     Snow Shoe
-  </div>
-
-  <div class="legend-item">
-    <span class="legend-color Monroe_County_Park-color">
-      <i data-lucide="pentagon"></i>
-    </span>
-    Monroe County Park
   </div>
 
   <div class="legend-item">
@@ -677,12 +837,7 @@
     Lake
   </div>
 
-  <div class="legend-item">
-    <span class="legend-color Niagara_County_Park-color">
-      <i data-lucide="sprout"></i>
-    </span>
-    Niagara County Park
-  </div>
+  
 
 
   <div class="legend-divider"></div>
@@ -1155,6 +1310,28 @@ console.log("Reached service worker section");
 
 const legend = document.getElementById("legend");
 const legendHandle = document.getElementById("legend-handle");
+
+const countyParksToggle =
+  document.getElementById("county-parks-toggle");
+
+const countyParksGroup =
+  document.querySelector(".county-parks-group");
+
+
+countyParksToggle.addEventListener("click", event => {
+
+  /* Prevent this tap from affecting the main sliding legend */
+  event.stopPropagation();
+
+  const isOpen =
+    countyParksGroup.classList.toggle("open");
+
+  countyParksToggle.setAttribute(
+    "aria-expanded",
+    isOpen
+  );
+
+});
 
 let legendDragging = false;
 let legendStartY = 0;
