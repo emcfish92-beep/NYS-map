@@ -1,7 +1,7 @@
 export const places = [
   {
     name: "Letchworth SP",
-    category: "State_Park",
+    category: "New_York_State_Park",
     visited: true,
     coordinates: [-77.98333, 42.63472],
     description: "NYS Park, -77.98333, 42.63472, Been.",
@@ -111,7 +111,7 @@ export const places = [
   },
   {
     name: "Beaver Island SP",
-    category: "State_Park",
+    category: "New_York_State_Park",
     visited: true,
     coordinates: [-78.9562, 42.9606],
     description: "NYS Park, -78.9562, 42.9606, Been."
@@ -195,7 +195,7 @@ export const places = [
   },
   {
     name: "BearTown State Park",
-    category: "State_Park",
+    category: "West_Virginia_State_Park",
     visited: true,
     coordinates: [-80.2753, 38.0523],
     description: "State Park, -80.2753, 38.0523."
@@ -272,7 +272,7 @@ export const places = [
   },
   {
     name: "Beacon Rock SP",
-    category: "State_Park",
+    category: "Washington_State_Park",
     visited: false,
     coordinates: [-122.0093, 45.6570],
     description: "State Park, -122.0093, 45.6570."
@@ -286,35 +286,35 @@ export const places = [
   },
   {
     name: "Nelson Kennedy Ledges SP",
-    category: "State_Park",
+    category: "Ohio_State_Park",
     visited: false,
     coordinates: [-81.039201, 41.328462],
     description: "State Park, -81.039201, 41.328462."
   },
   {
     name: "Green Lakes SP",
-    category: "State_Park",
+    category: "New_York_State_Park",
     visited: false,
     coordinates: [-75.973, 43.049],
     description: "State Park, -75.973, 43.049."
   },
   {
     name: "Sycamore SP",
-    category: "State_Park",
+    category: "Ohio_State_Park",
     visited: false,
     coordinates: [-84.3678, 39.8139],
     description: "State Park, -84.3678, 39.8139."
   },
   {
     name: "Orient Beach SP",
-    category: "State_Park",
+    category: "New_York_State_Park",
     visited: false,
     coordinates: [-72.2451, 41.1536],
     description: "State Park, -72.2451, 41.1536."
   },
   {
     name: "Berkely Springs SP",
-    category: "State_Park",
+    category: "West_Virginia_State_Park",
     visited: false,
     coordinates: [-78.22817, 39.62639],
     description: "Hot Springs, -78.22817, 39.62639."
@@ -790,14 +790,14 @@ export const places = [
   },
   {
     name: "Sojourner Truth State Park",
-    category: "State_Park",
+    category: "New_York_State_Park",
     visited: false,
     coordinates: [-73.9741448, 41.9466636],
     description: "State Park, -73.9741448, 41.9466636."
   },
   {
     name: "Robert G Wehle State Park",
-    category: "State_Park",
+    category: "New_York_State_Park",
     visited: false,
     coordinates: [-76.270821, 43.873272],
     description: "State Park, -76.270821, 43.873272."
@@ -832,7 +832,7 @@ export const places = [
   },
   {
     name: "Clifton Gorge State Nature Preserve",
-    category: "State_Park",
+    category: "Ohio_State_Park",
     visited: false,
     coordinates: [-83.8328, 39.7996],
     description: "State Nature Preserve, -83.8328, 39.7996."
@@ -846,7 +846,7 @@ export const places = [
   },
   {
     name: "Kelley's Island State Park",
-    category: "State_Park",
+    category: "Ohio_State_Park",
     visited: false,
     coordinates: [-82.6980, 41.6020],
     description: "State Park, -82.6980, 41.6020."
@@ -867,7 +867,7 @@ export const places = [
   },
   {
     name: "Hocking Hilla SP",
-    category: "State_Park",
+    category: "Ohio_State_Park",
     visited: true,
     coordinates: [-82.53889, 39.43056],
     description: "State Park, -82.53889, 39.43056."
@@ -1259,7 +1259,7 @@ export const places = [
   },
   {
     name: "Limekiln Lake SP",
-    category: "State_Park",
+    category: "New_York_State_Park",
     visited: false,
     coordinates: [-74.79569, 43.71795],
     description: "State Park, -74.7039, 43.71795."
