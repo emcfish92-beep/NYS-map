@@ -1270,8 +1270,230 @@ export const places = [
     visited: false,
     coordinates: [-74.7957, 43.7172],
     description: "Campsite, -74.7957, 43.7172."
+  },
+  {
+    name: "Highland Forest County Park",
+    category: "Onondaga_County_Park",
+    visited: false,
+    coordinates: [-75.92412, 42.84531],
+    description: "Onondaga County Park, -75.92412, 42.84531."
+  },
+  {
+    name: "Boyce Park",
+    category: "Downhill_Skiing",
+    visited: false,
+    coordinates: [-79.745, 40.468],
+    description: "Ski Area, -79.745, 40.468."
+  },
+  {
+    name: "Mount Marcy",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.9235, 44.1126],
+    description: "Hiking Spot, -73.9235, 44.1126."
+  },
+  {
+    name: "Hatch Creek State Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.2177, 42.2405],
+    description: "Hiking Spot, -79.2177, 42.2405."
+  },
+  {
+    name: "Charleston Falls Preserve",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-84.1477, 39.9182],
+    description: "Waterfall, -84.1477, 39.9182."
+  },
+  {
+    name: "Conkle's Hollow",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-82.5721, 39.4529],
+    description: "Hiking Spot, -82.5721, 39.4529."
+  },
+  {
+    name: "Belle Isle",
+    category: "City_Park",
+    visited: false,
+    coordinates: [-83.000793, 42.337830],
+    description: "City Park, -83.000793, 42.337830."
+  },
+  {
+    name: "Elmwood Park",
+    category: "City_Park",
+    visited: false,
+    coordinates: [-76.16559, 43.01903],
+    description: "City Park, -76.16559, 43.01903."
+  },
+  {
+    name: "High Falls Gorge",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.8751, 44.3482],
+    description: "Hiking Spot and Waterfall, -73.8751, 44.3482."
+  },
+  {
+    name: "Hammond Pond Wild Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.6611, 43.9918],
+    description: "Hiking Spot and Waterfall, -73.6611, 43.9918."
+  },
+  {
+    name: "Hammond Pond Wild Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.6611, 43.9918],
+    description: "Hiking Spot and Waterfall, -73.6611, 43.9918."
+  },
+  {
+    name: "Sugar Hill Recreation Area",
+    category: "State_Forest",
+    visited: false,
+    coordinates: [-77.00254, 42.38688],
+    description: "State Forest, -77.00254, 42.38688."
+  },
+  {
+    name: "Abraham Lincoln Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.513, 43.183],
+    description: "Monroe County Park, -77.513, 43.183."
+  },
+  {
+    name: "Beikirch Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.6124, 43.12758],
+    description: "Monroe County Park, -77.6124, 43.12758."
+  },
+  {
+    name: "Blackcreek Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.807785, 43.073395],
+    description: "Monroe County Park, -77.807785, 43.073395."
+  },
+  {
+    name: "Churchville Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.8844, 43.1141],
+    description: "Monroe County Park, -77.8844, 43.1141."
+  },
+  {
+    name: "Devil's Cove Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.5190, 43.2185],
+    description: "Monroe County Park, -77.5190, 43.2185."
+  },
+  {
+    name: "Durand Eastman Park",
+    category: "Monroe_County_Park",
+    visited: true,
+    coordinates: [-77.56854, 43.23101],
+    description: "Monroe County Park, -77.56854, 43.23101."
+  },
+  {
+    name: "Ellison Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.5159, 43.1451],
+    description: "Monroe County Park, -77.5159, 43.1451."
+  },
+  {
+    name: "Genessee Valley Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.6525, 43.1133],
+    description: "Monroe County Park, -77.6525, 43.1133."
+  },
+  {
+    name: "Greece Canal Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.737757, 43.189886],
+    description: "Monroe County Park, -77.737757, 43.189886."
+  },
+  {
+    name: "Highland Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.60639, 43.12972],
+    description: "Monroe County Park, -77.60639, 43.12972."
+  },
+  {
+    name: "Irondeqoit Bay Park West",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.5348, 43.2067],
+    description: "Monroe County Park, -77.5348, 43.2067."
+  },
+  {
+    name: "Lehigh Valley Trail Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.5667, 43.0167],
+    description: "Monroe County Park, -77.5667, 43.0167."
+  },
+  {
+    name: "Lucien Morin Wetlands Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.5237, 43.1752],
+    description: "Monroe County Park, -77.5237, 43.1752."
+  },
+  {
+    name: "Northampton Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.884254, 43.188081],
+    description: "Monroe County Park, -77.884254, 43.188081."
+  },
+  {
+    name: "Oatka Creek Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.84694, 43.02472],
+    description: "Monroe County Park, -77.84694, 43.02472."
+  },
+  {
+    name: "Ontario Beach Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.6078, 43.2592],
+    description: "Monroe County Park, -77.6078, 43.2592."
+  },
+  {
+    name: "Powder Mills Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.4783281, 43.0431188],
+    description: "Monroe County Park, -77.4783281, 43.0431188."
+  },
+  {
+    name: "Seneca Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.621535, 43.20164],
+    description: "Monroe County Park, -77.621535, 43.20164."
+  },
+  {
+    name: "Tyron Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.5370, 43.1659],
+    description: "Monroe County Park, -77.5370, 43.1659."
+  },
+  {
+    name: "Webster Park",
+    category: "Monroe_County_Park",
+    visited: false,
+    coordinates: [-77.4511, 43.2603],
+    description: "Monroe County Park, -77.4511, 43.2603."
   }
-  
-  
   
 ];
