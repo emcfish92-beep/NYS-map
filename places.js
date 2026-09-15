@@ -1494,6 +1494,22 @@ export const places = [
     visited: false,
     coordinates: [-77.4511, 43.2603],
     description: "Monroe County Park, -77.4511, 43.2603."
+  },
+  {
+    name: "Chestnut Ridge hiking loop test",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-78.753972, 42.724069],
+    description: "Test loop hiking trail.",
+    trailDistance: "8.25 miles"
+  },
+  {
+    name: "Appalachian Trail",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-84.193892, 34.626688],
+    description: "Appalachian trail.",
+    trailDistance: "1950 miles"
   }
   
 ];

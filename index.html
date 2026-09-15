@@ -2313,6 +2313,7 @@
     } from "https://cdn.jsdelivr.net/npm/@maptiler/geocoding-control@3/maplibregl/+esm"; 
 
     import { places } from "./places.js";
+    import { trails } from "./trails.js";
 
     const mapTilerKey = "uoXI4BPW3yTAen7xNVDd";
 
@@ -2340,6 +2341,96 @@
       zoom: 6
     });
 
+  /*
+  Add all trail routes.
+*/
+map.on("load", () => {
+
+  /*
+    Find a font already being used successfully
+    by the MapTiler map style.
+  */
+  const existingTextLayer = map
+    .getStyle()
+    .layers
+    .find(layer =>
+      layer.type === "symbol" &&
+      layer.layout &&
+      layer.layout["text-field"]
+    );
+
+  const trailFont =
+    existingTextLayer?.layout?.["text-font"] ||
+    ["Noto Sans Regular"];
+
+
+  /*
+    Go through every trail listed in trails.js.
+  */
+  trails.forEach(trail => {
+
+    /*
+      Load this trail's GeoJSON file.
+    */
+    map.addSource(trail.id, {
+      type: "geojson",
+      data: trail.file
+    });
+
+
+    /*
+      Draw the dashed trail line.
+    */
+    map.addLayer({
+      id: `${trail.id}-line`,
+      type: "line",
+      source: trail.id,
+
+      paint: {
+        "line-color": trail.color,
+        "line-width": 4,
+        "line-dasharray": [2, 2]
+      }
+    });
+
+
+    /*
+      Write the trail name along the trail.
+    */
+    map.addLayer({
+      id: `${trail.id}-label`,
+      type: "symbol",
+      source: trail.id,
+
+      layout: {
+        "symbol-placement": "line",
+        "text-field": trail.name,
+        "text-font": trailFont,
+        "text-size": 16,
+
+        "text-rotation-alignment": "map",
+        "text-pitch-alignment": "map",
+        "text-keep-upright": true,
+
+        "symbol-spacing": 250,
+        "text-max-angle": 90,
+
+        "text-allow-overlap": true,
+        "text-ignore-placement": true
+      },
+
+      paint: {
+        "text-color": trail.color,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      }
+    });
+
+  });
+
+});
+
+
     /*
       Add the zoom and rotation controls.
     */
@@ -2358,11 +2449,11 @@
     
     
 
-    /*
-    /*
+    
+  /*
   This is my list of places.
   Each pair of curly brackets = one location.
-*/
+  */
 
 
 /*
@@ -2721,7 +2812,10 @@ places.forEach(place => {
           </p>
 
           <p>${place.description}</p>
-
+          ${place.trailDistance
+            ? `<p><strong>Trail distance:</strong> ${place.trailDistance}</p>`
+            : ""
+          }
         </div>
 
       `)
