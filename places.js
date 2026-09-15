@@ -1498,7 +1498,7 @@ export const places = [
   {
     name: "Chestnut Ridge hiking loop test",
     category: "Hiking_Spot",
-    visited: false,
+    visited: true,
     coordinates: [-78.753972, 42.724069],
     description: "Test loop hiking trail.",
     trailDistance: "8.25 miles"
@@ -1510,6 +1510,97 @@ export const places = [
     coordinates: [-84.193892, 34.626688],
     description: "Appalachian trail.",
     trailDistance: "1950 miles"
+  },
+  {
+    name: "Cobble Hill Trailhead",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.974229, 44.293982],
+    description: "Hiking Spot, -73.974229, 44.293982"
+  },
+  {
+    name: "Hopkins Mountain Trailhead",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.7687, 44.1509],
+    description: "Hiking Spot, -73.7687, 44.1509"
+  },
+  {
+    name: "Hurricane Mountain",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.72306, 44.21139],
+    description: "Hiking Spot, -73.72306, 44.21139"
+  },
+  {
+    name: "St Regis Mountain",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-74.29904, 44.43047],
+    description: "Hiking Spot, -74.29904, 44.43047"
+  },
+  {
+    name: "Poke-o-Moonshine Trailhead",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.5075, 44.3892],
+    description: "Hiking Spot, -73.5075, 44.3892"
+  },
+  {
+    name: "Giant's Nubble Trailhead",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.7429, 44.1373],
+    description: "Hiking Spot, -73.7429, 44.1373"
+  },
+  {
+    name: "Mt.Jo Trailhead",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.966437, 44.182705],
+    description: "Hiking Spot, -73.966437, 44.182705"
+  },
+  {
+    name: "Lake Sophia",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-73.974145, 41.946664],
+    description: "Swimming Spot, -73.974145, 41.946664"
+  },
+  {
+    name: "Sojourner Truth State Park",
+    category: "New_York_State_Park",
+    visited: false,
+    coordinates: [-73.9741448, 41.9466636],
+    description: "new York State Park, -73.9741448, 41.9466636"
+  },
+  {
+    name: "Tumwater Twister Mountain Coaster, Leavenworth",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-120.6751, 47.5879],
+    description: "Adventure Activity Centre, -120.6751, 47.5879"
+  },
+  {
+    name: "Juniper Springs Run Kayaking",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-81.713786, 29.183852],
+    description: "Kayak Trip, 7miles, -81.713786, 29.183852"
+  },
+  {
+    name: "Ocala National Forest",
+    category: "National_Forest",
+    visited: false,
+    coordinates: [-81.8217, 29.1736],
+    description: "National f=Forest, -81.8217, 29.1736"
+  },
+  {
+    name: "Sweetwater Creek State Park",
+    category: "Georgia_State_Park",
+    visited: false,
+    coordinates: [-84.6360, 33.7584],
+    description: "Georgia State Park, -84.6360, 33.7584"
   }
   
 ];
