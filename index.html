@@ -2338,7 +2338,7 @@
       /*
         Show most of New York State.
       */
-      zoom: 6
+      zoom: 4
     });
 
   /*
@@ -2388,8 +2388,9 @@ map.on("load", () => {
 
       paint: {
         "line-color": trail.color,
-        "line-width": 4,
-        "line-dasharray": [2, 2]
+        "line-width": 2,
+        "line-opacity": 0.7,
+        "line-dasharray": [1.5, 1.5]
       }
     });
 
@@ -2406,23 +2407,36 @@ map.on("load", () => {
         "symbol-placement": "line",
         "text-field": trail.name,
         "text-font": trailFont,
-        "text-size": 16,
+        "text-size": [
+        "interpolate",
+        ["linear"],
+        ["zoom"],
+        4, 7,
+        6, 8,
+        8, 9,
+        10, 10,
+        12, 12,
+        14, 14
+      ],
 
         "text-rotation-alignment": "map",
         "text-pitch-alignment": "map",
         "text-keep-upright": true,
 
-        "symbol-spacing": 250,
-        "text-max-angle": 90,
+        "symbol-spacing": 500,
+        "text-max-angle": 120,
+        "text-padding": 0,
 
         "text-allow-overlap": true,
         "text-ignore-placement": true
       },
 
       paint: {
-        "text-color": trail.color,
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 2
+        "text-color": "#000000",
+        "text-opacity": 1,
+        "text-halo-color": "#ffc6d9",
+        "text-halo-width": 1.5,
+        "text-halo-blur": 0.5
       }
     });
 
@@ -2448,19 +2462,6 @@ map.on("load", () => {
     );
     
     
-
-    
-  /*
-  This is my list of places.
-  Each pair of curly brackets = one location.
-  */
-
-
-/*
-  Assign a color to each category. forest green #2E8B57, blue #2D7DD2, 
-  orange #F28E2B, brown #8C5A3C, purple #7B5CD6, red #D64545, gold #E0A800,
-   grey #6B7280, pink #D946A8, cyan #00AFC1
-*/
 const categoryColors = {
   Campsite: "#2e8b57",
   Swimming_Spot: "#2878b5",
