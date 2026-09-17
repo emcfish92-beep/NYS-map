@@ -1,4 +1,4 @@
-const CACHE_NAME = "outdoor-map-v3";
+const CACHE_NAME = "outdoor-map-v4";
 
 const APP_FILES = [
   "./manifest.json",
