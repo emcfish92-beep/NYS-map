@@ -853,7 +853,7 @@ export const places = [
   },
   {
     name: "Harriet Hollister Spencer State Recreation Area",
-    category: "XC_Skiing",
+    category: "Cross_Country_Skiing",
     visited: false,
     coordinates: [-77.525607, 42.69458],
     description: "XC Skiing, -77.525607, 42.69458."
@@ -895,7 +895,7 @@ export const places = [
   },
   {
     name: "RMSC Cumming Nature Centre",
-    category: "XC_Skiing",
+    category: "Cross_Country_Skiing",
     visited: false,
     coordinates: [-77.455609, 42.705932],
     description: "XC ski area, -77.455609, 42.705932."
@@ -909,21 +909,21 @@ export const places = [
   },
   {
     name: "Mendon Ponds XC Skiing",
-    category: "XC_Skiing",
+    category: "Cross_Country_Skiing",
     visited: false,
     coordinates: [-77.5665, 43.0153],
     description: "XC ski area, -77.5665, 43.0153."
   },
   {
     name: "Shadow Pines XC Ski Loop",
-    category: "XC_Skiing",
+    category: "Cross_Country_Skiing",
     visited: false,
     coordinates: [-77.470, 43.140],
     description: "XC Ski Area, -77.470, 43.140."
   },
   {
     name: "Webster Park XC Ski Loop",
-    category: "XC_Skiing",
+    category: "Cross_Country_Skiing",
     visited: false,
     coordinates: [-77.4510, 43.2598],
     description: "XC Ski loop, -77.4510, 43.2598."
@@ -1119,7 +1119,7 @@ export const places = [
   },
   {
     name: "Elma Meadows",
-    category: "XC_Skiing",
+    category: "Cross_Country_Skiing",
     visited: true,
     coordinates: [-78.6059, 42.8228],
     description: "Erie County Park, -78.6059, 42.8228."
@@ -1133,7 +1133,7 @@ export const places = [
   },
   {
     name: "Grover Cleveland XC Ski Loop",
-    category: "XC_Skiing",
+    category: "Cross_Country_Skiing",
     visited: true,
     coordinates: [-78.80917, 42.96111],
     description: "Erie County Park, -78.80917, 42.96111."
@@ -1601,6 +1601,173 @@ export const places = [
     visited: false,
     coordinates: [-84.6360, 33.7584],
     description: "Georgia State Park, -84.6360, 33.7584"
+  },
+  {
+    name: "Emerald Cave",
+    category: "Cave",
+    visited: false,
+    coordinates: [-114.660177, 35.869978],
+    description: "Cave, -114.660177, 35.869978"
+  },
+  {
+    name: "Slick City Action Park",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-81.7084, 41.3986],
+    description: "Indoor slide park, -81.7084, 41.3986"
+  },{
+    name: "Havasu Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-112.6980, 36.2551],
+    description: "Waterfalls in the Grand Canyon, -112.6980, 36.2551"
+  },
+  {
+    name: "Cumming Nature Centre",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-77.45556, 42.70583],
+    description: "Hiking Spot, -77.45556, 42.70583"
+  },
+  {
+    name: "Loyalsock State Forest",
+    category: "State_Forest",
+    visited: false,
+    coordinates: [-76.7203, 41.5109],
+    description: "State Forest, -76.7203, 41.5109"
+  },
+  {
+    name: "Rock Run, McIntyre Wild Area of Loyalsock State Forest",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-76.916750, 41.515868],
+    description: "Swimming Spot, -76.916750, 41.515868"
+  },
+  {
+    name: "Seneca Mills Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-77.00421, 42.66051],
+    description: "Waterfall, -77.00421, 42.66051"
+  },
+  {
+    name: "Bahar Nature Preserve",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-76.34142, 42.81333],
+    description: "Hiking Spot, -76.34142, 42.81333"
+  },
+  {
+    name: "Carpenter Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-76.34309, 42.81174],
+    description: "Waterfall, -76.34309, 42.81174"
+  },
+  {
+    name: "Delphi Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-75.89926, 42.86392],
+    description: "Waterfall, -75.89926, 42.86392"
+  },
+  {
+    name: "Stiglmeier Park",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-78.7324, 42.8872],
+    description: "Hiking Spot, -78.7324, 42.8872"
+  },
+  {
+    name: "Crystal Lake",
+    category: "Lake",
+    visited: false,
+    coordinates: [-86.156, 44.659],
+    description: "Lake, -86.156, 44.659"
+  },
+  {
+    name: "Kitch-iti-kipi",
+    category: "Lake",
+    visited: false,
+    coordinates: [-86.3820, 46.0041],
+    description: "Super clear lake, -86.3820, 46.0041"
+  },
+  {
+    name: "Big South Fork",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-84.6985, 36.4865],
+    description: "National River and Recreation Area, -84.6985, 36.4865"
+  },
+  {
+    name: "The Wild Centre",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-74.4385, 44.2197],
+    description: "Hiking Spot, -74.4385, 44.2197"
+  },
+  {
+    name: "Iroquois National Wildlife Refuge",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-78.38741, 43.13065],
+    description: "Wildlife Refuge, -78.38741, 43.13065"
+  },
+  {
+    name: "Sam's Point Overlook",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-74.3576, 41.6698],
+    description: "Viewpoint, -74.3576, 41.6698"
+  },
+  {
+    name: "Revolution Rail",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-78.868514, 42.33004],
+    description: "Railway Cycling, -78.868514, 42.33004"
+  },
+  {
+    name: "Havana Glen",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-76.83316, 42.33709],
+    description: "Waterfall, -76.83316, 42.33709"
+  },
+  {
+    name: "Madison Blue Springs State Park",
+    category: "Florida_State_Park",
+    visited: false,
+    coordinates: [-83.24524, 30.47865],
+    description: "Florida State Park, -83.24524, 30.47865"
+  },
+  {
+    name: "Madison Blue Springs Pool",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-83.2444, 30.4805],
+    description: "Swimming Spot, -83.2444, 30.4805"
+  },
+  {
+    name: "Ichetucknee Springs State Park",
+    category: "Florida_State_Park",
+    visited: false,
+    coordinates: [-82.7602, 29.9861],
+    description: "Florida State Park, -82.7602, 29.9861"
+  },
+  {
+    name: "Ichetucknee Springs",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-82.75846, 29.97996],
+    description: "Swimming Spot, -82.75846, 29.97996"
+  },
+  {
+    name: "Ginnie Spring",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-82.70017, 29.83615],
+    description: "Swimming Spot, -82.70017, 29.83615"
   }
   
 ];
