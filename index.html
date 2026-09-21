@@ -2455,6 +2455,17 @@ map.on("load", () => {
     );
 
     map.addControl(
+      new maplibregl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true,
+        showUserHeading: true
+      }),
+      "top-right"
+    );
+
+    map.addControl(
       new maplibregl.ScaleControl({
         maxWidth: 100,
         unit: "metric"
