@@ -1768,6 +1768,251 @@ export const places = [
     visited: false,
     coordinates: [-82.70017, 29.83615],
     description: "Swimming Spot, -82.70017, 29.83615"
+  },
+  {
+    name: "Fanning Springs",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-82.9344, 29.5864],
+    description: "Swim Spot, -82.9344, 29.5864"
+  },
+  {
+    name: "Rainbow Springs",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-82.4355, 29.1015],
+    description: "Swim Spot, -82.4355, 29.1015"
+  },
+  {
+    name: "Juniper Springs",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-81.7125, 29.1822],
+    description: "Swim Spot, -81.7125, 29.1822"
+  },
+  {
+    name: "Blue Spring State Park",
+    category: "Florida_State_Park",
+    visited: false,
+    coordinates: [-81.3401, 28.9483],
+    description: "Florida State Park, -81.3401, 28.9483"
+  },
+  {
+    name: "Blue Spring",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-81.2024, 28.5653],
+    description: "Swim Spot, -81.2024, 28.5653"
+  },
+  {
+    name: "Weeki Wachee Springs",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-82.57750, 28.51694],
+    description: "Swim Spot, -82.57750, 28.51694"
+  },
+  {
+    name: "Jake's Rocks",
+    category: "Natural_Monument",
+    visited: true,
+    coordinates: [-78.98246, 41.84987],
+    description: "Natural Monument, -78.98246, 41.84987"
+  },
+  {
+    name: "Hector Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-78.975067, 41.6853],
+    description: "Waterfall, -78.975067, 41.6853"
+  },
+  {
+    name: "Elk State Park",
+    category: "Pennsylvania_State_Park",
+    visited: false,
+    coordinates: [-78.55995, 41.60621],
+    description: "Pennsylvania State Park, -78.55995, 41.60621"
+  },
+  {
+    name: "Bendigo State Park",
+    category: "Pennsylvania_State_Park",
+    visited: false,
+    coordinates: [-78.6283, 41.5317],
+    description: "Pennsylvania State Park, -78.6283, 41.5317"
+  },
+  {
+    name: "Kinzua Bridge State Park",
+    category: "Pennsylvania_State_Park",
+    visited: true,
+    coordinates: [-78.58694, 41.75952],
+    description: "Pennsylvania State Park, -78.58694, 41.75952"
+  },
+  {
+    name: "Austin Dam Memorial Park",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-78.08793, 41.64060],
+    description: "Hiking Spot, -78.08793, 41.64060"
+  },
+  {
+    name: "East Otto SF Campsite",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.778675, 42.425485],
+    description: "Campsite, -78.778675, 42.425485"
+  },
+  {
+    name: "Cooper's Rock Scenic Overlook",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-79.8152, 39.6368],
+    description: "Viewpoint, -79.8152, 39.6368"
+  },
+  {
+    name: "Cooper's Rock State Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.80114, 39.6368],
+    description: "Hiking Spot, -79.80114, 39.6368"
+  },
+  {
+    name: "Pirate's Cove",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-80.8486, 38.24313],
+    description: "Swimming Spot, -80.8486, 38.24313"
+  },
+  {
+    name: "Summersville Lake",
+    category: "Lake",
+    visited: false,
+    coordinates: [-80.8906, 38.2231],
+    description: "Lake, -80.8906, 38.2231"
+  },
+  {
+    name: "Grayson Lake",
+    category: "Lake",
+    visited: false,
+    coordinates: [-82.98715, 38.24025],
+    description: "Lake, -82.98715, 38.24025"
+  },
+  {
+    name: "Hamilton Pool",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-98.12693, 30.34227],
+    description: "Swim Spot, -98.12693, 30.34227"
+  },
+  {
+    name: "Red River Gorge",
+    category: "Hiking_Spot",
+    visited: true,
+    coordinates: [-83.5820, 37.8146],
+    description: "Hiking Spot, -83.5820, 37.8146"
+  },
+  {
+    name: "The Gorge Underground",
+    category: "Adventure_Activity",
+    visited: true,
+    coordinates: [-83.664735, 37.759859],
+    description: "Underground Kayaking, -83.664735, 37.759859"
+  },
+  {
+    name: "Maquoketa Caves",
+    category: "Cave",
+    visited: false,
+    coordinates: [-90.773181, 42.119071],
+    description: "Caves, -90.773181, 42.119071"
+  },
+  {
+    name: "Maquoketa Caves SP Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-90.76778, 42.12028],
+    description: "Campsite"
+  },
+  {
+    name: "Apostle Islands",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-90.65296, 46.93827],
+    description: "Islands, -90.65296, 46.93827"
+  },
+  {
+    name: "Cascadilla Gorge",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-76.51000, 42.45167],
+    description: "Ithica Gorge Trail, -76.51000, 42.45167"
+  },
+  {
+    name: "Tinker Falls",
+    category: "Waterfall",
+    visited: true,
+    coordinates: [-76.03299, 42.78277],
+    description: "Waterfall, -76.03299, 42.78277"
+  },
+  {
+    name: "Baxter State Park",
+    category: "Maine_State_Park",
+    visited: false,
+    coordinates: [-68.857217, 45.919197],
+    description: "Maine State Park, -68.857217, 45.919197"
+  },
+  {
+    name: "Widow Jane Mine",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-74.0963730, 41.8415360],
+    description: "Mine, -74.0963730, 41.8415360"
+  },
+  {
+    name: "Hamilton Falls",
+    category: "Waterfalls",
+    visited: false,
+    coordinates: [-72.76217, 43.13616],
+    description: "Waterfalls, -72.76217, 43.13616"
+  },
+  {
+    name: "Devil's bathtub",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-82.628852, 36.819106],
+    description: "Swimming Hole, -82.628852, 36.819106"
+  },
+  {
+    name: "Nannen Arboretum",
+    category: "Other_Park",
+    visited: true,
+    coordinates: [-78.6693, 42.2831],
+    description: "Arboretum, -78.6693, 42.2831"
+  },
+  {
+    name: "Little Rock City",
+    category: "Natural_Monument",
+    visited: true,
+    coordinates: [-78.707919, 42.208452],
+    description: "Hiking and Rocks, -78.707919, 42.208452"
+  },
+  {
+    name: "Rock City Park",
+    category: "Natural_Monument",
+    visited: true,
+    coordinates: [-78.4755766, 42.0170088],
+    description: "Hiking and Rocks, -78.4755766, 42.0170088"
+  },
+  {
+    name: "Panama Rocks",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-79.4861606, 42.0725562],
+    description: "Hiking and Rocks, -79.4861606, 42.0725562"
+  },
+  {
+    name: "San Juan Islands",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-122.916611, 48.636669],
+    description: "Islands, -122.916611, 48.636669"
   }
-  
+ 
 ];
