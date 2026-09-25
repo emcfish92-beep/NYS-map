@@ -2326,6 +2326,7 @@
 
     import { places } from "./places.js";
     import { trails } from "./trails.js";
+    import { forests } from "./forests.js";
 
     const mapTilerKey = "uoXI4BPW3yTAen7xNVDd";
 
@@ -2406,6 +2407,51 @@ map.on("load", () => {
       }
     });
 
+    /*
+  Add National Forest areas.
+*/
+forests.forEach(forest => {
+
+  /*
+    Load the forest boundary GeoJSON.
+  */
+  map.addSource(forest.id, {
+    type: "geojson",
+    data: forest.file
+  });
+
+
+  /*
+    Add translucent forest shading.
+  */
+  map.addLayer({
+    id: `${forest.id}-fill`,
+    type: "fill",
+    source: forest.id,
+
+    paint: {
+      "fill-color": forest.color,
+      "fill-opacity": 0.22
+    }
+  });
+
+
+  /*
+    Add an outline around the forest.
+  */
+  map.addLayer({
+    id: `${forest.id}-outline`,
+    type: "line",
+    source: forest.id,
+
+    paint: {
+      "line-color": forest.color,
+      "line-width": 1.5,
+      "line-opacity": 0.75
+    }
+  });
+
+});
 
     /*
       Write the trail name along the trail.
