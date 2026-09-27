@@ -24,7 +24,7 @@ export const places = [
     ]
   },
   {
-    name: "Harlem Road",
+    name: "Harlem Road Kayak Launch",
     category: "Kayak_Launch",
     visited: false,
     coordinates: [-78.79075, 42.86751],
@@ -50,7 +50,7 @@ export const places = [
   {
     name: "Woods Creek Kayak Launch",
     category: "Kayak_Launch",
-    visited: false,
+    visited: true,
     coordinates: [-78.971774, 43.057857],
     description: "Kayak launch, -78.971774, 43.057857."
   },
@@ -866,7 +866,7 @@ export const places = [
     description: "Rollerskating, -83.5391, 41.6494."
   },
   {
-    name: "Hocking Hilla SP",
+    name: "Hocking Hills SP",
     category: "Ohio_State_Park",
     visited: true,
     coordinates: [-82.53889, 39.43056],
@@ -2013,6 +2013,427 @@ export const places = [
     visited: false,
     coordinates: [-122.916611, 48.636669],
     description: "Islands, -122.916611, 48.636669"
+  },
+  {
+    name: "Little Beaver Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-86.3623, 46.5579],
+    description: "Campsite, -86.3623, 46.5579"
+  },
+  {
+    name: "Richard and Lucile Durrell Edge of Appalacia",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-83.425814, 38.770605],
+    description: "Nature Preserve, -83.425814, 38.770605"
+  },
+  {
+    name: "Aullwood Audubon Centre",
+    category: "Other_Park",
+    visited: false,
+    coordinates: [-84.2748840, 39.8733770],
+    description: "Nature Preserve, -84.2748840, 39.8733770"
+  },
+  {
+    name: "Ice Caves at Sam's Point",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-74.21793260000001, 43.2994285],
+    description: "Hiking Trail and Caves, -74.21793260000001, 43.2994285"
+  },
+  {
+    name: "Union Canal Tunnel Kayaking",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-76.460150, 40.349830],
+    description: "Tunnel to Kayak Through, -76.460150, 40.349830"
+  },
+  {
+    name: "Antelope Ridge Adventure Park",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-111.441269, 36.952766],
+    description: "Via Ferrata, -111.441269, 36.952766"
+  },
+  {
+    name: "White Star Park Quarry Beach",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-83.3191799, 41.3714189],
+    description: "Swim Spot, -83.3191799, 41.3714189"
+  },
+  {
+    name: "Peterskill",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-74.2344074, 41.7303953],
+    description: "Waterfall, -74.2344074, 41.7303953"
+  },
+  {
+    name: "Minnewaska State Park",
+    category: "New_York_State_Park",
+    visited: false,
+    coordinates: [-74.236854, 41.728472],
+    description: "New York State Park, -74.236854, 41.728472"
+  },
+  {
+    name: "Little River Canyon National Preserve",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-85.6752, 34.3510],
+    description: "Hiking Spot, -85.6752, 34.3510"
+  },
+  {
+    name: "Tonto Natural Bridge State Park",
+    category: "Arizona_State_Park",
+    visited: false,
+    coordinates: [-111.45404, 34.322362],
+    description: "Arizone State Park, -111.45404, 34.322362"
+  },
+  {
+    name: "Tonto Natural Bridge",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-111.271439, 34.19660],
+    description: "Stone Bridge, -111.271439, 34.19660"
+  },
+  {
+    name: "Fossil Creek",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-111.6300, 34.3944],
+    description: "Swimming Spot, -111.6300, 34.3944"
+  },
+  {
+    name: "Sliding Rock",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-82.7873, 35.3110],
+    description: "Big Natural Waterfall Slide, -82.7873, 35.3110"
+  },
+  {
+    name: "Cummins Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-85.5716437, 36.2495038],
+    description: "Waterfall, -85.5716437, 36.2495038"
+  },
+  {
+    name: "Cummins Falls State Park",
+    category: "Tennessee_State_Park",
+    visited: false,
+    coordinates: [-85.5653, 36.2537],
+    description: "Tennessee State PArk, -85.5653, 36.2537"
+  },
+  {
+    name: "Grimes Glen",
+    category: "Waterfall",
+    visited: true,
+    coordinates: [-77.41363, 42.61535],
+    description: "Hike through river and waterfall, -77.41363, 42.61535"
+  },
+  {
+    name: "Greig's Caverns",
+    category: "Cave",
+    visited: false,
+    coordinates: [-81.1413139, 44.9509557],
+    description: "Cave, -81.1413139, 44.9509557"
+  },
+  {
+    name: "Conklin's Gulley",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-77.36551, 42.633201],
+    description: "Waterfall, -77.36551, 42.633201"
+  },
+  {
+    name: "Chatauqua Gorge State Forest",
+    category: "Hiking_Spot",
+    visited: true,
+    coordinates: [-79.585262, 42.239951],
+    description: "Hiking Spot, -79.585262, 42.239951"
+  },
+  {
+    name: "Chatauqua Gorge Swimming Hole",
+    category: "Swimming_Spot",
+    visited: true,
+    coordinates: [-79.35227, 42.14402],
+    description: "Swim Spot, -79.35227, 42.14402"
+  },
+  {
+    name: "Kaaterskill Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-74.06319, 42.19342],
+    description: "Waterfall, -74.06319, 42.19342"
+  },
+  {
+    name: "Mt. Nemo Conservation Area",
+    category: "Hiking_Spot",
+    visited: true,
+    coordinates: [-79.881379, 43.418087],
+    description: "Hiking Spot, -79.881379, 43.418087"
+  },
+  {
+    name: "Long Point National Wildlife Refuge",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-80.25000, 42.566667],
+    description: "Hiking Spot, -80.25000, 42.566667"
+  },
+  {
+    name: "Dollywood",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-83.5288, 35.8057],
+    description: "Theme Park, -83.5288, 35.8057"
+  },
+  {
+    name: "Dark Island Swinging Bridge",
+    category: "Adventure_Activity",
+    visited: true,
+    coordinates: [-83.7717, 35.6833],
+    description: "Bridge, -83.7717, 35.6833"
+  },
+  {
+    name: "Roan Mountain State Park",
+    category: "Tennessee_State_Park",
+    visited: false,
+    coordinates: [-82.098777, 36.163595],
+    description: "Tennessee State Park, -82.098777, 36.163595"
+  },
+  {
+    name: "The Sinks",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-83.66066, 35.66917],
+    description: "Swimming Spot and Waterfall, -83.66066, 35.66917"
+  },
+  {
+    name: "Fontana Lake",
+    category: "Lake",
+    visited: false,
+    coordinates: [-83.8028, 35.4514],
+    description: "Lake, -83.8028, 35.4514"
+  },
+  {
+    name: "Kuwohi",
+    category: "Hiking_Spot",
+    visited: true,
+    coordinates: [-83.49861, 35.56278],
+    description: "Highest Point in Tennessee, -83.49861, 35.56278"
+  },
+  {
+    name: "Griffis Sculpture Park",
+    category: "Other_Park",
+    visited: true,
+    coordinates: [-78.691596, 42.370196],
+    description: "Sculpture Park, -78.691596, 42.370196"
+  },
+  {
+    name: "Bristol Hills Burning Spring",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-77.40597, 42.81677],
+    description: "Hot Spring, -77.40597, 42.81677"
+  },
+  {
+    name: "Wiscoy Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-78.082447, 42.504829],
+    description: "Waterfall, -78.082447, 42.504829"
+  },
+  {
+    name: "Lakawana Coal Mine Tour",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-75.715215, 41.416670],
+    description: "Mine Tour, -75.715215, 41.416670"
+  },
+  {
+    name: "Cave of the Winds",
+    category: "Natural_Monument",
+    visited: true,
+    coordinates: [-79.0710, 43.0834],
+    description: "Below Niagara Falls, -79.0710, 43.0834"
+  },
+  {
+    name: "Hull Family Home and Farmstead",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.62245, 42.94611],
+    description: "Historical Site, -78.62245, 42.94611"
+  },
+  {
+    name: "Gateway Canyon",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-109.02293, 38.68064],
+    description: "Natural Monument, -109.02293, 38.68064"
+  },
+  {
+    name: "Gourdlandia",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-76.501884, 42.443962],
+    description: "Gourd Farm and Experience, -76.501884, 42.443962"
+  },
+  {
+    name: "Cuba Garlic Festival",
+    category: "Event",
+    visited: true,
+    coordinates: [-78.2751, 42.2099],
+    description: "Annual Garlic Festival, -78.2751, 42.2099"
+  },
+  {
+    name: "Night Lights at Griffis Sculpture Park",
+    category: "Event",
+    visited: false,
+    coordinates: [-78.6920401, 42.3685209],
+    description: "Once annually, -78.4129, 42.2212"
+  },
+  {
+    name: "Holley Canal Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-78.01841, 43.22507],
+    description: "Waterfall, -78.01841, 43.22507"
+  },
+  {
+    name: "Cataract House Underground Railroad Tour",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-79.0636, 43.0843],
+    description: "Tour, 79.0636,43.0843"
+  },
+  {
+    name: "Wolf's Museum of Gods and Monsters",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.1355609, 42.2075587],
+    description: "Museum, -78.1355609, 42.2075587"
+  },
+  {
+    name: "Vischer Ferry Nature and Historic Preserve",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-73.79582, 42.79267],
+    description: "HikingSpot, -73.79582, 42.79267"
+  },
+  {
+    name: "VAMPA Philadelphia",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-75.165222, 40.315924],
+    description: "Vampire and Paranormal Museum, -75.165222, 40.315924"
+  },
+  {
+    name: "Robert H Treman State Park",
+    category: "New_York_State_Park",
+    visited: true,
+    coordinates: [-76.5740, 42.4000],
+    description: "New York State Park, -76.5740, 42.4000"
+  },
+  {
+    name: "Robert H Treman Swimming Hole",
+    category: "Swimming_Spot",
+    visited: true,
+    coordinates: [-76.55744, 42.39736],
+    description: "Swimming Spot, -76.55744, 42.39736"
+  },
+  {
+    name: "Evil Buffalo Experience",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.872083, 42.870111],
+    description: "Buffalo Tour at Riverworks, -78.872083, 42.870111"
+  },
+  {
+    name: "Kenneglen Nature Preserve",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-78.5497272, 42.7669630],
+    description: "Hiking Spot, -78.5497272, 42.7669630"
+  },
+  {
+    name: "Mossy Point Nature Preserve",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-78.541, 42.750],
+    description: "Hiking Spot, -78.541, 42.750"
+  },
+  {
+    name: "Zoomagination",
+    category: "Event",
+    visited: false,
+    coordinates: [-78.8547033, 42.9386980],
+    description: "Annual Event at Buffalo Zoo, -78.8547033, 42.9386980"
+  },
+  {
+    name: "Indian Fort Nature Preserve",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-77.83049, 42.76579],
+    description: "Hiking Spot, -77.83049, 42.76579"
+  },
+  {
+    name: "Great Wolf Lodge Waterpark",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-79.0718668, 43.1154262],
+    description: "Water Park, -79.0718668, 43.1154262"
+  },
+  {
+    name: "Stony Brook State Park",
+    category: "New_York_State_Park",
+    visited: false,
+    coordinates: [-77.69500, 42.52083],
+    description: "New York State Park, -77.69500, 42.52083"
+  },
+  {
+    name: "Rolling Hills Asylum",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.1327379, 42.8811213],
+    description: "Tours, -78.1327379, 42.8811213"
+  },
+  {
+    name: "The Tunnel at Niagara Parks Power Station",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-79.0793, 43.0751],
+    description: "New Tunnel, -79.0793, 43.0751"
+  },
+  {
+    name: "Genesee Country Museum",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-77.881064, 42.994208],
+    description: "Re-enactment Village, -77.881064, 42.994208"
+  },
+  {
+    name: "Rainbow Rink",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.8735275, 43.0255722],
+    description: "Roller Rink, -78.8735275, 43.0255722"
+  },
+  {
+    name: "Blueberry Treehouse Farm",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.6822652, 42.7040722],
+    description: "Cafe, -78.6822652, 42.7040722"
+  },
+  {
+    name: "Rock Garden, Calhoun",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-84.9838829, 34.4639037],
+    description: "Run and Owned by The Jehova's Witnesses, -84.9838829, 34.4639037"
   }
+
  
 ];
