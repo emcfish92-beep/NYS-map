@@ -1290,6 +1290,24 @@
 
 }
 
+/* Make legend category icons clickable */
+.legend-item .legend-color {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Selected category icon */
+.legend-item .legend-color.filter-selected {
+  box-shadow: 0 0 0 3px white, 0 0 0 5px #333333;
+  transform: scale(1.08);
+}
+
+/* Keyboard accessibility */
+.legend-item .legend-color:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
   </style>
 
 </head>
@@ -2834,6 +2852,11 @@ console.log("Places loaded:", places);
 
 const placeMarkers = new Map();
 
+/*
+  Store markers for category filtering.
+*/
+const filterableMarkers = [];
+
 places.forEach(place => {
 
   // Create the colored outer circle
@@ -2920,11 +2943,121 @@ places.forEach(place => {
 
     .addTo(map);
 
+    /*
+  Remember the marker and its category.
+*/
+filterableMarkers.push({
+  category: place.category,
+  element: markerElement
+});
+
   placeMarkers.set(place.name, marker);
 
 });
 
 lucide.createIcons();
+
+/*
+  CATEGORY FILTERING
+
+  Click the existing colored icons in the legend
+  to show only those categories on the map.
+  Multiple categories can be selected.
+*/
+
+const selectedCategories = new Set();
+
+/*
+  Find all category icons in the legend.
+
+  The class names already identify each category,
+  for example Swimming_Spot-color.
+*/
+const legendCategoryIcons = document.querySelectorAll(
+  "#legend .legend-item .legend-color"
+);
+
+legendCategoryIcons.forEach(icon => {
+
+  const categoryClass = Array.from(icon.classList)
+    .find(className =>
+      className.endsWith("-color") &&
+      className !== "legend-color"
+    );
+
+  if (!categoryClass) return;
+
+  const category = categoryClass.slice(0, -6);
+
+  /*
+    Make the existing icon accessible as a button.
+  */
+  icon.setAttribute("role", "button");
+  icon.setAttribute("tabindex", "0");
+  icon.setAttribute("aria-pressed", "false");
+  icon.setAttribute("aria-label", `Filter ${category.replaceAll("_", " ")}`);
+
+  function toggleCategory() {
+
+    if (selectedCategories.has(category)) {
+      selectedCategories.delete(category);
+    } else {
+      selectedCategories.add(category);
+    }
+
+    /*
+      Update selected-icon appearance.
+      Also handles duplicate legend entries.
+    */
+    legendCategoryIcons.forEach(otherIcon => {
+
+      const otherClass = Array.from(otherIcon.classList)
+        .find(className =>
+          className.endsWith("-color") &&
+          className !== "legend-color"
+        );
+
+      if (!otherClass) return;
+
+      const otherCategory = otherClass.slice(0, -6);
+      const isSelected = selectedCategories.has(otherCategory);
+
+      otherIcon.classList.toggle("filter-selected", isSelected);
+      otherIcon.setAttribute("aria-pressed", String(isSelected));
+
+    });
+
+    /*
+      Update marker visibility.
+    */
+    filterableMarkers.forEach(marker => {
+
+      const shouldShow =
+        selectedCategories.size === 0 ||
+        selectedCategories.has(marker.category);
+
+      marker.element.style.display = shouldShow ? "" : "none";
+
+    });
+
+  }
+
+  /*
+    Mouse and touch interaction.
+  */
+  icon.addEventListener("click", toggleCategory);
+
+  /*
+    Keyboard interaction.
+  */
+  icon.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleCategory();
+    }
+  });
+
+});
 
 /* --------------------------------------------------
    SEARCH BAR - searches only places in places.js
