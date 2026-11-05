@@ -2432,7 +2432,119 @@ export const places = [
     category: "Non_Outdoor_Cool_Thing",
     visited: false,
     coordinates: [-84.9838829, 34.4639037],
-    description: "Run and Owned by The Jehova's Witnesses, -84.9838829, 34.4639037"
+    description: "Run and Owned by The LDS Church, -84.9838829, 34.4639037"
+  },
+  {
+    name: "Asha's Cow Sanctuary",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.7392551, 43.2710823],
+    description: "Animal Sanctuary, -78.7392551, 43.2710823"
+  },
+  {
+    name: "Buffalo Botanical Gardens",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: true,
+    coordinates: [-78.8258, 42.8281],
+    description: "Botanical Gardens, -78.8258, 42.8281"
+  },
+  {
+    name: "Sugar Creek Glenn Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-77.73771, 42.48666],
+    description: "Campsite, -77.73771, 42.48666"
+  },
+  {
+    name: "Blossom Falls",
+    category: "Waterfall",
+    visited: false,
+    coordinates: [-78.6931, 42.8562],
+    description: "Waterfall, -78.6931, 42.8562"
+  },
+  {
+    name: "Otherworld Ohio",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-82.836143, 39.922095],
+    description: "Art gallery, -82.836143, 39.922095"
+  },
+  {
+    name: "Erie Canal Nature Preserve",
+    category: "Other_Park",
+    visited: false,
+    coordinates: [-77.518738, 43.091106],
+    description: "Nature Preserve, -77.518738, 43.091106"
+  },
+  {
+    name: "Mason Winfield's Haunted History Ghost Tours",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.61778, 42.76778],
+    description: "Ghost Tour Company, -78.61778, 42.76778"
+  },
+  {
+    name: "Cheltenham Badlands",
+    category: "Natural_Monument",
+    visited: false,
+    coordinates: [-79.9427, 43.7721],
+    description: "Cool Rock Formation, -79.9427, 43.7721"
+  },
+  {
+    name: "Buttermilk Falls State Park",
+    category: "New_York_State_Park",
+    visited: true,
+    coordinates: [-76.5129969, 42.4111841],
+    description: "New York State Park, -76.5129969, 42.4111841"
+  },
+  {
+    name: "Bread and Puppet Theatre",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-72.17806, 44.68417],
+    description: "Theatre and Bakery, -72.17806, 44.68417"
+  },
+  {
+    name: "Niagara Falls Underground Railroad Heritage Centre",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-79.05505, 43.10986],
+    description: "Museum,-79.05505, 43.10986"
+  },
+  {
+    name: "Whirlpool Jetboat Tours",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-79.0491040, 43.1726061],
+    description: "Jetboat Tour, -79.0491040, 43.1726061"
+  },
+  {
+    name: "Dufferin Islands Nature Area",
+    category: "Other_Park",
+    visited: false,
+    coordinates: [-79.07056, 43.06889],
+    description: "Park, -79.07056, 43.06889"
+  },
+  {
+    name: "Niagara Glen",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.0600000, 43.1291667],
+    description: "Hiking Spot, -79.0600000, 43.1291667"
+  },
+  {
+    name: "Philadelphia Magic Gardens",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-75.159296, 39.942859],
+    description: "Art Gallery, -75.159296, 39.942859"
+  },
+  {
+    name: "Union Station (abandoned)",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.685556, 43.173889],
+    description: "Abandoned Station, -78.685556, 43.173889"
   }
 
  
