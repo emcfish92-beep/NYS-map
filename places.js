@@ -2545,6 +2545,251 @@ export const places = [
     visited: false,
     coordinates: [-78.685556, 43.173889],
     description: "Abandoned Station, -78.685556, 43.173889"
+  },
+  {
+    name: "Iron Island Museum",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.81134, 42.88976],
+    description: "Ghost Hunting Space, -78.81134, 42.88976"
+  },
+  {
+    name: "Willow Bay Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.91750, 41.98889],
+    description: "Campsite, -78.91750, 41.98889"
+  },
+  {
+    name: "North River Hobby Farm Glamping",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-74.0425, 43.7365],
+    description: "Glamping, -74.0425, 43.7365"
+  },
+  {
+    name: "Lancaster Opera House",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.66973, 42.901125],
+    description: "Opera House, -78.66973, 42.901125"
+  },
+  {
+    name: "Lumagination at the Botanical Gardens",
+    category: "Event",
+    visited: false,
+    coordinates: [-78.82583, 42.82806],
+    description: "Annual Ligth Show, -78.82583, 42.82806"
+  },
+  {
+    name: "Colden Falls",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-78.68404, 42.64439],
+    description: "Waterfall and Swimming Hole"
+  },
+  {
+    name: "DeVeaux Woods SP",
+    category: "New York State Park",
+    visited: false,
+    coordinates: [-79.060000, 43.120000],
+    description: "New York State Park, -79.060000, 43.120000"
+  },
+  {
+    name: "Canalside Ice Bumper Cars",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-78.8725, 42.8914],
+    description: "Bumper Cars on an Ice RInk, -78.8725, 42.8914"
+  },
+  {
+    name: "Adventure Landing Putt Putt",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.8252, 42.9734],
+    description: "Crazy Golf, -78.8252, 42.9734"
+  },
+  {
+    name: "Golden Hill SP",
+    category: "New_York_State_Park",
+    visited: true,
+    coordinates: [-78.4892, 43.3654],
+    description: "New York State Park, -78.4892, 43.3654"
+  },
+  {
+    name: "Reinstein Woods Nature Preserve",
+    category: "Hiking_Spot",
+    visited: true,
+    coordinates: [-78.7186, 42.8897],
+    description: "Hiking Spot, -78.7186, 42.8897"
+  },
+  {
+    name: "Chimney Bluffs SP",
+    category: "New_York_State_Park",
+    visited: true,
+    coordinates: [-76.922367, 43.280890],
+    description: "New York State Park, -76.922367, 43.280890"
+  },
+  {
+    name: "Harriet Tubman Underground Railroad SP",
+    category: "Maryland_State_Park",
+    visited: false,
+    coordinates: [-76.144747, 38.443695],
+    description: "Maryland State Park, -76.144747, 38.443695"
+  },
+  {
+    name: "Elora Quarry",
+    category: "Swimming_Spot",
+    visited: false,
+    coordinates: [-80.4147, 43.6906],
+    description: "Swimming Spot and Hiking, -80.4147, 43.6906"
+  },
+  {
+    name: "Burchfield Nature and Art Centre",
+    category: "Hiking_Spot",
+    visited: true,
+    coordinates: [-78.7539482, 42.8543235],
+    description: "Hiking Spot, -78.7539482, 42.8543235"
+  },
+  {
+    name: "Lockport Cave Tours",
+    category: "Cave",
+    visited: false,
+    coordinates: [-78.7539482, 42.8543235],
+    description: "Cave Tours, -78.7539482, 42.8543235"
+  },
+  {
+    name: "Buffalo City Hall Observation Deck",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: true,
+    coordinates: [-78.879303, 42.886603],
+    description: "City Hall Observation Deck, -78.879303, 42.886603"
+  },
+  {
+    name: "Peek'n Peak Mountain",
+    category: "Downhill_Skiing",
+    visited: false,
+    coordinates: [-79.7346685, 42.0605733],
+    description: "Ski and Adventure Area, -79.7346685, 42.0605733"
+  },
+  {
+    name: "Knox Farm State Park",
+    category: "New_York_State_Park",
+    visited: true,
+    coordinates: [-78.64306, 42.77500],
+    description: "New York State Park, -78.64306, 42.77500"
+  },
+  {
+    name: "Riverworks Curling",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.8725, 42.8693],
+    description: "Curling, -78.8725, 42.8693"
+  },
+  {
+    name: "Queen City Roller Derby",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.8721, 42.8701],
+    description: "Roller Derby at Riverworks, -78.8721, 42.8701"
+  },
+  {
+    name: "Eden Kazoo Museum",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.898197, 42.649056],
+    description: "Kazoo Museum, -78.898197, 42.649056"
+  },
+  {
+    name: "Holiday Valley Ski Resort",
+    category: "Downhill_Skiing",
+    visited: true,
+    coordinates: [-78.6681, 42.2625],
+    description: "Ski Resort, -78.6681, 42.2625"
+  },
+  {
+    name: "Sky High Mountain Coaster",
+    category: "Adventure_Activity",
+    visited: true,
+    coordinates: [-78.6857637, 42.2632538],
+    description: "Mountain Coaster, -78.6857637, 42.2632538"
+  },
+  {
+    name: "Holiday Valley Cross Country Skiing",
+    category: "Cross_Country_Skiing",
+    visited: true,
+    coordinates: [-78.66822, 42.26117],
+    description: "Lift up and Down, -78.66822, 42.26117"
+  },
+  {
+    name: "Pursuit OCR",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-79.6025746, 43.7368145],
+    description: "Indoor Obstacle Course, -79.6025746, 43.7368145"
+  },
+  {
+    name: "Cherry Springs State Park",
+    category: "Pennsylvania_State_Park",
+    visited: false,
+    coordinates: [-77.82321, 41.66384],
+    description: "Pennsylvania State Park, -77.82321, 41.66384"
+  },
+  {
+    name: "Cherry Springs Dark Sky Spot",
+    category: "Dark_Sky_Spot",
+    visited: false,
+    coordinates: [-77.8164, 41.6501],
+    description: "Dark Sky Spot, -77.8164, 41.6501"
+  },
+  {
+    name: "Cherry Springs SP Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-77.82125, 41.65981],
+    description: "Campground, -77.82125, 41.65981"
+  },
+  {
+    name: "Montezuma Castle National Monument",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-111.8350, 34.6116],
+    description: "Castle Carved into Rock, -111.8350, 34.6116"
+  },
+  {
+    name: "Clear Lake Dam",
+    category: "Lake",
+    visited: false,
+    coordinates: [-78.85162, 42.55262],
+    description: "Lake, -78.85162, 42.55262"
+  },
+  {
+    name: "West Falls JP Nicely Memorial Park",
+    category: "Hiking_Spot",
+    visited: true,
+    coordinates: [-78.6753, 42.7113],
+    description: "Hiking, Spot, -78.6753, 42.7113"
+  },
+  {
+    name: "McCauley Mountain Ski Area",
+    category: "Downhill_Skiing",
+    visited: false,
+    coordinates: [-74.963509, 43.698227],
+    description: "Ski resort, -74.963509, 43.698227"
+  },
+  {
+    name: "Owen's Falls Sanctuary",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-78.62268, 42.74623],
+    description: "Waterfall and Hiking Spot, -78.62268, 42.74623"
+  },
+  {
+    name: "Sinking Pond Wildlife Sanctuary",
+    category: "Hiking_pot",
+    visited: false,
+    coordinates: [-78.60718, 42.77877],
+    description: "Hiking Spot, -78.60718, 42.77877"
   }
 
  
