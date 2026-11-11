@@ -166,6 +166,83 @@ export const forests = [
     name: "Cherokee National Forest",
     file: "forests/cherokee-national-forest.geojson",
     color: "#8b5cf6"
+  },
+
+  {
+    id: "chippewa-national-forest",
+    name: "Chippewa National Forest",
+    file: "forests/chippewa-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "chugach-national-forest",
+    name: "Chugach National Forest",
+    file: "forests/chugach-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "cibola-national-forest",
+    name: "Cibola National Forest",
+    file: "forests/cibola-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "cimarron-national-grassland",
+    name: "Cimarron National Grassland",
+    file: "forests/cimarron-national-grassland.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "cleveland-national-forest",
+    name: "Cleveland National Forest",
+    file: "forests/cleveland-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "coconino-national-forest",
+    name: "Coconino National Forest",
+    file: "forests/coconino-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "columbia-river-gorge-national-scenic-area",
+    name: "Columbia River Gorge National Scenic Area",
+    file: "forests/-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "colville-national-forest",
+    name: "Colville National Forest",
+    file: "forests/colville-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "comanche-national-grassland",
+    name: "Comanche National Forest",
+    file: "forests/comanche-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "conecuh-national-forest",
+    name: "Conecuh National Forest",
+    file: "forests/conecuh-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "coronado-national-forest",
+    name: "Coronado National Forest",
+    file: "forests/coronado-national-forest.geojson",
+    color: "#8b5cf6"
   }
 
 ];

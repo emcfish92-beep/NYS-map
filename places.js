@@ -2786,7 +2786,7 @@ export const places = [
   },
   {
     name: "Sinking Pond Wildlife Sanctuary",
-    category: "Hiking_pot",
+    category: "Hiking_Spot",
     visited: false,
     coordinates: [-78.60718, 42.77877],
     description: "Hiking Spot, -78.60718, 42.77877"

@@ -1308,6 +1308,30 @@
   outline-offset: 4px;
 }
 
+/* Clickable National Forest shaded legend label */
+.legend-color.national-forest-legend-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  height: auto;
+
+  background-color: rgba(139, 92, 246, 0.22);
+  border: 1px solid rgba(139, 92, 246, 0.75);
+
+  color: inherit;
+  padding: 2px 5px;
+  border-radius: 4px;
+
+  font-size: inherit;
+  line-height: 1.4;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+
   </style>
 
 </head>
@@ -1410,10 +1434,9 @@
   </div>
 
   <div class="legend-item">
-    <span class="legend-color National_Forest-color">
-      <i data-lucide="tree-pine"></i>
+    <span class="legend-color National_Forest-color national-forest-legend-label">
+      National Forest
     </span>
-    National Forest
   </div>
 
   <div class="legend-item">
