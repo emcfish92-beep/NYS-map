@@ -1334,11 +1334,13 @@
 /* National Forest and Trail side-by-side */
 .legend-overlays-row {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  flex-wrap: wrap;
-  margin: 10px 0;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin: 12px 0 16px;
 }
 
 /* Keep the National Forest label compact */
@@ -1466,60 +1468,6 @@
     National Park
   </div>
 
-  <!-- National Forest and Trail legend row -->
-<div class="legend-overlays-row">
-
-  <!-- National Forest -->
-  <div class="legend-item">
-    <span class="legend-color National_Forest-color national-forest-legend-label">
-      National Forest
-    </span>
-  </div>
-
-  <!-- Hiking Trail -->
-  <div class="legend-trail-symbol" aria-label="Trail">
-
-    <svg viewBox="0 0 160 42" width="120" height="42" aria-hidden="true">
-
-      <!-- Irregular dashed trail line -->
-      <path
-        d="M2 26 C17 25 22 9 42 17 S65 33 82 24 S111 9 129 20 S145 27 158 14"
-        stroke="#A4E83B"
-        stroke-width="2.5"
-        stroke-dasharray="5 4"
-        stroke-linecap="round"
-        fill="none"
-      />
-
-      <!-- Angled Trail label -->
-      <g transform="translate(79 24) rotate(-12)">
-
-        <rect
-          x="-19"
-          y="-13"
-          width="38"
-          height="20"
-          rx="3"
-          fill="#202124"
-        />
-
-        <text
-          x="0"
-          y="2"
-          font-size="14"
-          font-weight="600"
-          fill="white"
-          text-anchor="middle"
-        >Trail</text>
-
-      </g>
-
-    </svg>
-
-  </div>
-
-</div>
-
   <div class="legend-item">
     <span class="legend-color Cave-color">
       <i data-lucide="flashlight"></i>
@@ -1582,6 +1530,60 @@
     </span>
     Event
   </div>
+
+  <!-- National Forest and Trail legend row -->
+<div class="legend-overlays-row">
+
+  <!-- National Forest -->
+  <div class="legend-item">
+    <span class="legend-color National_Forest-color national-forest-legend-label">
+      National Forest
+    </span>
+  </div>
+
+  <!-- Hiking Trail -->
+  <div class="legend-trail-symbol" aria-label="Trail">
+
+    <svg viewBox="0 0 160 42" width="120" height="42" aria-hidden="true">
+
+      <!-- Irregular dashed trail line -->
+      <path
+        d="M2 26 C17 25 22 9 42 17 S65 33 82 24 S111 9 129 20 S145 27 158 14"
+        stroke="#A4E83B"
+        stroke-width="2.5"
+        stroke-dasharray="5 4"
+        stroke-linecap="round"
+        fill="none"
+      />
+
+      <!-- Angled Trail label -->
+      <g transform="translate(79 24) rotate(-12)">
+
+        <rect
+          x="-19"
+          y="-13"
+          width="38"
+          height="20"
+          rx="3"
+          fill="#202124"
+        />
+
+        <text
+          x="0"
+          y="2"
+          font-size="14"
+          font-weight="600"
+          fill="white"
+          text-anchor="middle"
+        >Trail</text>
+
+      </g>
+
+    </svg>
+
+  </div>
+
+</div>
 
   <div class="state-parks-group">
 
