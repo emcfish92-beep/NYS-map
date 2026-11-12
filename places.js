@@ -6,10 +6,10 @@ export const places = [
     coordinates: [-77.98333, 42.63472],
     description: "NYS Park, -77.98333, 42.63472, Been.",
     photos: [
-        "images/Letchworth 1.jpg",
-        "images/Letchworth 2.jpg",
-        "images/Letchworth 3.jpg",
-        "images/Letchworth 4.jpg"
+        "images/Letchworth_1.jpg",
+        "images/Letchworth_2.jpg",
+        "images/Letchworth_3.jpg",
+        "images/Letchworth_4.jpg"
     ]
   },
   {
@@ -29,9 +29,6 @@ export const places = [
     visited: false,
     coordinates: [-78.79075, 42.86751],
     description: "Kayak launch, -78.79075, 42.86751.",
-    photos: [
-        "images/Harlem_Road_1.jpg"
-    ]
   },
   {
     name: "Amherst Veterans Boat Ramp",
@@ -52,7 +49,12 @@ export const places = [
     category: "Kayak_Launch",
     visited: true,
     coordinates: [-78.971774, 43.057857],
-    description: "Kayak launch, -78.971774, 43.057857."
+    description: "Kayak launch, -78.971774, 43.057857.",
+    photos: [
+        "images/Woods_Creek_1.png",
+        "images/Woods_Creek_2.png",
+        "images/Woods_Creek_3.png"
+    ]
   },
   {
     name: "Eagle Overlook Kayak Launch",
