@@ -195,6 +195,10 @@
   background-color: #900322;
 }
 
+.Scenic_Viewpoint-color {
+  background-color: #d70b37;
+}
+
 .Niagara_County_Park-color {
   background-color: #d15c02;
 }
@@ -1333,30 +1337,24 @@
 
 /* National Forest and Trail side-by-side */
 .legend-overlays-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: nowrap;
-  width: 100%;
-  margin: 12px 0 16px;
+  display: contents;
 }
 
 /* Keep the National Forest label compact */
 .legend-overlays-row .legend-item {
   width: auto;
   margin: 0;
+  justify-self: start;
 }
 
 /* Trail symbol dimensions */
 .legend-trail-symbol {
-  width: 120px;
+  width: 130px;
   height: 42px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 
 /* Fit the SVG inside the Trail symbol */
@@ -1463,7 +1461,7 @@
 
   <div class="legend-item">
     <span class="legend-color National_Park-color">
-      <i data-lucide="binoculars"></i>
+      <i data-lucide="park"></i>
     </span>
     National Park
   </div>
@@ -1529,6 +1527,13 @@
       <i data-lucide="calendar"></i>
     </span>
     Event
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Scenic_Viewpoint-color">
+      <i data-lucide="binoculars"></i>
+    </span>
+    Scenic Viewpoint
   </div>
 
   <!-- National Forest and Trail legend row -->
@@ -2809,7 +2814,8 @@ const categoryColors = {
   State_Forest: "#0ba471",
   Other_Park: "#17e12b",
   Dark_Sky_Spot: "#440269",
-  Event: "#900322"
+  Event: "#900322",
+  Scenic_Viewpoint: "#d70b37"
 };
 
 const categoryIcons = {
@@ -2824,7 +2830,7 @@ const categoryIcons = {
   Snow_Shoe: "snowflake",
   Adventure_Activity: "tent-tree",
   Monroe_County_Park: "shrub",
-  National_Park: "binoculars",
+  National_Park: "park",
   Hiking_Spot: "mountain",
   National_Forest: "tree-pine",
   Cave: "flashlight",
@@ -2945,7 +2951,8 @@ const categoryIcons = {
   State_Forest: "circle-pile",
   Other_Park: "flower",
   Dary_Sky_Spot: "star",
-  Event: "calendar"
+  Event: "calendar",
+  Scenic_Viewpoint: "binoculars"
 
 };
 
