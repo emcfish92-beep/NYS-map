@@ -243,6 +243,139 @@ export const forests = [
     name: "Coronado National Forest",
     file: "forests/coronado-national-forest.geojson",
     color: "#8b5cf6"
+  },
+
+  {
+    id: "croatan-national-forest",
+    name: "Croatan National Forest",
+    file: "forests/croatan-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "crooked-river-national-grassland",
+    name: "Crooked River National Grassland",
+    file: "forests/crooked-river-national-grassland.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "curlew-national-grassland",
+    name: "Curlew National Grassland",
+    file: "forests/curlew-national-grassland.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "custer-gallatin-national-forest",
+    name: "Custer Gallatin National Forest",
+    file: "forests/custer-gallatin-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "daniel-boone-national-forest",
+    name: "Daniel Boone National Forest",
+    file: "forests/daniel-boone-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "davy-crockett-national-forest",
+    name: "Davy Crockett National Forest",
+    file: "forests/davy-crockett-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "de-soto-national-forest",
+    name: "De Soto National Forest",
+    file: "forests/de-soto-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "delta-national-forest",
+    name: "Delta National Forest",
+    file: "forests/delta-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "deschutes-national-forest",
+    name: "Deschutes National Forest",
+    file: "forests/deschutes-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "dixie-national-forest",
+    name: "Dixie National Forest",
+    file: "forests/dixie-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "el-yunque-national-forest",
+    name: "El Yunque National Forest",
+    file: "forests/el-yunque-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "fishlake-national-forest",
+    name: "Fishlake National Forest",
+    file: "forests/fishlake-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "flathead-national-forest",
+    name: "Flathead National Forest",
+    file: "forests/flathead-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "fort-pierre-national-grassland",
+    name: "Fort Pierre National Grassland",
+    file: "forests/fort-pierre-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "francis-marion-and-sumter-national-forest",
+    name: "Francis Marion and Sumter National Forest",
+    file: "forests/francis-marion-and-sumter-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "fremont-winema-national-forest",
+    name: "Fremont Winema National Forest",
+    file: "forests/fremont-winema-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "george-washington-and-jefferson-national-forest",
+    name: "George Washington and Jefferson National Forest",
+    file: "forests/george-washington-and-jefferson-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "giant-sequoia-national-monument",
+    name: "Giant Sequoia National Monument",
+    file: "forests/giant-sequoia-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "gifford-pinchot-national-forest",
+    name: "Gifford Pinchot National Forest",
+    file: "forests/gifford-pinchot-national-forest.geojson",
+    color: "#8b5cf6"
   }
 
 ];
