@@ -376,6 +376,174 @@ export const forests = [
     name: "Gifford Pinchot National Forest",
     file: "forests/gifford-pinchot-national-forest.geojson",
     color: "#8b5cf6"
+  },
+
+  {
+    id: "gila-national-forest",
+    name: "Gila National Forest",
+    file: "forests/gila-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "grand-mesa-uncompahgre-and-gunnison-national-forest",
+    name: "Grand Mesa Uncompahgre and Gunnison National Forest",
+    file: "forests/grand-mesa-uncompahgre-and-gunnison-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "grand-river-national-grassland",
+    name: "Grand River National Grassland",
+    file: "forests/grand-river-national-grassland.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "helena-lewis-and-clark-national-forest",
+    name: "Helena-Lewis and Clark National Forest",
+    file: "forests/helena-lewis-and-clark-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "hiwatha-national-forest",
+    name: "Hiwatha National Forest",
+    file: "forests/hiwatha-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "holly-springs-national-forest",
+    name: "Holly Springs National Forest",
+    file: "forests/holly-springs-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "homochitto-national-forest",
+    name: "Homochitto National Forest",
+    file: "forests/homochitto-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "hoosier-national-forest",
+    name: "Hoosier National Forest",
+    file: "forests/hoosier-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "humboldt-toiyabe-national-forest",
+    name: "Humboldt Toiyabe National Forest",
+    file: "forests/humboldt-toiyabe-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "huron-manistee-national-forest",
+    name: "Huron Manistee National Forest",
+    file: "forests/huron-manistee-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "idaho-panhandle-national-forest",
+    name: "Idaho Panhandle National Forest",
+    file: "forests/idaho-panhandle-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "inyo-national-forest",
+    name: "Inyo National Forest",
+    file: "forests/inyo-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "kaibab-national-forest",
+    name: "Kaibab National Forest",
+    file: "forests/kaibab-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "kiowa-national-grassland",
+    name: "Kiowa National Forest",
+    file: "forests/kiowa-national-grassland.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "kisatchie-national-grassland",
+    name: "Kisatchie National Grassland",
+    file: "forests/-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "klamath-national-forest",
+    name: "Klamath National Forest",
+    file: "forests/klamath-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "kootenai-national-forest",
+    name: "Kootenai National Forest",
+    file: "forests/kopotenai-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "land-between-the-lakes-national-recreation-area",
+    name: "Land Between the Lakes National Recreation Area",
+    file: "forests/land-between-the-lakes-national-recreation-area.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "lassen-national-forest",
+    name: "Lassen National Forest",
+    file: "forests/lassen-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "lincoln-national-forest",
+    name: "Lincoln National Forest",
+    file: "forests/lincoln-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "lake-tahoe-national-basement-management-unit",
+    name: "Lake Tahoe National Basin Management Unit",
+    file: "forests/-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "little-missouri-national-grassland",
+    name: "Little Missouri National Grassland",
+    file: "forests/little-missouri-national-grassland.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "lolo-national-forest",
+    name: "Lolo National Forest",
+    file: "forests/lolo-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "los-padres-national-forest",
+    name: "Los Padres National Forest",
+    file: "forests/los-padres-national-forest.geojson",
+    color: "#8b5cf6"
   }
 
 ];

@@ -2792,6 +2792,167 @@ export const places = [
     visited: false,
     coordinates: [-78.60718, 42.77877],
     description: "Hiking Spot, -78.60718, 42.77877"
+  },
+  {
+    name: "Kinzua Beach",
+    category: "Swimming_Spot",
+    visited: true,
+    coordinates: [-78.9547605, 41.8531162],
+    description: "Swimming Spot, -78.9547605, 41.8531162"
+  },
+  {
+    name: "Martz Observatory",
+    category: "Dark_Sky_Spot",
+    visited: false,
+    coordinates: [-79.0666, 42.0085],
+    description: "Obervatory,-79.0666, 42.0085"
+  },
+  {
+    name: "Erlansdon Overview Park",
+    category: "Other_Park",
+    visited: false,
+    coordinates: [-79.08994, 42.04569],
+    description: "Park, -79.08994, 42.04569"
+  },
+  {
+    name: "Audubon Nature Centre",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.17, 42.0205],
+    description: "Hiking Spot, -79.17, 42.0205"
+  },
+  {
+    name: "Onoville Marina Park",
+    category: "Other_Park",
+    visited: false,
+    coordinates: [-78.970102, 42.029658],
+    description: "Park, -78.970102, 42.029658"
+  },
+  {
+    name: "Kiasutha Recreation Area Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.8999, 41.7823],
+    description: "Campsite, -78.8999, 41.7823"
+  },
+  {
+    name: "Cosy Embers Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.78687, 41.85894],
+    description: "Campsite, -78.78687, 41.85894"
+  },
+  {
+    name: "Dewdrop Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.95944, 41.83194],
+    description: "Campsite, -78.95944, 41.83194"
+  },
+  {
+    name: "Handsome Lake Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.9300382, 41.9225605],
+    description: "Campsite, -78.9300382, 41.9225605"
+  },
+  {
+    name: "High Banks Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.905829, 42.051712],
+    description: "Campsite, -78.905829, 42.051712"
+  },
+  {
+    name: "Lucille Ball Memorial Park",
+    category: "Other_Park",
+    visited: false,
+    coordinates: [-79.28285, 42.11016],
+    description: "Town Park, -79.28285, 42.11016"
+  },
+  {
+    name: "Broken Straw State Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.527649, 42.022921],
+    description: "Hiking Spot, -79.527649, 42.022921"
+  },
+  {
+    name: "Alleghany State Park",
+    category: "New_York_State_Park",
+    visited: true,
+    coordinates: [-78.7497, 42.1002],
+    description: "NY State Park, -78.7497, 42.1002"
+  },
+  {
+    name: "Art Roscoe XC Ski Trails",
+    category: "Cross_Country_Skiing",
+    visited: false,
+    coordinates: [-78.70492, 42.12576],
+    description: "XC Skiing, -78.70492, 42.12576"
+  },
+  {
+    name: "Salamanca Antique Mall",
+    category: "Non_Park_Cool_Thing",
+    visited: true,
+    coordinates: [-78.71480, 42.15846],
+    description: "Antique Mall, -78.71480, 42.15846"
+  },
+  {
+    name: "Pope Haven Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.99725982, 42.20747969],
+    description: "Campsite, -78.99725982, 42.20747969"
+  },
+  {
+    name: "Harris Hill State Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.183317, 42.218776],
+    description: "Hiking, -79.183317, 42.218776"
+  },
+  {
+    name: "Hatch Creek State Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.215276, 42.241208],
+    description: "Hiking, -79.215276, 42.241208"
+  },
+  {
+    name: "Boutwell Hill State Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.199002, 42.348227],
+    description: "Hiking, -79.199002, 42.348227"
+  },
+  {
+    name: "Cassadaga Lakes",
+    category: "Chautauqua_County_Park",
+    visited: false,
+    coordinates: [-79.3202564, 42.3440086],
+    description: "County Park, -79.3202564, 42.3440086"
+  },
+  {
+    name: "Chautauqua Lake KOA",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-79.42983, 42.22885],
+    description: "Campsite, -79.42983, 42.22885"
+  },
+  {
+    name: "Long Point State Park",
+    category: "New_York_State_Park",
+    visited: true,
+    coordinates: [-76.7026, 42.7159],
+    description: "NY State Park, -76.7026, 42.7159"
+  },
+  {
+    name: "Higher Hill State Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.459788, 42.041873],
+    description: "Hiking, -79.459788, 42.041873"
   }
 
  
