@@ -1421,6 +1421,7 @@
   background: #202124;
   color: white;
   font-weight: 600;
+  font-family: inherit;
 }
 
 .trail-map-actions {
@@ -1433,6 +1434,7 @@
   color: #a4e83b;
   font-size: 13px;
   text-decoration: none;
+  font-family: inherit;
 }
 
 #trail-map-close {
@@ -1441,19 +1443,101 @@
   color: white;
   font-size: 28px;
   cursor: pointer;
-}
-
-#trail-map-frame {
-  flex: 1;
-  width: 100%;
-  min-height: 0;
-  border: none;
-  background: white;
+  font-family: inherit;
 }
 
 @media (max-width: 600px) {
   .trail-map-viewer {
     inset: 1%;
+  }
+}
+
+/* Match PDF viewer font to the rest of the app */
+.trail-map-viewer,
+.trail-map-viewer button,
+.trail-map-viewer a {
+  font-family: inherit;
+}
+
+/* =========================================
+   PDF.js TRAIL MAP VIEWER
+   ========================================= */
+
+/* Make viewer use the app's font */
+.trail-map-viewer,
+.trail-map-viewer button {
+  font-family: inherit;
+}
+
+/* Zoom, Fit and Close buttons */
+.trail-map-actions button {
+  font-family: inherit;
+  background: #383838;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  min-width: 34px;
+  height: 36px;
+  padding: 0 9px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Make the Fit button lime green */
+#trail-map-fit {
+  color: #a4e83b;
+  font-size: 13px;
+}
+
+/* Style the Close (X) button */
+#trail-map-close {
+  background: transparent;
+  color: white;
+  font-size: 27px;
+  padding: 0;
+}
+
+/* Container holding the PDF pages */
+.trail-map-pages {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: #303033;
+  padding: 10px;
+  text-align: center;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Individual PDF pages */
+.trail-map-page {
+  display: block;
+  margin: 0 auto 12px;
+  background: white;
+  max-width: none;
+}
+
+/* Keep the header fixed above the PDF */
+.trail-map-header {
+  flex-shrink: 0;
+  font-family: inherit;
+}
+
+/* Adjust buttons for iPhone screens */
+@media (max-width: 600px) {
+  .trail-map-header {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .trail-map-actions {
+    gap: 6px;
+  }
+
+  .trail-map-actions button {
+    min-width: 30px;
+    padding: 0 6px;
   }
 }
 
@@ -3703,25 +3787,141 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-// PDF trail map viewer
+// ========================================
+// PDF.js TRAIL MAP VIEWER
+// ========================================
 
 const trailMapViewer = document.getElementById("trail-map-viewer");
-const trailMapFrame = document.getElementById("trail-map-frame");
-const trailMapOpen = document.getElementById("trail-map-open");
+const trailMapPages = document.getElementById("trail-map-pages");
 const trailMapClose = document.getElementById("trail-map-close");
+const trailMapZoomIn = document.getElementById("trail-map-zoom-in");
+const trailMapZoomOut = document.getElementById("trail-map-zoom-out");
+const trailMapFit = document.getElementById("trail-map-fit");
 
-// Keep the PDF viewer outside map and popup containers
+// Keep viewer outside the map container
 document.body.appendChild(trailMapViewer);
 
-// Detect clicks on trail map buttons inside MapLibre popups
+let pdfDocument = null;
+let pdfScale = 1;
+let pdfRenderVersion = 0;
+let pdfLoadingTask = null;
+let pdfLoadingVersion = 0;
+
+function showTrailMapMessage(message) {
+  trailMapPages.textContent = message;
+  trailMapPages.style.color = "white";
+}
+
+// Render PDF pages
+async function renderTrailMap() {
+  if (!pdfDocument || trailMapViewer.hidden) return;
+
+  const version = ++pdfRenderVersion;
+  const documentToRender = pdfDocument;
+
+  trailMapPages.replaceChildren();
+
+  for (let pageNumber = 1; pageNumber <= documentToRender.numPages; pageNumber++) {
+    if (version !== pdfRenderVersion) return;
+
+    const page = await documentToRender.getPage(pageNumber);
+    if (version !== pdfRenderVersion) return;
+
+    const viewport = page.getViewport({ scale: pdfScale });
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+
+    const pixelRatio = Math.min(
+      Math.max(window.devicePixelRatio || 1, 2),
+      3
+    );
+
+    canvas.width = Math.floor(viewport.width * pixelRatio);
+    canvas.height = Math.floor(viewport.height * pixelRatio);
+
+    canvas.style.width = viewport.width + "px";
+    canvas.style.height = viewport.height + "px";
+    canvas.className = "trail-map-page";
+
+    trailMapPages.appendChild(canvas);
+
+    await page.render({
+      canvasContext: context,
+      viewport,
+      transform: pixelRatio !== 1
+        ? [pixelRatio, 0, 0, pixelRatio, 0, 0]
+        : null
+    }).promise;
+  }
+}
+
+// Fit the whole first page inside the viewer
+async function fitTrailMap() {
+  if (!pdfDocument) return;
+
+  const firstPage = await pdfDocument.getPage(1);
+  const naturalViewport = firstPage.getViewport({ scale: 1 });
+
+  const availableWidth = trailMapPages.clientWidth - 20;
+  const availableHeight = trailMapPages.clientHeight - 20;
+
+  pdfScale = Math.min(
+    availableWidth / naturalViewport.width,
+    availableHeight / naturalViewport.height
+  );
+
+  pdfScale = Math.max(0.1, pdfScale);
+
+  await renderTrailMap();
+}
+
+// Open a PDF
+async function openTrailMap(pdfUrl) {
+  const loadVersion = ++pdfLoadingVersion;
+
+  trailMapViewer.hidden = false;
+  pdfDocument = null;
+  pdfRenderVersion++;
+  showTrailMapMessage("Loading trail map...");
+
+  if (!window.pdfjsLib) {
+    showTrailMapMessage("PDF viewer is not ready. Please try again.");
+    return;
+  }
+
+  try {
+    if (pdfLoadingTask) {
+      pdfLoadingTask.destroy().catch(() => {});
+    }
+
+    const loadingTask = window.pdfjsLib.getDocument(pdfUrl);
+    pdfLoadingTask = loadingTask;
+
+    const documentResult = await loadingTask.promise;
+
+    if (loadVersion !== pdfLoadingVersion) {
+      await documentResult.destroy();
+      return;
+    }
+
+    pdfDocument = documentResult;
+    await fitTrailMap();
+
+  } catch (error) {
+    if (loadVersion !== pdfLoadingVersion) return;
+
+    console.error("PDF loading error:", error);
+    showTrailMapMessage("Unable to load this trail map.");
+  }
+}
+
+// Detect clicks on View Trail Map buttons
 document.addEventListener("click", function(event) {
   const button = event.target.closest(".popup-trail-map-button");
 
   if (!button) return;
 
   const pdfUrl = decodeURIComponent(button.dataset.trailMap);
-
-  // Only allow local PDFs or HTTPS URLs
   const resolvedUrl = new URL(pdfUrl, window.location.href);
 
   if (
@@ -3731,20 +3931,46 @@ document.addEventListener("click", function(event) {
     return;
   }
 
-  trailMapFrame.src = resolvedUrl.href;
-  trailMapOpen.href = resolvedUrl.href;
-  trailMapViewer.hidden = false;
+  openTrailMap(resolvedUrl.href);
 });
 
-// Close the viewer
+// Zoom in
+trailMapZoomIn.addEventListener("click", async function() {
+  if (!pdfDocument) return;
+
+  pdfScale = Math.min(pdfScale * 1.25, 5);
+  await renderTrailMap();
+});
+
+// Zoom out
+trailMapZoomOut.addEventListener("click", async function() {
+  if (!pdfDocument) return;
+
+  pdfScale = Math.max(pdfScale / 1.25, 0.1);
+  await renderTrailMap();
+});
+
+// Fit page
+trailMapFit.addEventListener("click", fitTrailMap);
+
+// Close PDF and return to map
 function closeTrailMapViewer() {
   trailMapViewer.hidden = true;
-  trailMapFrame.removeAttribute("src");
+  pdfRenderVersion++;
+  pdfLoadingVersion++;
+
+  if (pdfLoadingTask) {
+    pdfLoadingTask.destroy().catch(() => {});
+    pdfLoadingTask = null;
+  }
+
+  pdfDocument = null;
+  trailMapPages.replaceChildren();
 }
 
 trailMapClose.addEventListener("click", closeTrailMapViewer);
 
-// Allow Escape to close the viewer on desktop
+// Escape key closes PDF on desktop
 document.addEventListener("keydown", function(event) {
   if (event.key === "Escape" && !trailMapViewer.hidden) {
     closeTrailMapViewer();
@@ -3754,37 +3980,35 @@ document.addEventListener("keydown", function(event) {
   </script>
 
 <!-- Full-screen PDF trail map viewer -->
+<!-- PDF.js trail map viewer -->
 <div id="trail-map-viewer" class="trail-map-viewer" hidden>
 
   <div class="trail-map-header">
     <span>Trail Map</span>
 
     <div class="trail-map-actions">
-      <a
-        id="trail-map-open"
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Open separately
-      </a>
-
-      <button
-        id="trail-map-close"
-        type="button"
-        aria-label="Close trail map"
-      >
-        &times;
-      </button>
+      <button id="trail-map-zoom-out" type="button" aria-label="Zoom out">−</button>
+      <button id="trail-map-zoom-in" type="button" aria-label="Zoom in">+</button>
+      <button id="trail-map-fit" type="button">Fit</button>
+      <button id="trail-map-close" type="button" aria-label="Close trail map">×</button>
     </div>
   </div>
 
-  <iframe
-    id="trail-map-frame"
-    title="Park trail map PDF"
-  ></iframe>
+  <div id="trail-map-pages" class="trail-map-pages" role="region" aria-label="PDF trail map">
+  </div>
 
 </div>
+
+
+<!-- PDF.js library -->
+<script type="module">
+  import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs";
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs";
+
+  window.pdfjsLib = pdfjsLib;
+</script>
 
 </body>
 
