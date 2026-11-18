@@ -5,6 +5,7 @@ export const places = [
     visited: true,
     coordinates: [-77.98333, 42.63472],
     description: "NYS Park, -77.98333, 42.63472, Been.",
+    trailMap: "trail-maps/letchworth.pdf",
     photos: [
         "images/Letchworth_1.jpg",
         "images/Letchworth_2.jpg",
@@ -345,9 +346,9 @@ export const places = [
   {
     name: "Pictured Rocks National Shoreline",
     category: "Natural_Monument",
-    visited: false,
-    coordinates: [-86.3125, 46.5622],
-    description: "Shoreline, -86.3125, 46.5622."
+    visited: true,
+    coordinates: [-86.412502, 46.556371],
+    description: "Shoreline, -86.412502, 46.556371."
   },
   {
     name: "Vernooy Kill Falls",
@@ -1172,8 +1173,8 @@ export const places = [
     name: "Hunter's Creek",
     category: "Erie_County_Park",
     visited: true,
-    coordinates: [-78.6416, 42.7766],
-    description: "Erie County Park, -78.6416, 42.7766."
+    coordinates: [-78.5497409100869, 42.73708408323749],
+    description: "Erie County Park, -78.5497409100869, 42.73708408323749."
   },
   {
     name: "Sprague Brook Park",
@@ -1227,7 +1228,7 @@ export const places = [
   {
     name: "Royalton Ravine",
     category: "Niagara_County_Park",
-    visited: false,
+    visited: true,
     coordinates: [-78.57523, 43.18636],
     description: "niagara County Park, -78.57523, 43.18636."
   },
@@ -2160,8 +2161,8 @@ export const places = [
     name: "Chatauqua Gorge Swimming Hole",
     category: "Swimming_Spot",
     visited: true,
-    coordinates: [-79.35227, 42.14402],
-    description: "Swim Spot, -79.35227, 42.14402"
+    coordinates: [-79.588625, 42.238785],
+    description: "Swim Spot, -79.588625, 42.238785"
   },
   {
     name: "Kaaterskill Falls",
@@ -2608,8 +2609,8 @@ export const places = [
     name: "Adventure Landing Putt Putt",
     category: "Non_Outdoor_Cool_Thing",
     visited: false,
-    coordinates: [-78.8252, 42.9734],
-    description: "Crazy Golf, -78.8252, 42.9734"
+    coordinates: [-78.84451640377706, 42.981290858645124],
+    description: "Crazy Golf, -78.84451640377706, 42.981290858645124"
   },
   {
     name: "Golden Hill SP",
@@ -2652,13 +2653,6 @@ export const places = [
     visited: true,
     coordinates: [-78.7539482, 42.8543235],
     description: "Hiking Spot, -78.7539482, 42.8543235"
-  },
-  {
-    name: "Lockport Cave Tours",
-    category: "Cave",
-    visited: false,
-    coordinates: [-78.7539482, 42.8543235],
-    description: "Cave Tours, -78.7539482, 42.8543235"
   },
   {
     name: "Buffalo City Hall Observation Deck",

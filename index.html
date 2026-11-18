@@ -1364,6 +1364,90 @@
   height: 100%;
 }
 
+/* Trail map button inside place popup */
+
+.popup-trail-map-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 9px 13px;
+  background: #a4e83b;
+  color: #202124;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.popup-trail-map-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* Nearly full-screen PDF viewer */
+
+.trail-map-viewer {
+  position: fixed;
+  inset: 2%;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  background: #202124;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.75);
+}
+
+.trail-map-viewer[hidden] {
+  display: none;
+}
+
+.trail-map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #202124;
+  color: white;
+  font-weight: 600;
+}
+
+.trail-map-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#trail-map-open {
+  color: #a4e83b;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+#trail-map-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+#trail-map-frame {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: none;
+  background: white;
+}
+
+@media (max-width: 600px) {
+  .trail-map-viewer {
+    inset: 1%;
+  }
+}
 
   </style>
 
@@ -3044,11 +3128,28 @@ places.forEach(place => {
             ${place.visited ? "Yes" : "No"}
           </p>
 
-          <p>${place.description}</p>
+                    <p>${place.description}</p>
+
           ${place.trailDistance
             ? `<p><strong>Trail distance:</strong> ${place.trailDistance}</p>`
             : ""
           }
+
+          ${
+            place.trailMap
+              ? `
+                <button
+                  type="button"
+                  class="popup-trail-map-button"
+                  data-trail-map="${encodeURIComponent(place.trailMap)}"
+                >
+                  <i data-lucide="map"></i>
+                  View Trail Map
+                </button>
+              `
+              : ""
+          }
+
         </div>
 
       `)
@@ -3593,7 +3694,86 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+
+// PDF trail map viewer
+
+const trailMapViewer = document.getElementById("trail-map-viewer");
+const trailMapFrame = document.getElementById("trail-map-frame");
+const trailMapOpen = document.getElementById("trail-map-open");
+const trailMapClose = document.getElementById("trail-map-close");
+
+// Detect clicks on trail map buttons inside MapLibre popups
+document.addEventListener("click", function(event) {
+  const button = event.target.closest(".popup-trail-map-button");
+
+  if (!button) return;
+
+  const pdfUrl = decodeURIComponent(button.dataset.trailMap);
+
+  // Only allow local PDFs or HTTPS URLs
+  const resolvedUrl = new URL(pdfUrl, window.location.href);
+
+  if (
+    resolvedUrl.origin !== window.location.origin &&
+    resolvedUrl.protocol !== "https:"
+  ) {
+    return;
+  }
+
+  trailMapFrame.src = resolvedUrl.href;
+  trailMapOpen.href = resolvedUrl.href;
+  trailMapViewer.hidden = false;
+});
+
+// Close the viewer
+function closeTrailMapViewer() {
+  trailMapViewer.hidden = true;
+  trailMapFrame.removeAttribute("src");
+}
+
+trailMapClose.addEventListener("click", closeTrailMapViewer);
+
+// Allow Escape to close the viewer on desktop
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape" && !trailMapViewer.hidden) {
+    closeTrailMapViewer();
+  }
+});
+
   </script>
+
+<!-- Full-screen PDF trail map viewer -->
+<div id="trail-map-viewer" class="trail-map-viewer" hidden>
+
+  <div class="trail-map-header">
+    <span>Trail Map</span>
+
+    <div class="trail-map-actions">
+      <a
+        id="trail-map-open"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open separately
+      </a>
+
+      <button
+        id="trail-map-close"
+        type="button"
+        aria-label="Close trail map"
+      >
+        &times;
+      </button>
+    </div>
+  </div>
+
+  <iframe
+    id="trail-map-frame"
+    title="Park trail map PDF"
+  ></iframe>
+
+</div>
 
 </body>
 
