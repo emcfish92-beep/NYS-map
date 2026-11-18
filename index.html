@@ -1389,14 +1389,22 @@
 /* Nearly full-screen PDF viewer */
 
 .trail-map-viewer {
-  position: fixed;
-  inset: 2%;
-  z-index: 10000;
+  position: fixed !important;
+  top: 2% !important;
+  left: 2% !important;
+  right: 2% !important;
+  bottom: 2% !important;
+  width: 96% !important;
+  height: 96% !important;
+  z-index: 2147483647 !important;
+
   display: flex;
   flex-direction: column;
+
   background: #202124;
   border-radius: 12px;
   overflow: hidden;
+
   box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.75);
 }
 
@@ -3701,6 +3709,9 @@ const trailMapViewer = document.getElementById("trail-map-viewer");
 const trailMapFrame = document.getElementById("trail-map-frame");
 const trailMapOpen = document.getElementById("trail-map-open");
 const trailMapClose = document.getElementById("trail-map-close");
+
+// Keep the PDF viewer outside map and popup containers
+document.body.appendChild(trailMapViewer);
 
 // Detect clicks on trail map buttons inside MapLibre popups
 document.addEventListener("click", function(event) {
