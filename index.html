@@ -3249,6 +3249,12 @@ places.forEach(place => {
 
     .addTo(map);
 
+    marker.getPopup().on("open", () => {
+      lucide.createIcons({
+        nodes: marker.getPopup().getElement().querySelectorAll("[data-lucide]")
+      });
+    });
+
     /*
   Remember the marker and its category.
 */
