@@ -1463,10 +1463,12 @@
    PDF.js TRAIL MAP VIEWER
    ========================================= */
 
-/* Make viewer use the app's font */
+/* Match PDF viewer typography to the main app */
 .trail-map-viewer,
-.trail-map-viewer button {
-  font-family: inherit;
+.trail-map-viewer button,
+.trail-map-header,
+.trail-map-actions button {
+  font-family: Arial, sans-serif !important;
 }
 
 /* Zoom, Fit and Close buttons */
@@ -1539,6 +1541,64 @@
     min-width: 30px;
     padding: 0 6px;
   }
+}
+
+/* ========================================
+   NAVY BLUE MAP POPUPS
+   ======================================== */
+
+/* Main popup background */
+.maplibregl-popup-content {
+  background: #14283D !important;
+  color: #FFFFFF !important;
+  border-radius: 18px !important;
+  padding: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+.maplibregl-popup-content h3 {
+  color: #FFFFFF !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+/* Popup text */
+.maplibregl-popup-content p,
+.maplibregl-popup-content strong {
+  color: #FFFFFF !important;
+}
+
+/* Match the popup arrow to the background */
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: #14283D !important;
+}
+
+.maplibregl-popup-anchor-top .maplibregl-popup-tip {
+  border-bottom-color: #14283D !important;
+}
+
+.maplibregl-popup-anchor-left .maplibregl-popup-tip {
+  border-right-color: #14283D !important;
+}
+
+.maplibregl-popup-anchor-right .maplibregl-popup-tip {
+  border-left-color: #14283D !important;
+}
+
+/* Popup close button */
+.maplibregl-popup-close-button {
+  color: #FFFFFF !important;
+  font-size: 22px;
+  padding: 5px 9px;
+}
+
+/* Close button hover */
+.maplibregl-popup-close-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 0 18px 0 8px;
 }
 
   </style>
