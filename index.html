@@ -3287,20 +3287,15 @@ places.forEach(place => {
             : ""
           }
 
-          ${
-            place.trailMap
-              ? `
-                <button
-                  type="button"
-                  class="popup-trail-map-button"
-                  data-trail-map="${encodeURIComponent(place.trailMap)}"
-                >
-                  <i data-lucide="map"></i>
-                  View Trail Map
-                </button>
-              `
-              : ""
-          }
+          ${(place.trailMap || (place.trailMaps && place.trailMaps.length > 0)) ? `
+            <button type="button" class="popup-trail-map-button"
+              data-trail-maps="${encodeURIComponent(JSON.stringify(
+                place.trailMaps && place.trailMaps.length > 0
+                  ? place.trailMaps
+                  : [place.trailMap]
+              ))}">
+              <i data-lucide="map"></i> View Trail Map
+          </button>` : ""}
 
         </div>
 
@@ -3857,6 +3852,7 @@ if ("serviceWorker" in navigator) {
 // PDF.js TRAIL MAP VIEWER
 // ========================================
 
+
 const trailMapViewer = document.getElementById("trail-map-viewer");
 const trailMapPages = document.getElementById("trail-map-pages");
 const trailMapClose = document.getElementById("trail-map-close");
@@ -3864,68 +3860,80 @@ const trailMapZoomIn = document.getElementById("trail-map-zoom-in");
 const trailMapZoomOut = document.getElementById("trail-map-zoom-out");
 const trailMapFit = document.getElementById("trail-map-fit");
 
-// Keep viewer outside the map container
 document.body.appendChild(trailMapViewer);
 
-let pdfDocument = null;
+let pdfDocuments = [];
 let pdfScale = 1;
 let pdfRenderVersion = 0;
-let pdfLoadingTask = null;
 let pdfLoadingVersion = 0;
+let pdfLoadingTasks = [];
 
 function showTrailMapMessage(message) {
   trailMapPages.textContent = message;
   trailMapPages.style.color = "white";
 }
 
-// Render PDF pages
 async function renderTrailMap() {
-  if (!pdfDocument || trailMapViewer.hidden) return;
+  if (!pdfDocuments.length || trailMapViewer.hidden) return;
 
   const version = ++pdfRenderVersion;
-  const documentToRender = pdfDocument;
-
   trailMapPages.replaceChildren();
 
-  for (let pageNumber = 1; pageNumber <= documentToRender.numPages; pageNumber++) {
+  try {
+    for (let documentIndex = 0; documentIndex < pdfDocuments.length; documentIndex++) {
+      const pdf = pdfDocuments[documentIndex];
+
+      for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+        if (version !== pdfRenderVersion) return;
+
+        const page = await pdf.getPage(pageNumber);
+        if (version !== pdfRenderVersion) return;
+
+        const viewport = page.getViewport({ scale: pdfScale });
+
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        const pixelRatio = Math.min(
+          Math.max(window.devicePixelRatio || 1, 2),
+          3
+        );
+
+        canvas.width = Math.floor(viewport.width * pixelRatio);
+        canvas.height = Math.floor(viewport.height * pixelRatio);
+
+        canvas.style.width = viewport.width + "px";
+        canvas.style.height = viewport.height + "px";
+        canvas.className = "trail-map-page";
+
+        trailMapPages.appendChild(canvas);
+
+        await page.render({
+          canvasContext: context,
+          viewport,
+          transform: pixelRatio !== 1
+            ? [pixelRatio, 0, 0, pixelRatio, 0, 0]
+            : null
+        }).promise;
+
+        if (version !== pdfRenderVersion) return;
+      }
+    }
+  } catch (error) {
     if (version !== pdfRenderVersion) return;
-
-    const page = await documentToRender.getPage(pageNumber);
-    if (version !== pdfRenderVersion) return;
-
-    const viewport = page.getViewport({ scale: pdfScale });
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
-
-    const pixelRatio = Math.min(
-      Math.max(window.devicePixelRatio || 1, 2),
-      3
-    );
-
-    canvas.width = Math.floor(viewport.width * pixelRatio);
-    canvas.height = Math.floor(viewport.height * pixelRatio);
-
-    canvas.style.width = viewport.width + "px";
-    canvas.style.height = viewport.height + "px";
-    canvas.className = "trail-map-page";
-
-    trailMapPages.appendChild(canvas);
-
-    await page.render({
-      canvasContext: context,
-      viewport,
-      transform: pixelRatio !== 1
-        ? [pixelRatio, 0, 0, pixelRatio, 0, 0]
-        : null
-    }).promise;
+    console.error("PDF rendering error:", error);
+    showTrailMapMessage("Unable to display the trail maps.");
   }
 }
 
-// Fit the whole first page inside the viewer
 async function fitTrailMap() {
-  if (!pdfDocument) return;
+  if (!pdfDocuments.length) return;
 
-  const firstPage = await pdfDocument.getPage(1);
+  const version = pdfRenderVersion;
+  const firstPage = await pdfDocuments[0].getPage(1);
+
+  if (version !== pdfRenderVersion || trailMapViewer.hidden) return;
+
   const naturalViewport = firstPage.getViewport({ scale: 1 });
 
   const availableWidth = trailMapPages.clientWidth - 20;
@@ -3941,14 +3949,19 @@ async function fitTrailMap() {
   await renderTrailMap();
 }
 
-// Open a PDF
-async function openTrailMap(pdfUrl) {
+async function openTrailMap(pdfUrls) {
   const loadVersion = ++pdfLoadingVersion;
 
   trailMapViewer.hidden = false;
-  pdfDocument = null;
   pdfRenderVersion++;
-  showTrailMapMessage("Loading trail map...");
+  pdfDocuments = [];
+
+  for (const task of pdfLoadingTasks) {
+    task.destroy().catch(() => {});
+  }
+  pdfLoadingTasks = [];
+
+  showTrailMapMessage("Loading trail maps...");
 
   if (!window.pdfjsLib) {
     showTrailMapMessage("PDF viewer is not ready. Please try again.");
@@ -3956,53 +3969,70 @@ async function openTrailMap(pdfUrl) {
   }
 
   try {
-    if (pdfLoadingTask) {
-      pdfLoadingTask.destroy().catch(() => {});
+    const urls = Array.isArray(pdfUrls) ? pdfUrls : [pdfUrls];
+
+    for (const url of urls) {
+      if (loadVersion !== pdfLoadingVersion) return;
+
+      const loadingTask = window.pdfjsLib.getDocument(url);
+      pdfLoadingTasks.push(loadingTask);
+
+      const documentResult = await loadingTask.promise;
+
+      if (loadVersion !== pdfLoadingVersion) {
+        await documentResult.destroy();
+        return;
+      }
+
+      pdfDocuments.push(documentResult);
     }
 
-    const loadingTask = window.pdfjsLib.getDocument(pdfUrl);
-    pdfLoadingTask = loadingTask;
+    if (loadVersion !== pdfLoadingVersion) return;
 
-    const documentResult = await loadingTask.promise;
-
-    if (loadVersion !== pdfLoadingVersion) {
-      await documentResult.destroy();
-      return;
-    }
-
-    pdfDocument = documentResult;
     await fitTrailMap();
 
   } catch (error) {
     if (loadVersion !== pdfLoadingVersion) return;
 
     console.error("PDF loading error:", error);
-    showTrailMapMessage("Unable to load this trail map.");
+    showTrailMapMessage("Unable to load these trail maps.");
   }
 }
 
-// Detect clicks on View Trail Map buttons
+// Open PDFs when the View Trail Map button is clicked
 document.addEventListener("click", function(event) {
   const button = event.target.closest(".popup-trail-map-button");
-
   if (!button) return;
 
-  const pdfUrl = decodeURIComponent(button.dataset.trailMap);
-  const resolvedUrl = new URL(pdfUrl, window.location.href);
+  try {
+    const urls = JSON.parse(
+      decodeURIComponent(button.dataset.trailMaps)
+    );
 
-  if (
-    resolvedUrl.origin !== window.location.origin &&
-    resolvedUrl.protocol !== "https:"
-  ) {
-    return;
+    if (!Array.isArray(urls) || !urls.length) return;
+
+    const resolvedUrls = urls.map(url => {
+      const resolved = new URL(url, window.location.href);
+
+      if (
+        resolved.origin !== window.location.origin &&
+        resolved.protocol !== "https:"
+      ) {
+        throw new Error("Invalid trail map URL");
+      }
+
+      return resolved.href;
+    });
+
+    openTrailMap(resolvedUrls);
+  } catch (error) {
+    console.error("Invalid trail map list:", error);
   }
-
-  openTrailMap(resolvedUrl.href);
 });
 
 // Zoom in
 trailMapZoomIn.addEventListener("click", async function() {
-  if (!pdfDocument) return;
+  if (!pdfDocuments.length) return;
 
   pdfScale = Math.min(pdfScale * 1.25, 5);
   await renderTrailMap();
@@ -4010,38 +4040,40 @@ trailMapZoomIn.addEventListener("click", async function() {
 
 // Zoom out
 trailMapZoomOut.addEventListener("click", async function() {
-  if (!pdfDocument) return;
+  if (!pdfDocuments.length) return;
 
   pdfScale = Math.max(pdfScale / 1.25, 0.1);
   await renderTrailMap();
 });
 
-// Fit page
+// Fit pages to the viewer
 trailMapFit.addEventListener("click", fitTrailMap);
 
-// Close PDF and return to map
+// Close the viewer
 function closeTrailMapViewer() {
   trailMapViewer.hidden = true;
+
   pdfRenderVersion++;
   pdfLoadingVersion++;
 
-  if (pdfLoadingTask) {
-    pdfLoadingTask.destroy().catch(() => {});
-    pdfLoadingTask = null;
+  for (const task of pdfLoadingTasks) {
+    task.destroy().catch(() => {});
   }
 
-  pdfDocument = null;
+  pdfLoadingTasks = [];
+  pdfDocuments = [];
   trailMapPages.replaceChildren();
 }
 
 trailMapClose.addEventListener("click", closeTrailMapViewer);
 
-// Escape key closes PDF on desktop
+// Escape key closes the viewer
 document.addEventListener("keydown", function(event) {
   if (event.key === "Escape" && !trailMapViewer.hidden) {
     closeTrailMapViewer();
   }
 });
+
 
   </script>
 

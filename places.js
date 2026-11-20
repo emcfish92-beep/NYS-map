@@ -1356,7 +1356,11 @@ export const places = [
     category: "State_Forest",
     visited: false,
     coordinates: [-77.00254, 42.38688],
-    description: "State Forest, -77.00254, 42.38688."
+    description: "State Forest, -77.00254, 42.38688.",
+    trailMaps: [
+      "trail-maps/sugarhillnorth.pdf",
+      "trail-maps/sugarhillsouth.pdf"
+    ],
   },
   {
     name: "Abraham Lincoln Park",
