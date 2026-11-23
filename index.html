@@ -1811,10 +1811,14 @@
 @media (max-width: 600px) {
 
   #trip-planner-button {
-    top: 65px;
-    right: 10px;
-    padding: 10px 12px;
-  }
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 18px);
+  right: 75px;
+  left: auto;
+  bottom: auto;
+  padding: 10px 12px;
+  z-index: 1500;
+}
 
   #trip-planner-button span {
     display: none;
@@ -2078,6 +2082,8 @@
 #trip-save-status[hidden] {
   display: none !important;
 }
+
+
 
   </style>
 
@@ -4607,9 +4613,15 @@ function showTripPlannerSection(section) {
   }
 }
 
+// Move the existing Trip Planner button outside the legend
+// on both desktop and mobile.
+document.body.appendChild(tripPlannerButton);
+document.body.appendChild(tripPlannerPanel);
+
 // Open planner
 tripPlannerButton.addEventListener("click", function() {
   tripPlannerPanel.hidden = false;
+  tripPlannerButton.style.display = "none";
 
   if (currentTrip) {
     showTripPlannerSection(tripPlannerActive);
@@ -4621,6 +4633,7 @@ tripPlannerButton.addEventListener("click", function() {
 // Close planner
 tripPlannerClose.addEventListener("click", function() {
   tripPlannerPanel.hidden = true;
+  tripPlannerButton.style.display = "";
 });
 
 // Start a new trip
@@ -5514,6 +5527,7 @@ renderSavedTrips();
 if (window.lucide) {
   lucide.createIcons();
 }
+
 
 
   </script>
