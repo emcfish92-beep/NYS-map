@@ -1601,6 +1601,484 @@
   border-radius: 0 18px 0 8px;
 }
 
+/* ========================================
+   TRIP PLANNER
+   ======================================== */
+
+/* Button at top of map */
+#trip-planner-button {
+  position: fixed;
+  top: 15px;
+  right: 100px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: #14283D;
+  color: white;
+
+  border: none;
+  border-radius: 12px;
+  padding: 11px 16px;
+
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+
+#trip-planner-button svg {
+  width: 18px;
+  height: 18px;
+  color: #A4E83B;
+}
+
+#trip-planner-button:hover {
+  background: #243B53;
+}
+
+/* Main panel */
+.trip-planner-panel {
+  position: fixed;
+  top: 70px;
+  right: 15px;
+
+  width: 340px;
+  max-width: calc(100vw - 30px);
+  max-height: calc(100dvh - 90px);
+  overflow-y: auto;
+
+  z-index: 2000;
+
+  background: #14283D;
+  color: white;
+
+  border-radius: 20px;
+  padding: 20px;
+
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+
+  box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+}
+
+.trip-planner-panel[hidden] {
+  display: none !important;
+}
+
+/* Header */
+.trip-planner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.trip-planner-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trip-planner-heading svg {
+  width: 24px;
+  height: 24px;
+  color: #A4E83B;
+}
+
+.trip-planner-heading h2 {
+  font-size: 21px;
+  margin: 0;
+  color: white;
+}
+
+#trip-planner-close {
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+#trip-planner-close svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Sections */
+.trip-planner-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trip-planner-section[hidden] {
+  display: none !important;
+}
+
+.trip-planner-section p {
+  color: #D4DEE6;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
+.trip-planner-section h3 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  color: white;
+}
+
+/* Buttons */
+.trip-primary-button,
+.trip-secondary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  border-radius: 10px;
+  padding: 12px;
+
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.trip-primary-button {
+  background: #A4E83B;
+  color: #14283D;
+  border: none;
+}
+
+.trip-secondary-button {
+  background: transparent;
+  color: white;
+  border: 1px solid #6A7B8B;
+}
+
+.trip-primary-button svg,
+.trip-secondary-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* Trip name input */
+#trip-name-input {
+  width: 100%;
+  box-sizing: border-box;
+
+  background: #243B53;
+  color: white;
+
+  border: 1px solid #6A7B8B;
+  border-radius: 10px;
+
+  padding: 12px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+#trip-name-input::placeholder {
+  color: #AEBCC9;
+}
+
+.trip-planner-section label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Back button */
+.trip-back-button {
+  background: transparent;
+  border: none;
+  color: #A4E83B;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+
+  #trip-planner-button {
+    top: 65px;
+    right: 10px;
+    padding: 10px 12px;
+  }
+
+  #trip-planner-button span {
+    display: none;
+  }
+
+  .trip-planner-panel {
+    top: 115px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    max-width: none;
+    max-height: calc(100dvh - 130px);
+  }
+
+}
+
+/* ========================================
+   TRIP ITINERARY
+   ======================================== */
+
+#trip-stops-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.trip-stop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px;
+  background: #243B53;
+  border-radius: 12px;
+}
+
+.trip-stop-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: #A4E83B;
+  color: #14283D;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.trip-stop-name {
+  flex: 1;
+  min-width: 0;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.trip-stop-actions {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.trip-stop-actions button {
+  background: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+}
+
+.trip-stop-actions button:hover {
+  background: #3B536A;
+}
+
+.trip-stop-actions button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+#trip-empty-message[hidden] {
+  display: none !important;
+}
+
+#trip-clear-button {
+  margin-top: 8px;
+}
+
+/* Numbered map markers for selected trip stops */
+.trip-numbered-marker {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #A4E83B;
+  color: #14283D;
+  border: 3px solid #14283D;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+  /* ========================================
+   TRIP PLANNER — DRIVING ROUTE
+   ======================================== */
+
+.trip-route-summary {
+  background: #243B53;
+  border: 1px solid #405B73;
+  border-radius: 14px;
+  padding: 15px;
+  margin-top: 10px;
+  color: white;
+}
+
+.trip-route-summary[hidden] {
+  display: none !important;
+}
+
+.trip-route-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #A4E83B;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.trip-route-heading svg {
+  width: 19px;
+  height: 19px;
+}
+
+.trip-route-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.trip-route-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.trip-route-label {
+  color: #B8C9D8;
+  font-size: 12px;
+}
+
+.trip-route-stats strong {
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+#trip-route-status {
+  color: #B8C9D8;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+
+#trip-route-fit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  background: transparent;
+  color: #A4E83B;
+  border: 1px solid #A4E83B;
+  border-radius: 9px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#trip-route-fit svg {
+  width: 16px;
+  height: 16px;
+}
+
+#trip-route-fit:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+  
+/* ========================================
+   TRIP PLANNER — SAVED TRIPS
+   ======================================== */
+
+.trip-saved-item {
+  background: #243B53;
+  border: 1px solid #405B73;
+  border-radius: 12px;
+  padding: 13px;
+  margin-bottom: 10px;
+}
+
+.trip-saved-name {
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+.trip-saved-details {
+  color: #B8C9D8;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.trip-saved-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.trip-saved-actions button {
+  flex: 1;
+  border-radius: 8px;
+  padding: 9px 6px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.trip-saved-open {
+  background: #A4E83B;
+  color: #14283D;
+  border: none;
+}
+
+.trip-saved-delete {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid #6A7B8B;
+}
+
+#trip-save-status {
+  color: #A4E83B;
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
+}
+
+#trip-save-status[hidden] {
+  display: none !important;
+}
+
   </style>
 
 </head>
@@ -3051,7 +3529,7 @@ const categoryColors = {
   Other_Park: "#17e12b",
   Dark_Sky_Spot: "#440269",
   Event: "#900322",
-  Scenic_Viewpoint: "#d70b37"
+  Beach: "#d70b37"
 };
 
 const categoryIcons = {
@@ -3308,6 +3786,13 @@ places.forEach(place => {
       lucide.createIcons({
         nodes: marker.getPopup().getElement().querySelectorAll("[data-lucide]")
       });
+    });
+
+    // Add this place to the active trip when its marker is clicked
+    marker.getElement().addEventListener("click", function() {
+      if (typeof window.tripPlannerAddPlace === "function") {
+        window.tripPlannerAddPlace(place);
+      }
     });
 
     /*
@@ -4075,6 +4560,962 @@ document.addEventListener("keydown", function(event) {
 });
 
 
+/* ========================================
+   TRIP PLANNER — STAGE 2
+   ======================================== */
+
+const tripPlannerButton = document.getElementById("trip-planner-button");
+const tripPlannerPanel = document.getElementById("trip-planner-panel");
+const tripPlannerClose = document.getElementById("trip-planner-close");
+
+const tripPlannerHome = document.getElementById("trip-planner-home");
+const tripPlannerNew = document.getElementById("trip-planner-new");
+const tripPlannerActive = document.getElementById("trip-planner-active");
+const tripPlannerSaved = document.getElementById("trip-planner-saved");
+
+const tripNameInput = document.getElementById("trip-name-input");
+const tripActiveName = document.getElementById("trip-active-name");
+const tripStopsList = document.getElementById("trip-stops-list");
+const tripEmptyMessage = document.getElementById("trip-empty-message");
+const tripClearButton = document.getElementById("trip-clear-button");
+
+// Current trip (temporary until Stage 4)
+let currentTrip = null;
+
+// Numbered markers drawn over the existing map markers
+let tripNumberedMarkers = [];
+
+// Track which planner screen is active
+let tripPlannerScreen = "home";
+
+function showTripPlannerSection(section) {
+  tripPlannerHome.hidden = true;
+  tripPlannerNew.hidden = true;
+  tripPlannerActive.hidden = true;
+  tripPlannerSaved.hidden = true;
+
+  section.hidden = false;
+
+  if (section === tripPlannerActive) {
+    tripPlannerScreen = "active";
+  } else if (section === tripPlannerNew) {
+    tripPlannerScreen = "new";
+  } else if (section === tripPlannerSaved) {
+    tripPlannerScreen = "saved";
+  } else {
+    tripPlannerScreen = "home";
+  }
+}
+
+// Open planner
+tripPlannerButton.addEventListener("click", function() {
+  tripPlannerPanel.hidden = false;
+
+  if (currentTrip) {
+    showTripPlannerSection(tripPlannerActive);
+  } else {
+    showTripPlannerSection(tripPlannerHome);
+  }
+});
+
+// Close planner
+tripPlannerClose.addEventListener("click", function() {
+  tripPlannerPanel.hidden = true;
+});
+
+// Start a new trip
+document.getElementById("trip-new-button").addEventListener("click", function() {
+  tripNameInput.value = "";
+  showTripPlannerSection(tripPlannerNew);
+  tripNameInput.focus();
+});
+
+// Create a trip
+document.getElementById("trip-create-button").addEventListener("click", function() {
+  const name = tripNameInput.value.trim();
+
+  if (!name) {
+    alert("Please enter a trip name.");
+    return;
+  }
+
+  if (currentTrip && currentTrip.stops.length > 0) {
+    const confirmed = confirm(
+      "Starting a new trip will replace your current unsaved trip. Continue?"
+    );
+    if (!confirmed) return;
+  }
+
+  currentTrip = {
+    name: name,
+    stops: []
+  };
+
+  tripActiveName.textContent = name;
+  renderTripStops();
+  showTripPlannerSection(tripPlannerActive);
+});
+
+// Saved trips placeholder (Stage 4)
+document.getElementById("trip-saved-button").addEventListener("click", function() {
+  showTripPlannerSection(tripPlannerSaved);
+});
+
+// Back buttons
+document.querySelectorAll(".trip-back-button").forEach(function(button) {
+  button.addEventListener("click", function() {
+    showTripPlannerSection(tripPlannerHome);
+  });
+});
+
+// Create a stable key for each place
+function tripPlaceKey(place) {
+  if (place.id !== undefined && place.id !== null) {
+    return String(place.id);
+  }
+
+  return JSON.stringify([place.name, place.coordinates]);
+}
+
+// Called when an existing map marker is clicked
+window.tripPlannerAddPlace = function(place) {
+  // Only add places while an active trip is being edited
+  if (
+    !currentTrip ||
+    tripPlannerPanel.hidden ||
+    tripPlannerScreen !== "active"
+  ) {
+    return;
+  }
+
+  const key = tripPlaceKey(place);
+
+  // Prevent duplicate stops
+  if (currentTrip.stops.some(stop => stop.key === key)) {
+    return;
+  }
+
+  currentTrip.stops.push({
+    key: key,
+    name: place.name,
+    coordinates: [...place.coordinates]
+  });
+
+  renderTripStops();
+};
+
+// Remove a stop
+function removeTripStop(index) {
+  if (!currentTrip) return;
+
+  currentTrip.stops.splice(index, 1);
+  renderTripStops();
+}
+
+// Move a stop up or down
+function moveTripStop(index, direction) {
+  if (!currentTrip) return;
+
+  const newIndex = index + direction;
+
+  if (newIndex < 0 || newIndex >= currentTrip.stops.length) {
+    return;
+  }
+
+  const stops = currentTrip.stops;
+
+  [stops[index], stops[newIndex]] =
+    [stops[newIndex], stops[index]];
+
+  renderTripStops();
+}
+
+// Remove existing numbered markers
+function clearTripNumberedMarkers() {
+  tripNumberedMarkers.forEach(marker => marker.remove());
+  tripNumberedMarkers = [];
+}
+
+// Draw numbered markers on the map
+function updateTripNumberedMarkers() {
+  clearTripNumberedMarkers();
+
+  if (!currentTrip) return;
+
+  currentTrip.stops.forEach(function(stop, index) {
+    const element = document.createElement("div");
+
+    element.className = "trip-numbered-marker";
+    element.textContent = index + 1;
+    element.title = stop.name;
+
+    const marker = new maplibregl.Marker({
+      element: element,
+      anchor: "center"
+    })
+      .setLngLat(stop.coordinates)
+      .addTo(map);
+
+    tripNumberedMarkers.push(marker);
+  });
+}
+
+// Display the itinerary
+function renderTripStops() {
+  tripStopsList.replaceChildren();
+
+  if (!currentTrip) {
+  tripEmptyMessage.hidden = false;
+  tripClearButton.hidden = true;
+  clearTripNumberedMarkers();
+  updateTripDrivingRoute();
+  return;
+}
+
+  const stops = currentTrip.stops;
+
+  tripEmptyMessage.hidden = stops.length > 0;
+  tripClearButton.hidden = stops.length === 0;
+
+  stops.forEach(function(stop, index) {
+    const row = document.createElement("div");
+    row.className = "trip-stop";
+
+    const number = document.createElement("span");
+    number.className = "trip-stop-number";
+    number.textContent = index + 1;
+
+    const name = document.createElement("span");
+    name.className = "trip-stop-name";
+    name.textContent = stop.name;
+
+    const actions = document.createElement("div");
+    actions.className = "trip-stop-actions";
+
+    const upButton = document.createElement("button");
+    upButton.type = "button";
+    upButton.textContent = "↑";
+    upButton.title = "Move stop up";
+    upButton.setAttribute("aria-label", "Move " + stop.name + " up");
+    upButton.disabled = index === 0;
+    upButton.addEventListener("click", function() {
+      moveTripStop(index, -1);
+    });
+
+    const downButton = document.createElement("button");
+    downButton.type = "button";
+    downButton.textContent = "↓";
+    downButton.title = "Move stop down";
+    downButton.setAttribute("aria-label", "Move " + stop.name + " down");
+    downButton.disabled = index === stops.length - 1;
+    downButton.addEventListener("click", function() {
+      moveTripStop(index, 1);
+    });
+
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.textContent = "×";
+    removeButton.title = "Remove stop";
+    removeButton.setAttribute("aria-label", "Remove " + stop.name);
+    removeButton.addEventListener("click", function() {
+      removeTripStop(index);
+    });
+
+    actions.append(upButton, downButton, removeButton);
+    row.append(number, name, actions);
+    tripStopsList.appendChild(row);
+  });
+
+  updateTripNumberedMarkers();
+  updateTripDrivingRoute();
+}
+
+// Clear all stops
+tripClearButton.addEventListener("click", function() {
+  if (!currentTrip || !currentTrip.stops.length) return;
+
+  if (!confirm("Remove all stops from this trip?")) return;
+
+  currentTrip.stops = [];
+  renderTripStops();
+});
+
+// Refresh Lucide icons
+if (window.lucide) {
+  lucide.createIcons();
+}
+
+
+/* ==========================================
+   TRIP PLANNER — STAGE 3
+   MAPTILER DRIVING ROUTES
+   ========================================== */
+
+// IMPORTANT: Replace the placeholder with your MapTiler API key.
+const tripRoutingApiKey = "uoXI4BPW3yTAen7xNVDd";
+
+const tripRouteSummary = document.getElementById("trip-route-summary");
+const tripRouteDistance = document.getElementById("trip-route-distance");
+const tripRouteDuration = document.getElementById("trip-route-duration");
+const tripRouteStatus = document.getElementById("trip-route-status");
+const tripRouteFitButton = document.getElementById("trip-route-fit");
+
+const TRIP_ROUTE_SOURCE = "trip-driving-route";
+const TRIP_ROUTE_LAYER = "trip-driving-route-line";
+
+let tripRouteCoordinates = [];
+let tripRouteRequestVersion = 0;
+let tripRouteAbortController = null;
+
+
+// ==========================================
+// 1. DECODE MAPTILER'S ENCODED POLYLINE
+// ==========================================
+
+function decodeTripPolyline(encoded, precision = 6) {
+  const coordinates = [];
+  const factor = Math.pow(10, precision);
+
+  let index = 0;
+  let latitude = 0;
+  let longitude = 0;
+
+  function readValue() {
+    let result = 0;
+    let shift = 0;
+    let byte;
+
+    do {
+      if (index >= encoded.length) {
+        throw new Error("Incomplete route geometry.");
+      }
+
+      byte = encoded.charCodeAt(index++) - 63;
+
+      result += (byte & 0x1f) * Math.pow(2, shift);
+      shift += 5;
+
+    } while (byte >= 0x20);
+
+    return result % 2
+      ? -(Math.floor(result / 2) + 1)
+      : Math.floor(result / 2);
+  }
+
+  while (index < encoded.length) {
+    latitude += readValue();
+    longitude += readValue();
+
+    coordinates.push([
+      longitude / factor,
+      latitude / factor
+    ]);
+  }
+
+  return coordinates;
+}
+
+
+// ==========================================
+// 2. FORMAT DRIVING TIME
+// ==========================================
+
+function formatTripDrivingTime(seconds) {
+  const minutes = Math.round(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const remaining = minutes % 60;
+
+  if (hours === 0) {
+    return `${minutes} min`;
+  }
+
+  if (remaining === 0) {
+    return `${hours} hr`;
+  }
+
+  return `${hours} hr ${remaining} min`;
+}
+
+
+// ==========================================
+// 3. CREATE GEOJSON FOR MAPLIBRE
+// ==========================================
+
+function tripRouteGeoJSON(coordinates) {
+  return {
+    type: "FeatureCollection",
+    features: coordinates.length >= 2 ? [
+      {
+        type: "Feature",
+        properties: {},
+        geometry: {
+          type: "LineString",
+          coordinates: coordinates
+        }
+      }
+    ] : []
+  };
+}
+
+
+// ==========================================
+// 4. DRAW THE ROUTE ON THE MAP
+// ==========================================
+
+function drawTripRoute() {
+  if (!map.isStyleLoaded()) return;
+
+  const routeData = tripRouteGeoJSON(tripRouteCoordinates);
+  const existingSource = map.getSource(TRIP_ROUTE_SOURCE);
+
+  if (existingSource) {
+    existingSource.setData(routeData);
+  } else {
+    map.addSource(TRIP_ROUTE_SOURCE, {
+      type: "geojson",
+      data: routeData
+    });
+  }
+
+  if (!map.getLayer(TRIP_ROUTE_LAYER)) {
+    map.addLayer({
+      id: TRIP_ROUTE_LAYER,
+      type: "line",
+      source: TRIP_ROUTE_SOURCE,
+
+      layout: {
+        "line-join": "round",
+        "line-cap": "round"
+      },
+
+      paint: {
+        "line-color": "#A4E83B",
+        "line-width": 5,
+        "line-opacity": 0.95
+      }
+    });
+  }
+}
+
+// Recreate route layer if the map style reloads.
+map.on("style.load", drawTripRoute);
+
+
+// ==========================================
+// 5. FIT THE ENTIRE ROUTE ON SCREEN
+// ==========================================
+
+function fitEntireTripRoute() {
+  if (tripRouteCoordinates.length < 2) return;
+
+  const bounds = new maplibregl.LngLatBounds();
+
+  tripRouteCoordinates.forEach(function(coordinate) {
+    bounds.extend(coordinate);
+  });
+
+  map.fitBounds(bounds, {
+    padding: 65,
+    maxZoom: 14,
+    duration: 800
+  });
+}
+
+tripRouteFitButton.addEventListener(
+  "click",
+  fitEntireTripRoute
+);
+
+
+// ==========================================
+// 6. CALCULATE THE DRIVING ROUTE
+// ==========================================
+
+async function updateTripDrivingRoute() {
+  const requestVersion = ++tripRouteRequestVersion;
+
+  // Cancel any previous route request.
+  if (tripRouteAbortController) {
+    tripRouteAbortController.abort();
+    tripRouteAbortController = null;
+  }
+
+  // Clear the previous route.
+  tripRouteCoordinates = [];
+  drawTripRoute();
+
+  tripRouteDistance.textContent = "—";
+  tripRouteDuration.textContent = "—";
+  tripRouteFitButton.disabled = true;
+
+  const stops = currentTrip ? currentTrip.stops : [];
+
+  // No route is needed for fewer than two stops.
+  if (stops.length < 2) {
+    tripRouteSummary.hidden = stops.length === 0;
+
+    if (stops.length === 1) {
+      tripRouteStatus.textContent =
+        "Add one more stop to calculate a driving route.";
+    }
+
+    return;
+  }
+
+  tripRouteSummary.hidden = false;
+  tripRouteStatus.textContent =
+    "Calculating driving route...";
+
+  if (
+    !tripRoutingApiKey ||
+    tripRoutingApiKey === "YOUR_MAPTILER_API_KEY"
+  ) {
+    tripRouteStatus.textContent =
+      "Please configure your MapTiler API key.";
+    return;
+  }
+
+  const controller = new AbortController();
+  tripRouteAbortController = controller;
+
+  try {
+    // Build the MapTiler Routing API request.
+    const url = new URL(
+      "https://api.maptiler.com/routing/v1/directions"
+    );
+
+    stops.forEach(function(stop) {
+      const longitude = stop.coordinates[0];
+      const latitude = stop.coordinates[1];
+
+      url.searchParams.append(
+        "location",
+        `${longitude},${latitude}`
+      );
+    });
+
+    url.searchParams.set("profile", "car");
+    url.searchParams.set("response.units", "mi");
+    url.searchParams.set("car.mode", "fastest");
+    url.searchParams.set("key", tripRoutingApiKey);
+
+    const response = await fetch(url.toString(), {
+      signal: controller.signal
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Routing request failed: HTTP ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+
+    // Ignore outdated requests.
+    if (requestVersion !== tripRouteRequestVersion) {
+      return;
+    }
+
+    const route = data.route;
+
+    if (
+      !route ||
+      !route.summary ||
+      !Array.isArray(route.legs) ||
+      route.legs.length === 0
+    ) {
+      throw new Error("No valid driving route returned.");
+    }
+
+    // Decode each route leg into MapLibre coordinates.
+    const coordinates = [];
+
+    route.legs.forEach(function(leg) {
+      let legCoordinates = [];
+
+      if (typeof leg.geometry === "string") {
+        legCoordinates = decodeTripPolyline(leg.geometry);
+
+      } else if (Array.isArray(leg.geometry)) {
+        legCoordinates = leg.geometry;
+      }
+
+      legCoordinates.forEach(function(point) {
+        if (
+          Array.isArray(point) &&
+          point.length >= 2 &&
+          Number.isFinite(point[0]) &&
+          Number.isFinite(point[1])
+        ) {
+          coordinates.push([point[0], point[1]]);
+        }
+      });
+    });
+
+    if (coordinates.length < 2) {
+      throw new Error("No valid route geometry returned.");
+    }
+
+    // MapTiler returns miles when response.units=mi.
+    const miles = Number(route.summary.totalLength);
+
+    // Driving time is returned in seconds.
+    const seconds = Number(route.summary.totalTime);
+
+    if (
+      !Number.isFinite(miles) ||
+      !Number.isFinite(seconds)
+    ) {
+      throw new Error("Invalid distance or driving time.");
+    }
+
+    // Update the displayed route and statistics.
+    tripRouteCoordinates = coordinates;
+
+    tripRouteDistance.textContent =
+      `${miles.toFixed(1)} mi`;
+
+    tripRouteDuration.textContent =
+      formatTripDrivingTime(seconds);
+
+    tripRouteStatus.textContent =
+      "Estimated driving time, excluding stops and live traffic.";
+
+    tripRouteFitButton.disabled = false;
+
+    drawTripRoute();
+
+  } catch (error) {
+    if (
+      error.name === "AbortError" ||
+      requestVersion !== tripRouteRequestVersion
+    ) {
+      return;
+    }
+
+    console.error("Trip routing error:", error);
+
+    tripRouteStatus.textContent =
+      "Unable to calculate this route. Check the browser console for details.";
+
+  } finally {
+    if (tripRouteAbortController === controller) {
+      tripRouteAbortController = null;
+    }
+  }
+}
+
+
+// ==========================================
+// 7. RENDER THE ROUTE SUMMARY ICONS
+// ==========================================
+
+if (window.lucide) {
+  lucide.createIcons();
+}
+
+
+/* ========================================
+   TRIP PLANNER — STAGE 4
+   SAVE AND REOPEN TRIPS
+   ======================================== */
+
+const TRIP_STORAGE_KEY = "outdoor-map-saved-trips-v1";
+
+const tripSaveButton = document.getElementById("trip-save-button");
+const tripSaveStatus = document.getElementById("trip-save-status");
+const tripSavedList = document.getElementById("trip-saved-list");
+
+// Read saved trips from this browser.
+function loadSavedTrips() {
+  try {
+    const stored = localStorage.getItem(TRIP_STORAGE_KEY);
+
+    if (!stored) return [];
+
+    const trips = JSON.parse(stored);
+
+    return Array.isArray(trips) ? trips : [];
+
+  } catch (error) {
+    console.error("Unable to read saved trips:", error);
+    return [];
+  }
+}
+
+// Write trips to this browser.
+function writeSavedTrips(trips) {
+  try {
+    localStorage.setItem(
+      TRIP_STORAGE_KEY,
+      JSON.stringify(trips)
+    );
+
+    return true;
+
+  } catch (error) {
+    console.error("Unable to save trips:", error);
+    alert("Unable to save trips in this browser.");
+    return false;
+  }
+}
+
+// Give each saved trip a unique identifier.
+function createTripId() {
+  if (window.crypto && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+
+  return Date.now().toString() + "-" +
+    Math.random().toString(36).slice(2);
+}
+
+// Save the current itinerary.
+function saveCurrentTrip() {
+  if (!currentTrip) {
+    alert("Create a trip first.");
+    return;
+  }
+
+  if (currentTrip.stops.length === 0) {
+    alert("Add at least one place before saving.");
+    return;
+  }
+
+  const savedTrips = loadSavedTrips();
+
+  // A new trip receives an ID.
+  // An existing saved trip keeps its ID.
+  if (!currentTrip.savedId) {
+    currentTrip.savedId = createTripId();
+  }
+
+  const tripToSave = {
+    id: currentTrip.savedId,
+    name: currentTrip.name,
+    stops: currentTrip.stops.map(function(stop) {
+      return {
+        key: stop.key,
+        name: stop.name,
+        coordinates: [...stop.coordinates]
+      };
+    }),
+    updatedAt: new Date().toISOString()
+  };
+
+  const existingIndex = savedTrips.findIndex(
+    trip => trip.id === tripToSave.id
+  );
+
+  if (existingIndex >= 0) {
+    savedTrips[existingIndex] = tripToSave;
+  } else {
+    savedTrips.push(tripToSave);
+  }
+
+  if (!writeSavedTrips(savedTrips)) return;
+
+  tripSaveStatus.textContent = "Trip saved successfully!";
+  tripSaveStatus.hidden = false;
+
+  renderSavedTrips();
+}
+
+tripSaveButton.addEventListener("click", saveCurrentTrip);
+
+// Show saved trips in the panel.
+function renderSavedTrips() {
+  const savedTrips = loadSavedTrips();
+
+  tripSavedList.replaceChildren();
+
+  if (savedTrips.length === 0) {
+    const message = document.createElement("p");
+    message.textContent = "No saved trips yet.";
+    tripSavedList.appendChild(message);
+    return;
+  }
+
+  // Most recently saved trips first.
+  savedTrips.sort(function(a, b) {
+    return new Date(b.updatedAt) - new Date(a.updatedAt);
+  });
+
+  savedTrips.forEach(function(trip) {
+    const item = document.createElement("div");
+    item.className = "trip-saved-item";
+
+    const name = document.createElement("div");
+    name.className = "trip-saved-name";
+    name.textContent = trip.name;
+
+    const details = document.createElement("div");
+    details.className = "trip-saved-details";
+
+    const count = Array.isArray(trip.stops)
+      ? trip.stops.length
+      : 0;
+
+    details.textContent =
+      count + (count === 1 ? " stop" : " stops");
+
+    const actions = document.createElement("div");
+    actions.className = "trip-saved-actions";
+
+    // Open button
+    const openButton = document.createElement("button");
+    openButton.type = "button";
+    openButton.className = "trip-saved-open";
+    openButton.textContent = "Open Trip";
+
+    openButton.addEventListener("click", function() {
+      openSavedTrip(trip.id);
+    });
+
+    // Delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.className = "trip-saved-delete";
+    deleteButton.textContent = "Delete";
+
+    deleteButton.addEventListener("click", function() {
+      deleteSavedTrip(trip.id);
+    });
+
+    actions.append(openButton, deleteButton);
+    item.append(name, details, actions);
+
+    tripSavedList.appendChild(item);
+  });
+}
+
+// Open a saved itinerary.
+function openSavedTrip(tripId) {
+  const savedTrips = loadSavedTrips();
+
+  const trip = savedTrips.find(
+    item => item.id === tripId
+  );
+
+  if (!trip) {
+    alert("This saved trip could not be found.");
+    return;
+  }
+
+  if (
+    !Array.isArray(trip.stops) ||
+    !trip.stops.every(stop =>
+      Array.isArray(stop.coordinates) &&
+      stop.coordinates.length >= 2 &&
+      stop.coordinates.slice(0, 2).every(Number.isFinite)
+    )
+  ) {
+    alert("This trip contains invalid stop coordinates.");
+    return;
+  }
+
+  // Protect an unsaved itinerary from being replaced.
+  if (currentTrip) {
+    const currentSavedVersion = loadSavedTrips().find(
+      item => item.id === currentTrip.savedId
+    );
+
+    const currentStops = currentTrip.stops.map(stop => ({
+      key: stop.key,
+      name: stop.name,
+      coordinates: stop.coordinates
+    }));
+
+    const hasUnsavedChanges =
+      !currentSavedVersion ||
+      currentTrip.name !== currentSavedVersion.name ||
+      JSON.stringify(currentStops) !==
+        JSON.stringify(currentSavedVersion.stops);
+
+    if (hasUnsavedChanges) {
+      const confirmed = confirm(
+        "Your current trip has unsaved changes. " +
+        "Open another trip and discard those changes?"
+      );
+
+      if (!confirmed) return;
+    }
+  }
+
+  // Create a fresh editable copy.
+  currentTrip = {
+    savedId: trip.id,
+    name: trip.name,
+    stops: trip.stops.map(function(stop) {
+      return {
+        key: stop.key,
+        name: stop.name,
+        coordinates: [...stop.coordinates]
+      };
+    })
+  };
+
+  tripActiveName.textContent = currentTrip.name;
+
+  tripSaveStatus.hidden = true;
+
+  showTripPlannerSection(tripPlannerActive);
+
+  // Rebuild the list, numbered markers and driving route.
+  renderTripStops();
+}
+
+// Delete a saved itinerary.
+function deleteSavedTrip(tripId) {
+  const savedTrips = loadSavedTrips();
+
+  const trip = savedTrips.find(
+    item => item.id === tripId
+  );
+
+  if (!trip) return;
+
+  const confirmed = confirm(
+    'Delete the saved trip "' + trip.name + '"?'
+  );
+
+  if (!confirmed) return;
+
+  const remainingTrips = savedTrips.filter(
+    item => item.id !== tripId
+  );
+
+  if (!writeSavedTrips(remainingTrips)) return;
+
+  // The active trip remains open, but is no longer
+  // associated with the deleted saved copy.
+  if (currentTrip && currentTrip.savedId === tripId) {
+    delete currentTrip.savedId;
+    tripSaveStatus.hidden = true;
+  }
+
+  renderSavedTrips();
+}
+
+// Refresh the list whenever Saved Trips is opened.
+document.getElementById("trip-saved-button")
+  .addEventListener("click", renderSavedTrips);
+
+// Hide the success message when creating a new trip.
+document.getElementById("trip-new-button")
+  .addEventListener("click", function() {
+    tripSaveStatus.hidden = true;
+  });
+
+// Initial saved trips display.
+renderSavedTrips();
+
+// Render any new Lucide icons.
+if (window.lucide) {
+  lucide.createIcons();
+}
+
+
   </script>
 
 <!-- Full-screen PDF trail map viewer -->
@@ -4107,6 +5548,155 @@ document.addEventListener("keydown", function(event) {
 
   window.pdfjsLib = pdfjsLib;
 </script>
+
+<!-- ======================================
+     TRIP PLANNER
+     ====================================== -->
+
+<!-- Open trip planner button -->
+<button id="trip-planner-button" type="button">
+  <i data-lucide="route"></i>
+  <span>Plan a Trip</span>
+</button>
+
+<!-- Trip planner panel -->
+<div id="trip-planner-panel" class="trip-planner-panel" hidden>
+
+  <div class="trip-planner-header">
+    <div class="trip-planner-heading">
+      <i data-lucide="route"></i>
+      <h2>Plan a Trip</h2>
+    </div>
+
+    <button id="trip-planner-close" type="button" aria-label="Close trip planner">
+      <i data-lucide="x"></i>
+    </button>
+  </div>
+
+  <!-- Home screen -->
+  <div id="trip-planner-home" class="trip-planner-section">
+
+    <p>Create a new adventure or revisit a saved trip.</p>
+
+    <button id="trip-new-button" class="trip-primary-button" type="button">
+      <i data-lucide="plus"></i>
+      New Trip
+    </button>
+
+    <button id="trip-saved-button" class="trip-secondary-button" type="button">
+      <i data-lucide="bookmark"></i>
+      Saved Trips
+    </button>
+
+  </div>
+
+  <!-- New trip screen -->
+  <div id="trip-planner-new" class="trip-planner-section" hidden>
+
+    <label for="trip-name-input">Trip name</label>
+
+    <input
+      id="trip-name-input"
+      type="text"
+      placeholder="e.g. Finger Lakes Weekend"
+      maxlength="80"
+    >
+
+    <button id="trip-create-button" class="trip-primary-button" type="button">
+      <i data-lucide="check"></i>
+      Create Trip
+    </button>
+
+    <button class="trip-back-button" type="button">
+      Back
+    </button>
+
+  </div>
+
+  <!-- Trip created screen -->
+  <div id="trip-planner-active" class="trip-planner-section" hidden>
+
+  <h3 id="trip-active-name"></h3>
+
+  <p id="trip-instructions">
+    Click any place marker on the map to add it to your trip.
+  </p>
+
+  <div id="trip-stops-list"></div>
+
+  <!-- ======================================
+     DRIVING ROUTE SUMMARY
+     ====================================== -->
+
+<div id="trip-route-summary" class="trip-route-summary" hidden>
+
+  <div class="trip-route-heading">
+    <i data-lucide="car-front"></i>
+    <span>Driving Route</span>
+  </div>
+
+  <div class="trip-route-stats">
+
+    <div>
+      <span class="trip-route-label">Distance</span>
+      <strong id="trip-route-distance">—</strong>
+    </div>
+
+    <div>
+      <span class="trip-route-label">Driving time</span>
+      <strong id="trip-route-duration">—</strong>
+    </div>
+
+  </div>
+
+  <p id="trip-route-status" role="status">
+    Add at least two stops to calculate a route.
+  </p>
+
+  <button id="trip-route-fit" type="button" disabled>
+    <i data-lucide="maximize"></i>
+    View Entire Route
+  </button>
+
+</div>
+
+  <p id="trip-empty-message">
+    No stops added yet. Select a place on the map to begin.
+  </p>
+
+  <!-- Save current trip -->
+<button id="trip-save-button" class="trip-primary-button" type="button">
+  <i data-lucide="save"></i>
+  Save Trip
+</button>
+
+<p id="trip-save-status" role="status" hidden></p>
+  
+  <button id="trip-clear-button" class="trip-secondary-button" type="button">
+    <i data-lucide="trash-2"></i>
+    Clear Stops
+  </button>
+
+  <button class="trip-back-button" type="button">
+    Back
+  </button>
+
+</div>
+
+  <!-- Saved trips screen -->
+  <div id="trip-planner-saved" class="trip-planner-section" hidden>
+
+    <h3>Saved Trips</h3>
+
+    <div id="trip-saved-list"></div>
+
+    <button class="trip-back-button" type="button">
+      Back
+    </button>
+
+  </div>
+
+</div>
 
 </body>
 

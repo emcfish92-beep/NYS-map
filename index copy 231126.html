@@ -1,0 +1,5333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>New York Outdoor Map</title>
+
+  <link rel="manifest" href="./manifest.json">
+
+  <link rel="apple-touch-icon" href="./icon-192.png">
+
+  <meta name="theme-color" content="#2E8B57">
+
+  <!-- Load the MapLibre CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/maplibre-gl@6.1.0/dist/maplibre-gl.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@maptiler/geocoding-control@2.1.7/style.css"
+>
+
+  <style>
+    /*
+      Remove the normal white border around the webpage.
+    */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /*
+      Make the page and map fill the whole browser window.
+    */
+    html,
+    body,
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+      #legend {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  z-index: 10;
+
+  max-height: calc(100vh - 20px);
+  overflow-y: auto;  
+
+  background-color: rgb(106, 116, 198);
+  padding: 12px 16px;
+  border-radius: 8px;
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+
+  background: #f0f0bd;      /* Warm off-white */
+  border: 2px solid #2E8B57; /* Forest green */
+  color: #333333;
+  border-radius: 12px; 
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+#legend h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border-radius: 50%;
+  border: 1px solid #555;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.legend-color svg {
+  width: 12px;
+  height: 12px;
+
+  stroke: white;
+  stroke-width: 2.5;
+
+  pointer-events: none;
+}
+
+.Campsite-color {
+  background-color: #2e8b57;
+}
+
+.Swimming_Spot-color {
+  background-color: #2878b5;
+}
+
+.Kayak_Launch-color {
+  background-color: #e08b24;
+}
+
+.Hiking_Spot-color {
+  background-color: #8C5A3C;
+}
+
+.Downhill_Skiing-color {
+  background-color: #7c55a5;
+}
+
+.Erie_County_Park-color {
+  background-color: #00afc1;
+}
+
+.State_Park-color {
+  background-color: #d64545;
+}
+
+.Cross_Country_Skiing-color {
+  background-color: #ceb361;
+}
+
+.Waterfall-color {
+  background-color: #efe521;
+}
+
+.Snow_Shoe-color {
+  background-color: #0baa2d;
+}
+
+.Adventure_Activity-color {
+  background-color: #6B7280;
+}
+
+.Monroe_County_Park-color {
+  background-color: #D946A8;
+}
+
+.National_Park-color {
+  background-color: #a76ad0;
+}
+
+.National_Forest-color {
+  background-color: #629de6;
+}
+
+.Cave-color {
+  background-color: #220634;
+}
+
+.Natural_Monument-color {
+  background-color: #cb2a6d;
+}
+
+.Non_Outdoor_Cool_Thing-color {
+  background-color: #b7c16d;
+}
+
+.Lake-color {
+  background-color: #098b7c;
+}
+
+.City_Park-color {
+  background-color: #a61b4e;
+}
+
+.State_Forest-color {
+  background-color: #0ba471;
+}
+
+.Other_Park-color {
+  background-color: #17e12b;
+}
+
+.Dark_Sky_Spot-color {
+  background-color: #440269;
+}
+
+.Event-color {
+  background-color: #900322;
+}
+
+.Beach-color {
+  background-color: #d70b37;
+}
+
+.Niagara_County_Park-color {
+  background-color: #d15c02;
+}
+
+.Albany_County_Park-color {
+  background-color: #29b6c1;
+}
+
+.Allegany_County_Park-color {
+  background-color: #d74666;
+}
+
+.Bronx_County_Park-color {
+  background-color: #e8e538;
+}
+
+.Niagara_County_Park-color {
+  background-color: #e8a025;
+}
+
+.Alabama_State_Park-color {
+  background-color: #37b76c;
+}
+
+.Alaska_State_Park-color {
+  background-color: #b41052;
+}
+
+.Arizona_State_Park-color {
+  background-color: #0e653b;
+}
+
+.Arkansas_State_Park-color {
+  background-color: #215f5e;
+}
+
+.California_State_Park-color {
+  background-color: #0763ee;
+}
+
+.Colorado_State_Park-color {
+  background-color: #11a20f;
+}
+
+.Connecticut_State_Park-color {
+  background-color: #730c4a;
+}
+
+.Delaware_State_Park-color {
+  background-color: #636c5d;
+}
+
+.Florida_State_Park-color {
+  background-color: #21929b;
+}
+
+.Georgia_State_Park-color {
+  background-color: #5a66ad;
+}
+
+.Hawaii_State_Park-color {
+  background-color: #c57b13;
+}
+
+.Idaho_State_Park-color {
+  background-color: #824561;
+}
+
+.Illinois_State_Park-color {
+  background-color: #f2f608;
+}
+
+.Indiana_State_Park-color {
+  background-color: #7285d8;
+}
+
+.Kansas_State_Park-color {
+  background-color: #535256;
+}
+
+.Kentucky_State_Park-color {
+  background-color: #f19704;
+}
+
+.Louisiana_State_Park-color {
+  background-color: #05f641;
+}
+
+.Maine_State_Park-color {
+  background-color: #2a8293;
+}
+
+.Maryland_State_Park-color {
+  background-color: #b69fd8;
+}
+
+.Massachusetts_State_Park-color {
+  background-color: #2d544d;
+}
+
+.Michigan_State_Park-color {
+  background-color: #3b21a1;
+}
+
+.Minnesota_State_Park-color {
+  background-color: #723359;
+}
+
+.Mississippi_State_Park-color {
+  background-color: #ad2f2f;
+}
+
+.Missouri_State_Park-color {
+  background-color: #7a3b20;
+}
+
+.Montana_State_Park-color {
+  background-color: #4f5e14;
+}
+
+.Nebraska_State_Park-color {
+  background-color: #29655e;
+}
+
+.Nevada_State_Park-color {
+  background-color: #5e67eb;
+}
+
+.New_Hampshire_State_Park-color {
+  background-color: #e9d607;
+}
+
+.New_Jersey_State_Park-color {
+  background-color: #e569c0;
+}
+
+.New_Mexico_State_Park-color {
+  background-color: #03c0b3;
+}
+
+.New_York_State_Park-color {
+  background-color: #7f4379;
+}
+
+.North_Carolina_State_Park-color {
+  background-color: #559853;
+}
+
+.North_Dakota_State_Park-color {
+  background-color: #3c3349;
+}
+
+.Ohio_State_Park-color {
+  background-color: #517b6b;
+}
+
+.Oklahoma_State_Park-color {
+  background-color: #4f4f15;
+}
+
+.Oregon_State_Park-color {
+  background-color: #5c884b;
+}
+
+.Pennsylvania_State_Park-color {
+  background-color: #1b3702;
+}
+
+.Rhode_Island_State_Park-color {
+  background-color: #ee9e65;
+}
+
+.South_Carolina_State_Park-color {
+  background-color: #ed629f;
+}
+
+.South_Dakota_State_Park-color {
+  background-color: #059064;
+}
+
+.Tennessee_State_Park-color {
+  background-color: #920492;
+}
+
+.Texas_State_Park-color {
+  background-color: #7a9911;
+}
+
+.Utah_State_Park-color {
+  background-color: #b3890b;
+}
+
+.Vermont_State_Park-color {
+  background-color: #a33d07;
+}
+
+.Virginia_State_Park-color {
+  background-color: #22024e;
+}
+
+.Washington_State_Park-color {
+  background-color: #9b5d82;
+}
+
+.West_Virginia_State_Park-color {
+  background-color: #2a7a0f;
+}
+
+.Wisconsin_State_Park-color {
+  background-color: #e34916;
+}
+
+.Wyoming_State_Park-color {
+  background-color: #e71a1a;
+}
+
+.Broome_County_Park-color {
+  background-color: #14804a;
+}
+
+.Cattaraugus_County_Park-color {
+  background-color: #2253a8;
+}
+
+.Cayuga_County_Park-color {
+  background-color: #35b3bc;
+}
+
+.Chautauqua_County_Park-color {
+  background-color: #8f3a73;
+}
+
+.Chemung_County_Park-color {
+  background-color: #cbe87d;
+}
+
+.Chenango_County_Park-color {
+  background-color: #65b3e1;
+}
+
+.Clinton_County_Park-color {
+  background-color: #7a8b22;
+}
+
+.Columbia_County_Park-color {
+  background-color: #38a46e;
+}
+
+.Cortland_County_Park-color {
+  background-color: #552222;
+}
+
+.Delaware_County_Park-color {
+  background-color: #583ebe;
+}
+
+.Dutchess_County_Park-color {
+  background-color: #b48686;
+}
+
+.Essex_County_Park-color {
+  background-color: #8fcc34;
+}
+
+.Franklin_County_Park-color {
+  background-color: #e0a206;
+}
+
+.Fulton_County_Park-color {
+  background-color: #3f2a73;
+}
+
+.Genesee_County_Park-color {
+  background-color: #625959;
+}
+
+.Greene_County_Park-color {
+  background-color: #e04acc;
+}
+
+.Hamilton_County_Park-color {
+  background-color: #8bad5e;
+}
+
+.Herkimer_County_Park-color {
+  background-color: #27069e;
+}
+
+.Jefferson_County_Park-color {
+  background-color: #3d9494;
+}
+
+.Kings_County_Park-color {
+  background-color: #4b9561;
+}
+
+.Lewis_County_Park-color {
+  background-color: #f3a705;
+}
+
+.Livingston_County_Park-color {
+  background-color: #215fb0;
+}
+
+.Madison_County_Park-color {
+  background-color: #b69c9c;
+}
+
+.Montgomery_County_Park-color {
+  background-color: #067525;
+}
+
+.Nassau_County_Park-color {
+  background-color: #0bdfe3;
+}
+
+.New_York_County_Park-color {
+  background-color: #daba07;
+}
+
+.Oneida_County_Park-color {
+  background-color: #571936;
+}
+
+.Onondaga_County_Park-color {
+  background-color: #ec3030;
+}
+
+.Ontario_County_Park-color {
+  background-color: #ed8b49;
+}
+
+.Orange_County_Park-color {
+  background-color: #6866d7;
+}
+
+.Orleans_County_Park-color {
+  background-color: #333232;
+}
+
+.Oswego_County_Park-color {
+  background-color: #27966d;
+}
+
+.Otsego_County_Park-color {
+  background-color: #066ff0;
+}
+
+.Putnam_County_Park-color {
+  background-color: #585407;
+}
+
+.Queens_County_Park-color {
+  background-color: #64d176;
+}
+
+.Rensselaer_County_Park-color {
+  background-color: #45c554;
+}
+
+.Richmond_County_Park-color {
+  background-color: #8e6262;
+}
+
+.Rockland_County_Park-color {
+  background-color: #1c604b;
+}
+
+.St_Lawrence_County_Park-color {
+  background-color: #458958;
+}
+
+.Saratoga_County_Park-color {
+  background-color: #8bd10a;
+}
+
+.Schenectady_County_Park-color {
+  background-color: #287177;
+}
+
+.Schoharie_County_Park-color {
+  background-color: #3f36a9;
+}
+
+.Schuyler_County_Park-color {
+  background-color: #88dd42;
+}
+
+
+.Seneca_County_Park-color {
+  background-color: #ae3088;
+}
+
+.Steuben_County_Park-color {
+  background-color: #ab26b2;
+}
+
+.Suffolk_County_Park-color {
+  background-color: #20cbb1;
+}
+
+.Sullivan_County_Park-color {
+  background-color: #3d58e2;
+}
+
+.Tioga_County_Park-color {
+  background-color: #641515;
+}
+
+.Tompkins_County_Park-color {
+  background-color: #658cb3;
+}
+
+.Ulster_County_Park-color {
+  background-color: #b4b047;
+}
+
+.Warren_County_Park-color {
+  background-color: #66d12c;
+}
+
+.Washington_County_Park-color {
+  background-color: #4db9f3;
+}
+
+.Wayne_County_Park-color {
+  background-color: #dcc149;
+}
+
+.Westchester_County_Park-color {
+  background-color: #7f966e;
+}
+
+.Wyoming_County_Park-color {
+  background-color: #4d3a3a;
+}
+
+.Yates_County_Park-color {
+  background-color: #d6fa06;
+}
+
+
+
+/* CUSTOM MAP MARKERS */
+
+.custom-marker {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #333333;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.custom-marker svg {
+  width: 14px;
+  height: 14px;
+
+  stroke: white;
+
+  stroke-width: 2.5;
+
+  pointer-events: none;
+}
+
+.custom-marker.visited-marker svg {
+  stroke: #1a1a1a;
+  stroke-width: 3;
+}
+
+/* Visited symbol shown in the map key */
+
+.visited-example {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+
+    border-radius: 50%;
+    border: 1px solid #555;
+    background-color: white;
+
+    position: relative;
+    flex-shrink: 0;
+}
+
+.visited-example::after {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    background-color: black;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+.legend-divider {
+    border-top: 1px solid #AAAAAA;
+    margin: 10px 0;
+}
+
+.popup-gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 8px;
+
+  width: 100%;
+  margin-bottom: 10px;
+
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.popup-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.popup-photo {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 180px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  scroll-snap-align: start;
+}
+
+.popup-content {
+  padding: 2px 4px;
+}
+
+.popup-content h3 {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+/* Visited legend example */
+
+#legend .visited-demo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+#legend .visited-demo-circle {
+  width: 20px;
+  height: 20px;
+
+  background-color: #2878b5;
+
+  border-radius: 50%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid #555;
+  box-sizing: border-box;
+}
+
+#legend .visited-demo-circle svg {
+  width: 13px;
+  height: 13px;
+
+  fill: none;
+  stroke-width: 2.7;
+
+  pointer-events: none;
+}
+
+#legend .visited-star-white {
+  stroke: white;
+}
+
+#legend .visited-star-black {
+  stroke: black;
+}
+
+#legend .visited-demo-arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+#legend .visited-demo-label {
+  margin-left: 2px;
+}
+
+/* ==================================================
+   COUNTY PARKS EXPANDABLE LEGEND
+================================================== */
+
+#legend .county-parks-group {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+
+/* Main County Parks row */
+
+#legend .county-parks-toggle {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  border: none;
+  background: transparent;
+
+  color: inherit;
+
+  padding: 3px 0;
+
+  font-family: inherit;
+  font-size: 12px;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+
+/* Generic County Parks icon */
+
+#legend .county-parks-main-icon {
+  width: 19px;
+  height: 19px;
+
+  border-radius: 50%;
+
+  background-color: #5f7f68;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  margin-right: 8px;
+}
+
+#legend .county-parks-main-icon svg {
+  width: 12px;
+  height: 12px;
+
+  stroke: white;
+  stroke-width: 2.5;
+}
+
+
+/* County Parks text */
+
+#legend .county-parks-title {
+  flex: 1;
+}
+
+
+/* Small arrow on right */
+
+#legend #county-parks-chevron {
+  font-size: 22px;
+
+  line-height: 1;
+
+  margin-left: 6px;
+
+  transition: transform 0.25s ease;
+}
+
+
+/* Rotate arrow when open */
+
+#legend .county-parks-group.open #county-parks-chevron {
+  transform: rotate(90deg);
+}
+
+
+/* Hidden sub-legend */
+
+#legend #county-parks-sublegend {
+  display: none;
+
+  overscroll-behavior: contain;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  column-gap: 18px;
+  row-gap: 10px;
+
+  padding:
+    12px
+    12px
+    14px
+    27px;
+
+  box-sizing: border-box;
+
+  max-height: 420px;
+  overflow-y: auto;
+
+  margin-top: 6px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  scrollbar-width: thin;
+}
+
+
+/* Show it when County Parks is opened */
+
+#legend .county-parks-group.open #county-parks-sublegend {
+  display: grid;
+}
+
+
+/* Slightly smaller text inside sub-legend */
+
+#legend #county-parks-sublegend .legend-item {
+  font-size: 11px;
+}
+
+/* ==================================================
+   STATE PARKS EXPANDABLE LEGEND
+================================================== */
+
+#legend .state-parks-group {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+
+/* Main State Parks row */
+
+#legend .state-parks-toggle {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  border: none;
+  background: transparent;
+
+  color: inherit;
+
+  padding: 3px 0;
+
+  font-family: inherit;
+  font-size: 12px;
+
+  cursor: pointer;
+  text-align: left;
+}
+
+
+/* Generic parent icon */
+
+#legend .state-parks-main-icon {
+  width: 19px;
+  height: 19px;
+
+  border-radius: 50%;
+
+  background-color: #6b7f5e;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  margin-right: 8px;
+}
+
+#legend .state-parks-main-icon svg {
+  width: 12px;
+  height: 12px;
+
+  stroke: white;
+  stroke-width: 2.5;
+
+  pointer-events: none;
+}
+
+
+/* Title */
+
+#legend .state-parks-title {
+  flex: 1;
+}
+
+
+/* Arrow */
+
+#legend #state-parks-chevron {
+  font-size: 22px;
+  line-height: 1;
+
+  margin-left: 6px;
+
+  transition: transform 0.25s ease;
+}
+
+
+/* Rotate arrow when open */
+
+#legend .state-parks-group.open #state-parks-chevron {
+  transform: rotate(90deg);
+}
+
+
+/* Expanded list of states */
+
+#legend #state-parks-sublegend {
+  display: none;
+
+  overscroll-behavior: contain;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  column-gap: 18px;
+  row-gap: 10px;
+
+  padding:
+    12px
+    12px
+    14px
+    27px;
+
+  box-sizing: border-box;
+
+  max-height: 420px;
+  overflow-y: auto;
+
+  margin-top: 6px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  scrollbar-width: thin;
+}
+
+
+/* Show list when open */
+
+#legend .state-parks-group.open #state-parks-sublegend {
+  display: grid;
+}
+
+
+/* Slightly smaller sub-legend text */
+
+#legend #state-parks-sublegend .legend-item {
+  font-size: 10px;
+}
+
+@media (max-width: 600px) {
+
+  /* Larger scrollable County Parks and State Parks sub-legends */
+  #legend #county-parks-sublegend,
+  #legend #state-parks-sublegend {
+    max-height: 45vh;
+  }
+
+
+  /* =========================
+     SLIDING MOBILE LEGEND
+     ========================= */
+
+  #legend {
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background-color: #1C1C1E;
+    color: white;
+
+    border: none;
+    border-radius: 22px 22px 0 0;
+
+    padding: 0;
+
+    z-index: 1000;
+    
+    max-height: 72vh;
+
+    overflow: hidden;
+
+    /* Keep only the top 64px visible when closed */
+    transform: translateY(calc(100% - 64px));
+
+    transition: transform 0.3s ease;
+  }
+
+
+  /* This class is added by JavaScript when open */
+  #legend.open {
+    transform: translateY(0);
+  }
+
+
+  /* =========================
+     DRAG / TITLE AREA
+     ========================= */
+
+  #legend-handle {
+    height: 64px;
+
+    box-sizing: border-box;
+
+    padding: 7px 18px 10px 18px;
+
+    cursor: grab;
+
+    user-select: none;
+    touch-action: none;
+  }
+
+
+  .drag-handle {
+    width: 42px;
+    height: 5px;
+
+    background-color: #8A8A8A;
+
+    border-radius: 10px;
+
+    margin: 0 auto 7px auto;
+  }
+
+
+  .legend-title-row {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 34px;
+  }
+
+
+  #legend .legend-title-row h3 {
+    margin: 0;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+  }
+
+
+  #legend-chevron {
+    position: absolute;
+
+    right: 5px;
+
+    color: white;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    transition: transform 0.3s ease;
+  }
+
+
+  #legend.open #legend-chevron {
+    transform: rotate(180deg);
+  }
+
+
+  /* =========================
+     LEGEND CONTENT
+     ========================= */
+
+  #legend .legend-items {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    column-gap: 16px;
+    row-gap: 10px;
+
+    padding: 10px 18px 40px 18px;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+
+    max-height: calc(72vh - 64px);
+
+    padding-bottom: 34px;
+    
+    min-height: 0;
+  }
+
+  #legend .visited-demo {
+    flex-shrink: 0;
+    margin-bottom: 8px;
+  }
+
+
+  #legend .legend-item {
+    display: flex;
+
+    align-items: center;
+
+    margin: 0;
+
+    color: white;
+
+    font-size: 12px;
+
+    min-width: 0;
+  }
+
+
+  #legend .legend-color,
+  #legend .visited-key {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+
+  /* Divider above Visited */
+  #legend .legend-divider {
+    grid-column: 1 / -1;
+
+    border-top: 1px solid #555555;
+
+    margin: 5px 0 0 0;
+  }
+
+
+  /* Make Visited occupy its own full row */
+  #legend .legend-divider + .legend-item {
+    grid-column: 1 / -1;
+  }
+
+
+  
+
+
+  /* Move the scale bar just above the collapsed legend */
+  .maplibregl-ctrl-bottom-right {
+    bottom: 70px;
+  }
+
+  /* Extra spacing for bottom legend controls */
+  #legend .state-parks-group {
+    margin-top: 14px !important;
+    margin-bottom: 8px !important;
+  }
+
+  #legend .county-parks-group {
+    margin-top: 4px !important;
+    margin-bottom: 14px !important;
+  }
+
+  #legend .legend-divider {
+    margin: 4px 0 12px 0 !important;
+  }
+
+  #legend .visited-demo {
+    margin-top: 0 !important;
+    margin-bottom: 18px !important;
+    padding-bottom: 8px !important;
+    flex-shrink: 0;
+  }
+
+}
+
+/* Make legend category icons clickable */
+.legend-item .legend-color {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Selected category icon */
+.legend-item .legend-color.filter-selected {
+  box-shadow: 0 0 0 3px white, 0 0 0 5px #333333;
+  transform: scale(1.08);
+}
+
+/* Keyboard accessibility */
+.legend-item .legend-color:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+/* Clickable National Forest shaded legend label */
+.legend-color.national-forest-legend-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  height: auto;
+
+  background-color: rgba(139, 92, 246, 0.22);
+  border: 1px solid rgba(139, 92, 246, 0.75);
+
+  color: inherit;
+  padding: 2px 5px;
+  border-radius: 4px;
+
+  font-size: inherit;
+  line-height: 1.4;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+/* National Forest and Trail side-by-side */
+.legend-overlays-row {
+  display: contents;
+}
+
+/* Keep the National Forest label compact */
+.legend-overlays-row .legend-item {
+  width: auto;
+  margin: 0;
+  justify-self: start;
+}
+
+/* Trail symbol dimensions */
+.legend-trail-symbol {
+  width: 130px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+/* Fit the SVG inside the Trail symbol */
+.legend-trail-symbol svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Trail map button inside place popup */
+
+.popup-trail-map-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 9px 13px;
+  background: #a4e83b;
+  color: #202124;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.popup-trail-map-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* Nearly full-screen PDF viewer */
+
+.trail-map-viewer {
+  position: fixed !important;
+  top: 2% !important;
+  left: 2% !important;
+  right: 2% !important;
+  bottom: 2% !important;
+  width: 96% !important;
+  height: 96% !important;
+  z-index: 2147483647 !important;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #202124;
+  border-radius: 12px;
+  overflow: hidden;
+
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.75);
+}
+
+.trail-map-viewer[hidden] {
+  display: none;
+}
+
+.trail-map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #202124;
+  color: white;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.trail-map-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#trail-map-open {
+  color: #a4e83b;
+  font-size: 13px;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+#trail-map-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+@media (max-width: 600px) {
+  .trail-map-viewer {
+    inset: 1%;
+  }
+}
+
+/* Match PDF viewer font to the rest of the app */
+.trail-map-viewer,
+.trail-map-viewer button,
+.trail-map-viewer a {
+  font-family: inherit;
+}
+
+/* =========================================
+   PDF.js TRAIL MAP VIEWER
+   ========================================= */
+
+/* Match PDF viewer typography to the main app */
+.trail-map-viewer,
+.trail-map-viewer button,
+.trail-map-header,
+.trail-map-actions button {
+  font-family: Arial, sans-serif !important;
+}
+
+/* Zoom, Fit and Close buttons */
+.trail-map-actions button {
+  font-family: inherit;
+  background: #383838;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  min-width: 34px;
+  height: 36px;
+  padding: 0 9px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Make the Fit button lime green */
+#trail-map-fit {
+  color: #a4e83b;
+  font-size: 13px;
+}
+
+/* Style the Close (X) button */
+#trail-map-close {
+  background: transparent;
+  color: white;
+  font-size: 27px;
+  padding: 0;
+}
+
+/* Container holding the PDF pages */
+.trail-map-pages {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: #303033;
+  padding: 10px;
+  text-align: center;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Individual PDF pages */
+.trail-map-page {
+  display: block;
+  margin: 0 auto 12px;
+  background: white;
+  max-width: none;
+}
+
+/* Keep the header fixed above the PDF */
+.trail-map-header {
+  flex-shrink: 0;
+  font-family: inherit;
+}
+
+/* Adjust buttons for iPhone screens */
+@media (max-width: 600px) {
+  .trail-map-header {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .trail-map-actions {
+    gap: 6px;
+  }
+
+  .trail-map-actions button {
+    min-width: 30px;
+    padding: 0 6px;
+  }
+}
+
+/* ========================================
+   NAVY BLUE MAP POPUPS
+   ======================================== */
+
+/* Main popup background */
+.maplibregl-popup-content {
+  background: #14283D !important;
+  color: #FFFFFF !important;
+  border-radius: 18px !important;
+  padding: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+.maplibregl-popup-content h3 {
+  color: #FFFFFF !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+/* Popup text */
+.maplibregl-popup-content p,
+.maplibregl-popup-content strong {
+  color: #FFFFFF !important;
+}
+
+/* Match the popup arrow to the background */
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: #14283D !important;
+}
+
+.maplibregl-popup-anchor-top .maplibregl-popup-tip {
+  border-bottom-color: #14283D !important;
+}
+
+.maplibregl-popup-anchor-left .maplibregl-popup-tip {
+  border-right-color: #14283D !important;
+}
+
+.maplibregl-popup-anchor-right .maplibregl-popup-tip {
+  border-left-color: #14283D !important;
+}
+
+/* Popup close button */
+.maplibregl-popup-close-button {
+  color: #FFFFFF !important;
+  font-size: 22px;
+  padding: 5px 9px;
+}
+
+/* Close button hover */
+.maplibregl-popup-close-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 0 18px 0 8px;
+}
+
+/* ========================================
+   TRIP PLANNER
+   ======================================== */
+
+/* Button at top of map */
+#trip-planner-button {
+  position: fixed;
+  top: 15px;
+  right: 100px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: #14283D;
+  color: white;
+
+  border: none;
+  border-radius: 12px;
+  padding: 11px 16px;
+
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+
+#trip-planner-button svg {
+  width: 18px;
+  height: 18px;
+  color: #A4E83B;
+}
+
+#trip-planner-button:hover {
+  background: #243B53;
+}
+
+/* Main panel */
+.trip-planner-panel {
+  position: fixed;
+  top: 70px;
+  right: 15px;
+
+  width: 340px;
+  max-width: calc(100vw - 30px);
+  max-height: calc(100dvh - 90px);
+  overflow-y: auto;
+
+  z-index: 2000;
+
+  background: #14283D;
+  color: white;
+
+  border-radius: 20px;
+  padding: 20px;
+
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+
+  box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+}
+
+.trip-planner-panel[hidden] {
+  display: none !important;
+}
+
+/* Header */
+.trip-planner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.trip-planner-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trip-planner-heading svg {
+  width: 24px;
+  height: 24px;
+  color: #A4E83B;
+}
+
+.trip-planner-heading h2 {
+  font-size: 21px;
+  margin: 0;
+  color: white;
+}
+
+#trip-planner-close {
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+#trip-planner-close svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Sections */
+.trip-planner-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trip-planner-section[hidden] {
+  display: none !important;
+}
+
+.trip-planner-section p {
+  color: #D4DEE6;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
+.trip-planner-section h3 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  color: white;
+}
+
+/* Buttons */
+.trip-primary-button,
+.trip-secondary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  border-radius: 10px;
+  padding: 12px;
+
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.trip-primary-button {
+  background: #A4E83B;
+  color: #14283D;
+  border: none;
+}
+
+.trip-secondary-button {
+  background: transparent;
+  color: white;
+  border: 1px solid #6A7B8B;
+}
+
+.trip-primary-button svg,
+.trip-secondary-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* Trip name input */
+#trip-name-input {
+  width: 100%;
+  box-sizing: border-box;
+
+  background: #243B53;
+  color: white;
+
+  border: 1px solid #6A7B8B;
+  border-radius: 10px;
+
+  padding: 12px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+#trip-name-input::placeholder {
+  color: #AEBCC9;
+}
+
+.trip-planner-section label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Back button */
+.trip-back-button {
+  background: transparent;
+  border: none;
+  color: #A4E83B;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+
+  #trip-planner-button {
+    top: 65px;
+    right: 10px;
+    padding: 10px 12px;
+  }
+
+  #trip-planner-button span {
+    display: none;
+  }
+
+  .trip-planner-panel {
+    top: 115px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    max-width: none;
+    max-height: calc(100dvh - 130px);
+  }
+
+}
+
+/* ========================================
+   TRIP ITINERARY
+   ======================================== */
+
+#trip-stops-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.trip-stop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px;
+  background: #243B53;
+  border-radius: 12px;
+}
+
+.trip-stop-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: #A4E83B;
+  color: #14283D;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.trip-stop-name {
+  flex: 1;
+  min-width: 0;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.trip-stop-actions {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.trip-stop-actions button {
+  background: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+}
+
+.trip-stop-actions button:hover {
+  background: #3B536A;
+}
+
+.trip-stop-actions button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+#trip-empty-message[hidden] {
+  display: none !important;
+}
+
+#trip-clear-button {
+  margin-top: 8px;
+}
+
+/* Numbered map markers for selected trip stops */
+.trip-numbered-marker {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #A4E83B;
+  color: #14283D;
+  border: 3px solid #14283D;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+  /* ========================================
+   TRIP PLANNER — DRIVING ROUTE
+   ======================================== */
+
+.trip-route-summary {
+  background: #243B53;
+  border: 1px solid #405B73;
+  border-radius: 14px;
+  padding: 15px;
+  margin-top: 10px;
+  color: white;
+}
+
+.trip-route-summary[hidden] {
+  display: none !important;
+}
+
+.trip-route-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #A4E83B;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.trip-route-heading svg {
+  width: 19px;
+  height: 19px;
+}
+
+.trip-route-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.trip-route-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.trip-route-label {
+  color: #B8C9D8;
+  font-size: 12px;
+}
+
+.trip-route-stats strong {
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+#trip-route-status {
+  color: #B8C9D8;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+
+#trip-route-fit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  background: transparent;
+  color: #A4E83B;
+  border: 1px solid #A4E83B;
+  border-radius: 9px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#trip-route-fit svg {
+  width: 16px;
+  height: 16px;
+}
+
+#trip-route-fit:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+  
+  </style>
+
+</head>
+
+<body>
+
+  <!-- MapLibre places the map inside this element -->
+<div id="map"></div>
+<div id="legend">
+  <div id="legend-handle">
+
+  <div class="drag-handle"></div>
+
+  <div class="legend-title-row">
+
+    <h3>MAP LEGEND</h3>
+
+    <span id="legend-chevron">⌃</span>
+
+  </div>
+
+</div>
+
+  <div class="legend-items">
+
+  <div class="legend-item">
+    <span class="legend-color Campsite-color">
+      <i data-lucide="tent"></i>
+    </span>
+    Campsites
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Swimming_Spot-color">
+      <i data-lucide="waves-ladder"></i>
+    </span>
+    Swimming Holes
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Kayak_Launch-color">
+      <i data-lucide="kayak"></i>
+    </span>
+    Kayak Launches
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Hiking_Spot-color">
+      <i data-lucide="mountain"></i>
+    </span>
+    Hiking Spot
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Downhill_Skiing-color">
+      <i data-lucide="cable-car"></i>
+    </span>
+    Downhill Skiing
+  </div>
+
+  <!-- Expandable State Parks legend group -->
+
+
+  <!-- Expandable County Parks legend group -->
+
+
+  <div class="legend-item">
+    <span class="legend-color Cross_Country_Skiing-color">
+      <i data-lucide="cloud-snow"></i>
+    </span>
+    Cross Country Skiing
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Waterfall-color">
+      <i data-lucide="zodiac-aquarius"></i>
+    </span>
+    Waterfall
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Adventure_Activity-color">
+      <i data-lucide="tent-tree"></i>
+    </span>
+    Adventure Activity
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Snow_Shoe-color">
+      <i data-lucide="snowflake"></i>
+    </span>
+    Snow Shoe
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color National_Park-color">
+      <i data-lucide="footprints"></i>
+    </span>
+    National Park
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Cave-color">
+      <i data-lucide="flashlight"></i>
+    </span>
+    Cave
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Natural_Monument-color">
+      <i data-lucide="shell"></i>
+    </span>
+    Natural Monument
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Non_Outdoor_Cool_Thing-color">
+      <i data-lucide="fan"></i>
+    </span>
+    Non Outdoor Cool Thing
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Lake-color">
+      <i data-lucide="droplets"></i>
+    </span>
+    Lake
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color City_Park-color">
+      <i data-lucide="sparkles"></i>
+    </span>
+    City Park
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color State_Forest-color">
+      <i data-lucide="circle-pile"></i>
+    </span>
+    State Forest
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Other_Park-color">
+      <i data-lucide="flower"></i>
+    </span>
+    Other Park
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Dark_Sky_Spot-color">
+      <i data-lucide="star"></i>
+    </span>
+    Dark Sky Spot
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Event-color">
+      <i data-lucide="calendar"></i>
+    </span>
+    Event
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color Beach-color">
+      <i data-lucide="mound-shovel"></i>
+    </span>
+    Beach
+  </div>
+
+  <!-- National Forest and Trail legend row -->
+<div class="legend-overlays-row">
+
+  <!-- National Forest -->
+  <div class="legend-item">
+    <span class="legend-color National_Forest-color national-forest-legend-label">
+      National Forest
+    </span>
+  </div>
+
+  <!-- Hiking Trail -->
+  <div class="legend-trail-symbol" aria-label="Trail">
+
+    <svg viewBox="0 0 160 42" width="120" height="42" aria-hidden="true">
+
+      <!-- Irregular dashed trail line -->
+      <path
+        d="M2 26 C17 25 22 9 42 17 S65 33 82 24 S111 9 129 20 S145 27 158 14"
+        stroke="#A4E83B"
+        stroke-width="2.5"
+        stroke-dasharray="5 4"
+        stroke-linecap="round"
+        fill="none"
+      />
+
+      <!-- Angled Trail label -->
+      <g transform="translate(79 24) rotate(-12)">
+
+        <rect
+          x="-19"
+          y="-13"
+          width="38"
+          height="20"
+          rx="3"
+          fill="#202124"
+        />
+
+        <text
+          x="0"
+          y="2"
+          font-size="14"
+          font-weight="600"
+          fill="white"
+          text-anchor="middle"
+        >Trail</text>
+
+      </g>
+
+    </svg>
+
+  </div>
+
+</div>
+
+  <div class="state-parks-group">
+
+  <button
+    id="state-parks-toggle"
+    class="state-parks-toggle"
+    type="button"
+    aria-expanded="false"
+  >
+
+    <span class="state-parks-main-icon">
+      <i data-lucide="trees"></i>
+    </span>
+
+    <span class="state-parks-title">
+      State Parks
+    </span>
+
+    <span id="state-parks-chevron">
+      ›
+    </span>
+
+  </button>
+
+
+  <div id="state-parks-sublegend">
+
+
+    <div class="legend-item">
+      <span class="legend-color Alabama_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Alabama
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Alaska_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Alaska
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Arizona_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Arizona
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Arkansas_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Arkansas
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color California_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      California
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Colorado_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Colorado
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Connecticut_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Connecticut
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Delaware_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Delaware
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Ohio_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Ohio
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Florida_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Florida
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Georgia_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Georgia
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Hawaii_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Hawaii
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Idaho_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Idaho
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Illinois_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Illinois
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Indiana_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Indiana
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Kansas_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Kansas
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Kentucky_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Kentucky
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Louisiana_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Louisiana
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Maine_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Maine
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Maryland_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Maryland
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Massachusetts_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Massachusetts
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Michigan_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Michigan
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Minnesota_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Minnesota
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Mississippi_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Mississippi
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Missouri_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Missouri
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Montana_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Montana
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Nebraska_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Nebraska
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Nevada_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Nevada
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color New_Hampshire_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      New Hampshire
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color New_Jersey_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      New Jersey
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color New_Mexico_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      New_Mexico
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color New_York_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      New York
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color North_Carolina_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      North_Carolina
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color North_Dakota_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      North Dakota
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Ohio_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Ohio
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Oklahoma_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Oklahoma
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Oregon_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Oregon
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Pennsylvania_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Pennsylvania
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Rhode_Island_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Rhode Island
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color South_Carolina_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      South Carolina
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Michigan_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Michigan
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Tennessee_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Tennessee
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Texas_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Texas
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Utah_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Utah
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Vermont_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Vermont
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Virginia_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Virginia
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Washington_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Washington
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color West_Virginia_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      West Virginia
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Wisconsin_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Wisconsin
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Wyoming_State_Park-color">
+        <i data-lucide="trees"></i>
+      </span>
+      Wyoming
+    </div>
+
+  </div>
+
+<div>
+
+<div class="county-parks-group">
+
+  <button
+    id="county-parks-toggle"
+    class="county-parks-toggle"
+    type="button"
+    aria-expanded="false"
+  >
+
+    <span class="county-parks-main-icon">
+      <i data-lucide="shrub"></i>
+    </span>
+
+    <span class="county-parks-title">
+      County Parks
+    </span>
+
+    <span id="county-parks-chevron">
+      ›
+    </span>
+
+  </button>
+
+  <div id="county-parks-sublegend">
+
+    <div class="legend-item">
+      <span class="legend-color Albany_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Albany County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Allegany_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Allegany County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Bronx_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Bronx County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Broome_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Broome County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Cattaraugus_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Cattaraugus County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Cayuga_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Cayuga County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Chautauqua_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Chautauqua County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Chemung_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Chemung County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Chenango_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Chenango County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Clinton_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Clinton County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Columbia_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Columbia County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Cortland_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Cortland County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Delaware_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Delaware County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Dutchess_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Dutchess County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Erie_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Erie County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Essex_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Essex County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Franklin_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Franklin County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Fulton_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Fulton County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Genesee_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Genesee County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Greene_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Greene County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Hamilton_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Hamilton County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Herkimer_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Herkimer County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Jefferson_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Jefferson County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Kings_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Kings County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Lewis_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Lewis County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Livingston_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Livingston County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Madison_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Madison County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Monroe_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Monroe County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Montgomery_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Montgomery County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Nassau_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Nassau County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color New_York_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      New York County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Niagara_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Niagara County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Oneida_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Oneida County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Onondaga_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Onondaga County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Ontario_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Ontario County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Orange_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Orange County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Orleans_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Orleans County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Oswego_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Oswego County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Otsego_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Otsego County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Putnam_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Putnam County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Queens_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Queens County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Rensselaer_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Rensselaer County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Richmond_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Richmond County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Rockland_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Rockland County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color St_Lawrence_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      St Lawrence County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Saratoga_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Saratoga County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Schenectady_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Schenectady County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Schoharie_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Schoharie County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Schuyler_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Schuyler County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Seneca_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Seneca County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Steuben_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Steuben County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Suffolk_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Suffolk County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Sullivan_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Sullivan County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Tioga_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Tioga County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Tompkins_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Tompkins County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Ulster_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Ulster County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Warren_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Warren County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Washington_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Washington County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Wayne_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Wayne County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Westchester_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Westchester County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Wyoming_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Wyoming County Park
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-color Yates_County_Park-color">
+        <i data-lucide="shrub"></i>
+      </span>
+      Yates County Park
+    </div>
+
+  </div>
+
+</div>
+
+
+
+  <div class="legend-divider"></div>
+
+  <div class="legend-item visited-demo">
+
+    <span class="visited-demo-circle">
+      <i data-lucide="star" class="visited-star-white"></i>
+    </span>
+
+    <span class="visited-demo-arrow">→</span>
+
+    <span class="visited-demo-circle">
+    <i data-lucide="star" class="visited-star-black"></i>
+    </span>
+
+    <span class="visited-demo-label">Visited</span>
+
+</div>
+ 
+
+
+</div>
+  <!--
+    Version 6 of MapLibre must be loaded as a module.
+  -->
+  
+  <script src="https://unpkg.com/lucide@1.0.0"></script>
+  
+  <script type="module">
+
+    /*
+      Import the MapLibre library.
+    */
+    import * as maplibregl from
+      "https://unpkg.com/maplibre-gl@6.1.0/dist/maplibre-gl.mjs";
+
+    import {
+      GeocodingControl
+    } from "https://cdn.jsdelivr.net/npm/@maptiler/geocoding-control@3/maplibregl/+esm"; 
+
+    import { places } from "./places.js";
+    import { trails } from "./trails.js";
+    import { forests } from "./forests.js";
+
+    const mapTilerKey = "uoXI4BPW3yTAen7xNVDd";
+
+    /*
+      Create the map.
+    */
+    const map = new maplibregl.Map({
+      container: "map",
+
+      /*
+        Map style, from maptiler.
+      */
+      style: "https://api.maptiler.com/maps/01a0597a-409a-7b37-88a4-7ab95e87b815/style.json?key=uoXI4BPW3yTAen7xNVDd",
+    
+
+      /*
+        Centred to Buffalo, NY.
+        Coordinate order is longitude, latitude.
+      */
+      center: [-78.8784, 42.8864],
+
+      /*
+        Show most of New York State.
+      */
+      zoom: 4
+    });
+
+  /*
+  Add all trail routes.
+*/
+map.on("load", () => {
+
+  /*
+    Find a font already being used successfully
+    by the MapTiler map style.
+  */
+  const existingTextLayer = map
+    .getStyle()
+    .layers
+    .find(layer =>
+      layer.type === "symbol" &&
+      layer.layout &&
+      layer.layout["text-field"]
+    );
+
+  const trailFont =
+    existingTextLayer?.layout?.["text-font"] ||
+    ["Noto Sans Regular"];
+
+
+  /*
+    Go through every trail listed in trails.js.
+  */
+  trails.forEach(trail => {
+
+    /*
+      Load this trail's GeoJSON file.
+    */
+    map.addSource(trail.id, {
+      type: "geojson",
+      data: trail.file
+    });
+
+
+    /*
+      Draw the dashed trail line.
+    */
+    map.addLayer({
+      id: `${trail.id}-line`,
+      type: "line",
+      source: trail.id,
+
+      paint: {
+        "line-color": trail.color,
+        "line-width": 2,
+        "line-opacity": 0.7,
+        "line-dasharray": [1.5, 1.5]
+      }
+    });
+
+    /*
+  Add National Forest areas.
+*/
+forests.forEach(forest => {
+
+  /*
+    Load the forest boundary GeoJSON.
+  */
+  map.addSource(forest.id, {
+    type: "geojson",
+    data: forest.file
+  });
+
+
+  /*
+    Add translucent forest shading.
+  */
+  map.addLayer({
+    id: `${forest.id}-fill`,
+    type: "fill",
+    source: forest.id,
+
+    paint: {
+      "fill-color": forest.color,
+      "fill-opacity": 0.22
+    }
+  });
+
+
+  /*
+    Add an outline around the forest.
+  */
+  map.addLayer({
+    id: `${forest.id}-outline`,
+    type: "line",
+    source: forest.id,
+
+    paint: {
+      "line-color": forest.color,
+      "line-width": 1.5,
+      "line-opacity": 0.75
+    }
+  });
+
+});
+
+    /*
+      Write the trail name along the trail.
+    */
+    map.addLayer({
+      id: `${trail.id}-label`,
+      type: "symbol",
+      source: trail.id,
+
+      layout: {
+        "symbol-placement": "line",
+        "text-field": trail.name,
+        "text-font": trailFont,
+        "text-size": [
+        "interpolate",
+        ["linear"],
+        ["zoom"],
+        4, 7,
+        6, 8,
+        8, 9,
+        10, 10,
+        12, 12,
+        14, 14
+      ],
+
+        "text-rotation-alignment": "map",
+        "text-pitch-alignment": "map",
+        "text-keep-upright": true,
+
+        "symbol-spacing": 500,
+        "text-max-angle": 120,
+        "text-padding": 0,
+
+        "text-allow-overlap": true,
+        "text-ignore-placement": true
+      },
+
+      paint: {
+        "text-color": "#000000",
+        "text-opacity": 1,
+        "text-halo-color": "#ffc6d9",
+        "text-halo-width": 1.5,
+        "text-halo-blur": 0.5
+      }
+    });
+
+  });
+
+});
+
+
+    /*
+      Add the zoom and rotation controls.
+    */
+    map.addControl(
+      new maplibregl.NavigationControl(),
+      "top-right"
+    );
+
+    map.addControl(
+      new maplibregl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true,
+        showUserHeading: true
+      }),
+      "top-right"
+    );
+
+    map.addControl(
+      new maplibregl.ScaleControl({
+        maxWidth: 100,
+        unit: "metric"
+      }),
+      "bottom-right"
+    );
+    
+    
+const categoryColors = {
+  Campsite: "#2e8b57",
+  Swimming_Spot: "#2878b5",
+  Kayak_Launch: "#e08b24",
+  Downhill_Skiing: "#7c55a5",
+  State_Park: "#d64545",
+  Cross_Country_Skiing: "#ceb361",
+  Waterfall: "#efe521",
+  Snow_Shoe: "#0baa2d",
+  Adventure_Activity: "#6B7280",
+  National_Park: "#a76ad0",
+  Hiking_Spot: "#8C5A3C",
+  National_Forest: "#629de6",
+  Cave: "#220634",
+  Natural_Monument: "#cb2a6d",
+  Non_Outdoor_Cool_Thing: "#b7c16d",
+  Lake: "#098b7c",
+  Albany_County_Park: "#29b6c1",
+  Allegany_County_Park: "#d74666",
+  Bronx_County_Park: "#e8e538",
+  Broome_County_Park: "#7738cf",
+  Alabama_State_Park: "#37b76c",
+  Alaska_State_Park: "#b41052",
+  Arizona_State_Park: "#0e653b",
+  Arkansas_State_Park: "#215f5e",
+  California_State_Park: "#0763ee",
+  Colorado_State_Park: "#11a20f",
+  Connecticut_State_Park: "#730c4a",
+  Delaware_State_Park: "#636c5d",
+  Florida_State_Park: "#21929b",
+  Georgia_State_Park: "#5a66ad",
+  Hawaii_State_Park: "#c57b13",
+  Idaho_State_Park: "#824561",
+  Illinois_State_Park: "#f2f608",
+  Indiana_State_Park: "#7285d8",
+  Kansas_State_Park: "#535256",
+  Kentucky_State_Park: "#f19704",
+  Louisiana_State_Park: "#05f641",
+  Maine_State_Park: "#2a8293",
+  Maryland_State_Park: "#b69fd8",
+  Massachusetts_State_Park: "#2d544d",
+  Michigan_State_Park: "#3b21a1",
+  Minnesota_State_Park: "#723359",
+  Mississippi_State_Park: "#ad2f2f",
+  Missouri_State_Park: "#7a3b20",
+  Montana_State_Park: "#4f5e14",
+  Nebraska_State_Park: "#29655e",
+  Nevada_State_Park: "#5e67eb",
+  New_Hampshire_State_Park: "#e9d607",
+  New_Jersey_State_Park: "#e569c0",
+  New_Mexico_State_Park: "#03c0b3",
+  New_York_State_Park: "#7f4379",
+  North_Carolina_State_Park: "#559853",
+  North_Dakota_State_Park: "#3c3349",
+  Ohio_State_Park: "#517b6b",
+  Oklahoma_State_Park: "#4f4f15",
+  Oregon_State_Park: "#5c884b",
+  Pennsylvania_State_Park: "#1b3702",
+  Rhode_Island_State_Park: "#ee9e65",
+  South_Carolina_State_Park: "#ed629f",
+  South_Dakota_State_Park: "#059064",
+  Tennessee_State_Park: "#920492",
+  Texas_State_Park: "#7a9911",
+  Utah_State_Park: "#b3890b",
+  Vermont_State_Park: "#a33d07",
+  Virginia_State_Park: "#22024e",
+  Washington_State_Park: "#9b5d82",
+  West_Virginia_State_Park: "#2a7a0f",
+  Wisconsin_State_Park: "#e34916",
+  Wyoming_State_Park: "#e71a1a",
+  Cattaraugus_County_Park: "#2253a8",
+  Cayuga_County_Park: "#35b3bc",
+  Chautauqua_County_Park: "#8f3a73",
+  Chemung_County_Park: "#cbe87d",
+  Chenango_County_Park: "#65b3e1",
+  Clinton_County_Park: "#7a8b22",
+  Columbia_County_Park: "#38a46e",
+  Cortland_County_Park: "#552222",
+  Delaware_County_Park: "#583ebe",
+  Dutchess_County_Park: "#b48686",
+  Erie_County_Park: "#00afc1",
+  Essex_County_Park: "#8fcc34",
+  Franklin_County_Park: "#e0a206",
+  Fulton_County_Park: "#3f2a73",
+  Genesee_County_Park: "#625959",
+  Greene_County_Park: "#e04acc",
+  Hamilton_County_Park: "#8bad5e",
+  Herkimer_County_Park: "#27069e",
+  Jefferson_County_Park: "#3d9494",
+  Kings_County_Park: "#4b9561",
+  Lewis_County_Park: "#f3a705",
+  Livingston_County_Park: "#215fb0",
+  Madison_County_Park: "#b69c9c",
+  Monroe_County_Park: "#D946A8",
+  Montgomery_County_Park: "#067525",
+  Nassau_County_Park: "#0bdfe3",
+  New_York_County_Park: "#daba07",
+  Niagara_County_Park: "#d15c02",
+  Oneida_County_Park: "#571936",
+  Onondaga_County_Park: "#ec3030",
+  Ontario_County_Park: "#ed8b49",
+  Orange_County_Park: "#6866d7",
+  Orleans_County_Park: "#333232",
+  Oswego_County_Park: "#27966d",
+  Otsego_County_Park: "#066ff0",
+  Putnam_County_Park: "#585407",
+  Queens_County_Park: "#64d176",
+  Rensselaer_County_Park: "#45c554",
+  Richmond_County_Park: "#8e6262",
+  Rockland_County_Park: "#1c604b",
+  St_Lawrence_County_Park: "#458958",
+  Saratoga_County_Park: "#8bd10a",
+  Schenectady_County_Park: "#287177",
+  Schoharie_County_Park: "#3f36a9",
+  Schuyler_County_Park: "#88dd42",
+  Seneca_County_Park: "#ae3088",
+  Steuben_County_Park: "#ab26b2",
+  Suffolk_County_Park: "#20cbb1",
+  Sullivan_County_Park: "#3d58e2",
+  Tioga_County_Park: "#641515",
+  Tompkins_County_Park: "#658cb3",
+  Ulster_County_Park: "#b4b047",
+  Warren_County_Park: "#66d12c",
+  Washington_County_Park: "#4db9f3",
+  Wayne_County_Park: "#dcc149",
+  Westchester_County_Park: "#7f966e",
+  Wyoming_County_Park: "#4d3a3a",
+  Yates_County_Park: "#d6fa06",
+  City_Park: "#a61b4e",
+  State_Forest: "#0ba471",
+  Other_Park: "#17e12b",
+  Dark_Sky_Spot: "#440269",
+  Event: "#900322",
+  Beach: "#d70b37"
+};
+
+const categoryIcons = {
+  Campsite: "tent",
+  Swimming_Spot: "waves-ladder",
+  Kayak_Launch: "kayak",
+  Downhill_Skiing: "cable-car",
+  State_Park: "trees",
+  Erie_County_Park: "shrub",
+  Cross_Country_Skiing: "cloud-snow",
+  Waterfall: "zodiac-aquarius",
+  Snow_Shoe: "snowflake",
+  Adventure_Activity: "tent-tree",
+  Monroe_County_Park: "shrub",
+  National_Park: "footprints",
+  Hiking_Spot: "mountain",
+  National_Forest: "tree-pine",
+  Cave: "flashlight",
+  Natural_Monument: "shell",
+  Non_Outdoor_Cool_Thing: "fan",
+  Lake: "droplets",
+  Niagara_County_Park: "shrub",
+  Albany_County_Park: "shrub",
+  Allegany_County_Park: "shrub",
+  Bronx_County_Park: "shrub",
+  Broome_County_Park: "shrub",
+  Alabama_State_Park: "trees",
+  Alaska_State_Park: "trees",
+  Arizona_State_Park: "trees",
+  Arkansas_State_Park: "trees",
+  California_State_Park: "trees",
+  Colorado_State_Park: "trees",
+  Connecticut_State_Park: "trees",
+  Delaware_State_Park: "trees",
+  Florida_State_Park: "trees",
+  Georgia_State_Park: "trees",
+  Hawaii_State_Park: "trees",
+  Idaho_State_Park: "trees",
+  Illinois_State_Park: "trees",
+  Indiana_State_Park: "trees",
+  Kansas_State_Park: "trees",
+  Kentucky_State_Park: "trees",
+  Louisiana_State_Park: "trees",
+  Maine_State_Park: "trees",
+  Maryland_State_Park: "trees",
+  Massachusetts_State_Park: "trees",
+  Michigan_State_Park: "trees",
+  Minnesota_State_Park: "trees",
+  Mississippi_State_Park: "trees",
+  Missouri_State_Park: "trees",
+  Montana_State_Park: "trees",
+  Nebraska_State_Park: "trees",
+  Nevada_State_Park: "trees",
+  New_Hampshire_State_Park: "trees",
+  New_Mexico_State_Park: "trees",
+  New_Jersey_State_Park: "trees",
+  New_York_State_Park: "trees",
+  North_Carolina_State_Park: "trees",
+  North_Dakota_State_Park: "trees",
+  Ohio_State_Park: "trees",
+  Oklahoma_State_Park: "trees",
+  Oregon_State_Park: "trees",
+  Pennsylvania_State_Park: "trees",
+  Rhode_Island_State_Park: "trees",
+  South_Carolina_State_Park: "trees",
+  South_Dakota_State_Park: "trees",
+  Tennessee_State_Park: "trees",
+  Texas_State_Park: "trees",
+  Utah_State_Park: "trees",
+  Vermont_State_Park: "trees",
+  Virginia_State_Park: "trees",
+  Washington_State_Park: "trees",
+  West_Virginia_State_Park: "trees",
+  Wisconsin_State_Park: "trees",
+  Wyoming_State_Park: "trees",
+  Cattaraugus_County_Park: "shrub",
+  Cayuga_County_Park: "shrub",
+  Chautauqua_County_Park: "shrub",
+  Chemung_County_Park: "shrub",
+  Chenango_County_Park: "shrub",
+  Clinton_County_Park: "shrub",
+  Columbia_County_Park: "shrub",
+  Cortland_County_Park: "shrub",
+  Delaware_County_Park: "shrub",
+  Dutchess_County_Park: "shrub",
+  Essex_County_Park: "shrub",
+  Franklin_County_Park: "shrub",
+  Fulton_County_Park: "shrub",
+  Genesee_County_Park: "shrub",
+  Greene_County_Park: "shrub",
+  Hamilton_County_Park: "shrub",
+  Herkimer_County_Park: "shrub",
+  Jefferson_County_Park: "shrub",
+  Kings_County_Park: "shrub",
+  Lewis_County_Park: "shrub",
+  Livingston_County_Park: "shrub",
+  Madison_County_Park: "shrub",
+  Monroe_County_Park: "shrub",
+  Montgomery_County_Park: "shrub",
+  Nassau_County_Park: "shrub",
+  New_York_County_Park: "shrub",
+  Oneida_County_Park: "shrub",
+  Onondaga_County_Park: "shrub",
+  Ontario_County_Park: "shrub",
+  Orange_County_Park: "shrub",
+  Orleans_County_Park: "shrub",
+  Otsego_County_Park: "shrub",
+  Oswego_County_Park: "shrub",
+  Putnam_County_Park: "shrub",
+  Queens_County_Park: "shrub",
+  Rensselaer_County_Park: "shrub",
+  Richmond_County_Park: "shrub",
+  Rockland_County_Park: "shrub",
+  St_Lawrence_County_Park: "shrub",
+  Saratoga_County_Park: "shrub",
+  Schenectady_County_Park: "shrub",
+  Schoharie_County_Park: "shrub",
+  Schuyler_County_Park: "shrub",
+  Seneca_County_Park: "shrub",
+  Steuben_County_Park: "shrub",
+  Suffolk_County_Park: "shrub",
+  Sullivan_County_Park: "shrub",
+  Tioga_County_Park: "shrub",
+  Tompkins_County_Park: "shrub",
+  Ulster_County_Park: "shrub",
+  Warren_County_Park: "shrub",
+  Washington_County_Park: "shrub",
+  Wayne_County_Park: "shrub",
+  Westchester_County_Park: "shrub",
+  Wyoming_County_Park: "shrub",
+  Yates_County_Park: "shrub",
+  City_Park: "sparkles",
+  State_Forest: "circle-pile",
+  Other_Park: "flower",
+  Dary_Sky_Spot: "star",
+  Event: "calendar",
+  Beach: "mound-shovel"
+
+};
+
+
+/*
+  Repeat the marker-building process
+  once for every item in the places list.
+*/
+console.log("Places loaded:", places);
+
+const placeMarkers = new Map();
+
+/*
+  Store markers for category filtering.
+*/
+const filterableMarkers = [];
+
+places.forEach(place => {
+
+  // Create the colored outer circle
+  const markerElement = document.createElement("div");
+
+  markerElement.className = "custom-marker";
+
+  // Add white ring if this place has been visited
+  if (place.visited === true) {
+    markerElement.classList.add("visited-marker");
+  }
+
+  // Give the marker its category color
+  markerElement.style.backgroundColor =
+    categoryColors[place.category];
+
+  // Create the Lucide icon
+  const markerIcon = document.createElement("i");
+
+  markerIcon.setAttribute(
+    "data-lucide",
+    categoryIcons[place.category]
+  );
+
+  markerElement.appendChild(markerIcon);
+
+
+  // Add the completed marker to the map
+  const marker = new maplibregl.Marker({
+    element: markerElement
+  })
+    .setLngLat(place.coordinates)
+
+    .setPopup(
+      new maplibregl.Popup({
+        maxWidth: "320px"
+      }).setHTML(`
+
+        ${
+          place.photos && place.photos.length > 0
+            ? `
+              <div class="popup-gallery">
+
+                ${place.photos
+                  .map(
+                    photo => `
+                      <img
+                        src="${photo}"
+                        class="popup-photo"
+                        alt="${place.name}"
+                      >
+                    `
+                  )
+                  .join("")}
+
+              </div>
+            `
+            : ""
+        }
+
+        <div class="popup-content">
+
+          <h3>${place.name}</h3>
+
+          <p>
+            <strong>Category:</strong>
+            ${place.category.replaceAll("_", " ")}
+          </p>
+
+          <p>
+            <strong>Visited:</strong>
+            ${place.visited ? "Yes" : "No"}
+          </p>
+
+                    <p>${place.description}</p>
+
+          ${place.trailDistance
+            ? `<p><strong>Trail distance:</strong> ${place.trailDistance}</p>`
+            : ""
+          }
+
+          ${(place.trailMap || (place.trailMaps && place.trailMaps.length > 0)) ? `
+            <button type="button" class="popup-trail-map-button"
+              data-trail-maps="${encodeURIComponent(JSON.stringify(
+                place.trailMaps && place.trailMaps.length > 0
+                  ? place.trailMaps
+                  : [place.trailMap]
+              ))}">
+              <i data-lucide="map"></i> View Trail Map
+          </button>` : ""}
+
+        </div>
+
+      `)
+    )
+
+    .addTo(map);
+
+    marker.getPopup().on("open", () => {
+      lucide.createIcons({
+        nodes: marker.getPopup().getElement().querySelectorAll("[data-lucide]")
+      });
+    });
+
+    // Add this place to the active trip when its marker is clicked
+    marker.getElement().addEventListener("click", function() {
+      if (typeof window.tripPlannerAddPlace === "function") {
+        window.tripPlannerAddPlace(place);
+      }
+    });
+
+    /*
+  Remember the marker and its category.
+*/
+filterableMarkers.push({
+  category: place.category,
+  element: markerElement
+});
+
+  placeMarkers.set(place.name, marker);
+
+});
+
+lucide.createIcons();
+
+/*
+  CATEGORY FILTERING
+
+  Click the existing colored icons in the legend
+  to show only those categories on the map.
+  Multiple categories can be selected.
+*/
+
+const selectedCategories = new Set();
+
+/*
+  Find all category icons in the legend.
+
+  The class names already identify each category,
+  for example Swimming_Spot-color.
+*/
+const legendCategoryIcons = document.querySelectorAll(
+  "#legend .legend-item .legend-color"
+);
+
+legendCategoryIcons.forEach(icon => {
+
+  const categoryClass = Array.from(icon.classList)
+    .find(className =>
+      className.endsWith("-color") &&
+      className !== "legend-color"
+    );
+
+  if (!categoryClass) return;
+
+  const category = categoryClass.slice(0, -6);
+
+  /*
+    Make the existing icon accessible as a button.
+  */
+  icon.setAttribute("role", "button");
+  icon.setAttribute("tabindex", "0");
+  icon.setAttribute("aria-pressed", "false");
+  icon.setAttribute("aria-label", `Filter ${category.replaceAll("_", " ")}`);
+
+  function toggleCategory() {
+
+    if (selectedCategories.has(category)) {
+      selectedCategories.delete(category);
+    } else {
+      selectedCategories.add(category);
+    }
+
+    /*
+      Update selected-icon appearance.
+      Also handles duplicate legend entries.
+    */
+    legendCategoryIcons.forEach(otherIcon => {
+
+      const otherClass = Array.from(otherIcon.classList)
+        .find(className =>
+          className.endsWith("-color") &&
+          className !== "legend-color"
+        );
+
+      if (!otherClass) return;
+
+      const otherCategory = otherClass.slice(0, -6);
+      const isSelected = selectedCategories.has(otherCategory);
+
+      otherIcon.classList.toggle("filter-selected", isSelected);
+      otherIcon.setAttribute("aria-pressed", String(isSelected));
+
+    });
+
+    /*
+      Update marker visibility.
+    */
+    filterableMarkers.forEach(marker => {
+
+      const shouldShow =
+        selectedCategories.size === 0 ||
+        selectedCategories.has(marker.category);
+
+      marker.element.style.display = shouldShow ? "" : "none";
+
+    });
+
+  }
+
+  /*
+    Mouse and touch interaction.
+  */
+  icon.addEventListener("click", toggleCategory);
+
+  /*
+    Keyboard interaction.
+  */
+  icon.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleCategory();
+    }
+  });
+
+});
+
+/* --------------------------------------------------
+   SEARCH BAR - searches only places in places.js
+-------------------------------------------------- */
+
+class PlaceSearchControl {
+
+  onAdd(map) {
+
+    this.map = map;
+
+    this.container = document.createElement("div");
+    this.container.className =
+      "maplibregl-ctrl maplibregl-ctrl-group place-search-control";
+
+    this.searchBox = document.createElement("div");
+    this.searchBox.className = "place-search-box";
+
+    this.searchIcon = document.createElement("span");
+    this.searchIcon.className = "place-search-icon";
+    this.searchIcon.innerHTML = "⌕";
+
+    this.input = document.createElement("input");
+    this.input.type = "text";
+    this.input.placeholder = "Search my places";
+    this.input.autocomplete = "off";
+
+    this.results = document.createElement("div");
+    this.results.className = "place-search-results";
+
+    this.searchBox.appendChild(this.searchIcon);
+    this.searchBox.appendChild(this.input);
+
+    this.container.appendChild(this.searchBox);
+    this.container.appendChild(this.results);
+
+
+    /* Search while typing */
+
+    this.input.addEventListener("input", () => {
+
+      const searchText =
+        this.input.value.trim().toLowerCase();
+
+      this.results.innerHTML = "";
+
+      if (searchText.length === 0) {
+        this.results.style.display = "none";
+        return;
+      }
+
+
+      /* Search name, category and description */
+
+      const matches = places.filter(place => {
+
+        const name =
+          place.name.toLowerCase();
+
+        const category =
+          place.category
+            .replaceAll("_", " ")
+            .toLowerCase();
+
+        const description =
+          place.description
+            ? place.description.toLowerCase()
+            : "";
+
+        return (
+          name.includes(searchText) ||
+          category.includes(searchText) ||
+          description.includes(searchText)
+        );
+
+      });
+
+
+      if (matches.length === 0) {
+
+        const noResult =
+          document.createElement("div");
+
+        noResult.className =
+          "place-search-no-result";
+
+        noResult.textContent =
+          "No places found";
+
+        this.results.appendChild(noResult);
+
+        this.results.style.display = "block";
+
+        return;
+      }
+
+
+      matches.forEach(place => {
+
+        const result =
+          document.createElement("button");
+
+        result.type = "button";
+        result.className =
+          "place-search-result";
+
+
+        const placeName =
+          document.createElement("span");
+
+        placeName.className =
+          "place-search-result-name";
+
+        placeName.textContent =
+          place.name;
+
+
+        const placeCategory =
+          document.createElement("span");
+
+        placeCategory.className =
+          "place-search-result-category";
+
+        placeCategory.textContent =
+          place.category.replaceAll("_", " ");
+
+
+        result.appendChild(placeName);
+        result.appendChild(placeCategory);
+
+
+        /* What happens when a result is clicked */
+
+        result.addEventListener("click", () => {
+
+          this.input.value = place.name;
+
+          this.results.style.display = "none";
+
+
+          /* Close any popup already open */
+
+          document
+            .querySelectorAll(".maplibregl-popup")
+            .forEach(popup => popup.remove());
+
+
+          /* Smoothly zoom to selected place */
+
+          map.flyTo({
+            center: place.coordinates,
+            zoom: 14,
+            duration: 1500,
+            essential: true
+          });
+
+
+          /* Find its marker */
+
+          const marker =
+            placeMarkers.get(place.name);
+
+
+          /* Open popup when zoom finishes */
+
+          map.once("moveend", () => {
+
+            if (marker) {
+
+              marker.togglePopup();
+
+            }
+
+          });
+
+        });
+
+
+        this.results.appendChild(result);
+
+      });
+
+
+      this.results.style.display = "block";
+
+    });
+
+
+    /* Stop map dragging when using search */
+
+    this.container.addEventListener(
+      "mousedown",
+      event => event.stopPropagation()
+    );
+
+    this.container.addEventListener(
+      "touchstart",
+      event => event.stopPropagation()
+    );
+
+
+    return this.container;
+
+  }
+
+
+  onRemove() {
+
+    this.container.remove();
+
+    this.map = undefined;
+
+  }
+
+}
+
+
+/* Add search bar to upper-left corner */
+
+map.addControl(
+  new PlaceSearchControl(),
+  "top-left"
+);
+
+console.log("Reached service worker section");
+
+/* =========================
+   MOBILE SLIDING LEGEND
+   ========================= */
+
+const legend = document.getElementById("legend");
+const legendHandle = document.getElementById("legend-handle");
+
+const countyParksToggle =
+  document.getElementById("county-parks-toggle");
+
+const countyParksGroup =
+  document.querySelector(".county-parks-group");
+
+
+countyParksToggle.addEventListener("click", event => {
+
+  /* Prevent this tap from affecting the main sliding legend */
+  event.stopPropagation();
+
+  const isOpen =
+    countyParksGroup.classList.toggle("open");
+
+  countyParksToggle.setAttribute(
+    "aria-expanded",
+    isOpen
+  );
+
+});
+
+const stateParksToggle =
+  document.getElementById("state-parks-toggle");
+
+const stateParksGroup =
+  document.querySelector(".state-parks-group");
+
+
+stateParksToggle.addEventListener("click", event => {
+
+  event.stopPropagation();
+
+  const isOpen =
+    stateParksGroup.classList.toggle("open");
+
+  stateParksToggle.setAttribute(
+    "aria-expanded",
+    isOpen
+  );
+
+});
+
+let legendDragging = false;
+let legendStartY = 0;
+let legendStartTranslate = 0;
+
+
+function getLegendClosedPosition() {
+
+  const legendHeight = legend.offsetHeight;
+  const handleHeight = legendHandle.offsetHeight;
+
+  return legendHeight - handleHeight;
+}
+
+
+function openLegend() {
+
+  legend.classList.add("open");
+
+  legend.style.transform = "translateY(0px)";
+}
+
+
+function closeLegend() {
+
+  legend.classList.remove("open");
+
+  legend.style.transform = "";
+}
+
+
+function toggleLegend() {
+
+  if (legend.classList.contains("open")) {
+
+    closeLegend();
+
+  } else {
+
+    openLegend();
+
+  }
+}
+
+
+legendHandle.addEventListener("pointerdown", event => {
+
+  legendDragging = true;
+
+  legendStartY = event.clientY;
+
+  const closedPosition = getLegendClosedPosition();
+
+  legendStartTranslate =
+    legend.classList.contains("open")
+      ? 0
+      : closedPosition;
+
+  legend.style.transition = "none";
+
+  legendHandle.setPointerCapture(event.pointerId);
+});
+
+
+legendHandle.addEventListener("pointermove", event => {
+
+  if (!legendDragging) {
+    return;
+  }
+
+  const movement = event.clientY - legendStartY;
+
+  const closedPosition = getLegendClosedPosition();
+
+  let newPosition =
+    legendStartTranslate + movement;
+
+
+  if (newPosition < 0) {
+    newPosition = 0;
+  }
+
+
+  if (newPosition > closedPosition) {
+    newPosition = closedPosition;
+  }
+
+
+  legend.style.transform =
+    `translateY(${newPosition}px)`;
+});
+
+
+legendHandle.addEventListener("pointerup", event => {
+
+  if (!legendDragging) {
+    return;
+  }
+
+  legendDragging = false;
+
+  legend.style.transition =
+    "transform 0.3s ease";
+
+
+  const movement =
+    event.clientY - legendStartY;
+
+
+  if (Math.abs(movement) < 10) {
+
+    toggleLegend();
+
+    return;
+  }
+
+
+  if (movement < 0) {
+
+    openLegend();
+
+  } else {
+
+    closeLegend();
+
+  }
+
+});
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./service-worker.js")
+      .then(registration => {
+        console.log(
+          "Service worker registered:",
+          registration.scope
+        );
+      })
+      .catch(error => {
+        console.error(
+          "Service worker registration failed:",
+          error
+        );
+      });
+  });
+}
+
+// ========================================
+// PDF.js TRAIL MAP VIEWER
+// ========================================
+
+
+const trailMapViewer = document.getElementById("trail-map-viewer");
+const trailMapPages = document.getElementById("trail-map-pages");
+const trailMapClose = document.getElementById("trail-map-close");
+const trailMapZoomIn = document.getElementById("trail-map-zoom-in");
+const trailMapZoomOut = document.getElementById("trail-map-zoom-out");
+const trailMapFit = document.getElementById("trail-map-fit");
+
+document.body.appendChild(trailMapViewer);
+
+let pdfDocuments = [];
+let pdfScale = 1;
+let pdfRenderVersion = 0;
+let pdfLoadingVersion = 0;
+let pdfLoadingTasks = [];
+
+function showTrailMapMessage(message) {
+  trailMapPages.textContent = message;
+  trailMapPages.style.color = "white";
+}
+
+async function renderTrailMap() {
+  if (!pdfDocuments.length || trailMapViewer.hidden) return;
+
+  const version = ++pdfRenderVersion;
+  trailMapPages.replaceChildren();
+
+  try {
+    for (let documentIndex = 0; documentIndex < pdfDocuments.length; documentIndex++) {
+      const pdf = pdfDocuments[documentIndex];
+
+      for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+        if (version !== pdfRenderVersion) return;
+
+        const page = await pdf.getPage(pageNumber);
+        if (version !== pdfRenderVersion) return;
+
+        const viewport = page.getViewport({ scale: pdfScale });
+
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        const pixelRatio = Math.min(
+          Math.max(window.devicePixelRatio || 1, 2),
+          3
+        );
+
+        canvas.width = Math.floor(viewport.width * pixelRatio);
+        canvas.height = Math.floor(viewport.height * pixelRatio);
+
+        canvas.style.width = viewport.width + "px";
+        canvas.style.height = viewport.height + "px";
+        canvas.className = "trail-map-page";
+
+        trailMapPages.appendChild(canvas);
+
+        await page.render({
+          canvasContext: context,
+          viewport,
+          transform: pixelRatio !== 1
+            ? [pixelRatio, 0, 0, pixelRatio, 0, 0]
+            : null
+        }).promise;
+
+        if (version !== pdfRenderVersion) return;
+      }
+    }
+  } catch (error) {
+    if (version !== pdfRenderVersion) return;
+    console.error("PDF rendering error:", error);
+    showTrailMapMessage("Unable to display the trail maps.");
+  }
+}
+
+async function fitTrailMap() {
+  if (!pdfDocuments.length) return;
+
+  const version = pdfRenderVersion;
+  const firstPage = await pdfDocuments[0].getPage(1);
+
+  if (version !== pdfRenderVersion || trailMapViewer.hidden) return;
+
+  const naturalViewport = firstPage.getViewport({ scale: 1 });
+
+  const availableWidth = trailMapPages.clientWidth - 20;
+  const availableHeight = trailMapPages.clientHeight - 20;
+
+  pdfScale = Math.min(
+    availableWidth / naturalViewport.width,
+    availableHeight / naturalViewport.height
+  );
+
+  pdfScale = Math.max(0.1, pdfScale);
+
+  await renderTrailMap();
+}
+
+async function openTrailMap(pdfUrls) {
+  const loadVersion = ++pdfLoadingVersion;
+
+  trailMapViewer.hidden = false;
+  pdfRenderVersion++;
+  pdfDocuments = [];
+
+  for (const task of pdfLoadingTasks) {
+    task.destroy().catch(() => {});
+  }
+  pdfLoadingTasks = [];
+
+  showTrailMapMessage("Loading trail maps...");
+
+  if (!window.pdfjsLib) {
+    showTrailMapMessage("PDF viewer is not ready. Please try again.");
+    return;
+  }
+
+  try {
+    const urls = Array.isArray(pdfUrls) ? pdfUrls : [pdfUrls];
+
+    for (const url of urls) {
+      if (loadVersion !== pdfLoadingVersion) return;
+
+      const loadingTask = window.pdfjsLib.getDocument(url);
+      pdfLoadingTasks.push(loadingTask);
+
+      const documentResult = await loadingTask.promise;
+
+      if (loadVersion !== pdfLoadingVersion) {
+        await documentResult.destroy();
+        return;
+      }
+
+      pdfDocuments.push(documentResult);
+    }
+
+    if (loadVersion !== pdfLoadingVersion) return;
+
+    await fitTrailMap();
+
+  } catch (error) {
+    if (loadVersion !== pdfLoadingVersion) return;
+
+    console.error("PDF loading error:", error);
+    showTrailMapMessage("Unable to load these trail maps.");
+  }
+}
+
+// Open PDFs when the View Trail Map button is clicked
+document.addEventListener("click", function(event) {
+  const button = event.target.closest(".popup-trail-map-button");
+  if (!button) return;
+
+  try {
+    const urls = JSON.parse(
+      decodeURIComponent(button.dataset.trailMaps)
+    );
+
+    if (!Array.isArray(urls) || !urls.length) return;
+
+    const resolvedUrls = urls.map(url => {
+      const resolved = new URL(url, window.location.href);
+
+      if (
+        resolved.origin !== window.location.origin &&
+        resolved.protocol !== "https:"
+      ) {
+        throw new Error("Invalid trail map URL");
+      }
+
+      return resolved.href;
+    });
+
+    openTrailMap(resolvedUrls);
+  } catch (error) {
+    console.error("Invalid trail map list:", error);
+  }
+});
+
+// Zoom in
+trailMapZoomIn.addEventListener("click", async function() {
+  if (!pdfDocuments.length) return;
+
+  pdfScale = Math.min(pdfScale * 1.25, 5);
+  await renderTrailMap();
+});
+
+// Zoom out
+trailMapZoomOut.addEventListener("click", async function() {
+  if (!pdfDocuments.length) return;
+
+  pdfScale = Math.max(pdfScale / 1.25, 0.1);
+  await renderTrailMap();
+});
+
+// Fit pages to the viewer
+trailMapFit.addEventListener("click", fitTrailMap);
+
+// Close the viewer
+function closeTrailMapViewer() {
+  trailMapViewer.hidden = true;
+
+  pdfRenderVersion++;
+  pdfLoadingVersion++;
+
+  for (const task of pdfLoadingTasks) {
+    task.destroy().catch(() => {});
+  }
+
+  pdfLoadingTasks = [];
+  pdfDocuments = [];
+  trailMapPages.replaceChildren();
+}
+
+trailMapClose.addEventListener("click", closeTrailMapViewer);
+
+// Escape key closes the viewer
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape" && !trailMapViewer.hidden) {
+    closeTrailMapViewer();
+  }
+});
+
+
+/* ========================================
+   TRIP PLANNER — STAGE 2
+   ======================================== */
+
+const tripPlannerButton = document.getElementById("trip-planner-button");
+const tripPlannerPanel = document.getElementById("trip-planner-panel");
+const tripPlannerClose = document.getElementById("trip-planner-close");
+
+const tripPlannerHome = document.getElementById("trip-planner-home");
+const tripPlannerNew = document.getElementById("trip-planner-new");
+const tripPlannerActive = document.getElementById("trip-planner-active");
+const tripPlannerSaved = document.getElementById("trip-planner-saved");
+
+const tripNameInput = document.getElementById("trip-name-input");
+const tripActiveName = document.getElementById("trip-active-name");
+const tripStopsList = document.getElementById("trip-stops-list");
+const tripEmptyMessage = document.getElementById("trip-empty-message");
+const tripClearButton = document.getElementById("trip-clear-button");
+
+// Current trip (temporary until Stage 4)
+let currentTrip = null;
+
+// Numbered markers drawn over the existing map markers
+let tripNumberedMarkers = [];
+
+// Track which planner screen is active
+let tripPlannerScreen = "home";
+
+function showTripPlannerSection(section) {
+  tripPlannerHome.hidden = true;
+  tripPlannerNew.hidden = true;
+  tripPlannerActive.hidden = true;
+  tripPlannerSaved.hidden = true;
+
+  section.hidden = false;
+
+  if (section === tripPlannerActive) {
+    tripPlannerScreen = "active";
+  } else if (section === tripPlannerNew) {
+    tripPlannerScreen = "new";
+  } else if (section === tripPlannerSaved) {
+    tripPlannerScreen = "saved";
+  } else {
+    tripPlannerScreen = "home";
+  }
+}
+
+// Open planner
+tripPlannerButton.addEventListener("click", function() {
+  tripPlannerPanel.hidden = false;
+
+  if (currentTrip) {
+    showTripPlannerSection(tripPlannerActive);
+  } else {
+    showTripPlannerSection(tripPlannerHome);
+  }
+});
+
+// Close planner
+tripPlannerClose.addEventListener("click", function() {
+  tripPlannerPanel.hidden = true;
+});
+
+// Start a new trip
+document.getElementById("trip-new-button").addEventListener("click", function() {
+  tripNameInput.value = "";
+  showTripPlannerSection(tripPlannerNew);
+  tripNameInput.focus();
+});
+
+// Create a trip
+document.getElementById("trip-create-button").addEventListener("click", function() {
+  const name = tripNameInput.value.trim();
+
+  if (!name) {
+    alert("Please enter a trip name.");
+    return;
+  }
+
+  if (currentTrip && currentTrip.stops.length > 0) {
+    const confirmed = confirm(
+      "Starting a new trip will replace your current unsaved trip. Continue?"
+    );
+    if (!confirmed) return;
+  }
+
+  currentTrip = {
+    name: name,
+    stops: []
+  };
+
+  tripActiveName.textContent = name;
+  renderTripStops();
+  showTripPlannerSection(tripPlannerActive);
+});
+
+// Saved trips placeholder (Stage 4)
+document.getElementById("trip-saved-button").addEventListener("click", function() {
+  showTripPlannerSection(tripPlannerSaved);
+});
+
+// Back buttons
+document.querySelectorAll(".trip-back-button").forEach(function(button) {
+  button.addEventListener("click", function() {
+    showTripPlannerSection(tripPlannerHome);
+  });
+});
+
+// Create a stable key for each place
+function tripPlaceKey(place) {
+  if (place.id !== undefined && place.id !== null) {
+    return String(place.id);
+  }
+
+  return JSON.stringify([place.name, place.coordinates]);
+}
+
+// Called when an existing map marker is clicked
+window.tripPlannerAddPlace = function(place) {
+  // Only add places while an active trip is being edited
+  if (
+    !currentTrip ||
+    tripPlannerPanel.hidden ||
+    tripPlannerScreen !== "active"
+  ) {
+    return;
+  }
+
+  const key = tripPlaceKey(place);
+
+  // Prevent duplicate stops
+  if (currentTrip.stops.some(stop => stop.key === key)) {
+    return;
+  }
+
+  currentTrip.stops.push({
+    key: key,
+    name: place.name,
+    coordinates: [...place.coordinates]
+  });
+
+  renderTripStops();
+};
+
+// Remove a stop
+function removeTripStop(index) {
+  if (!currentTrip) return;
+
+  currentTrip.stops.splice(index, 1);
+  renderTripStops();
+}
+
+// Move a stop up or down
+function moveTripStop(index, direction) {
+  if (!currentTrip) return;
+
+  const newIndex = index + direction;
+
+  if (newIndex < 0 || newIndex >= currentTrip.stops.length) {
+    return;
+  }
+
+  const stops = currentTrip.stops;
+
+  [stops[index], stops[newIndex]] =
+    [stops[newIndex], stops[index]];
+
+  renderTripStops();
+}
+
+// Remove existing numbered markers
+function clearTripNumberedMarkers() {
+  tripNumberedMarkers.forEach(marker => marker.remove());
+  tripNumberedMarkers = [];
+}
+
+// Draw numbered markers on the map
+function updateTripNumberedMarkers() {
+  clearTripNumberedMarkers();
+
+  if (!currentTrip) return;
+
+  currentTrip.stops.forEach(function(stop, index) {
+    const element = document.createElement("div");
+
+    element.className = "trip-numbered-marker";
+    element.textContent = index + 1;
+    element.title = stop.name;
+
+    const marker = new maplibregl.Marker({
+      element: element,
+      anchor: "center"
+    })
+      .setLngLat(stop.coordinates)
+      .addTo(map);
+
+    tripNumberedMarkers.push(marker);
+  });
+}
+
+// Display the itinerary
+function renderTripStops() {
+  tripStopsList.replaceChildren();
+
+  if (!currentTrip) {
+  tripEmptyMessage.hidden = false;
+  tripClearButton.hidden = true;
+  clearTripNumberedMarkers();
+  updateTripDrivingRoute();
+  return;
+}
+
+  const stops = currentTrip.stops;
+
+  tripEmptyMessage.hidden = stops.length > 0;
+  tripClearButton.hidden = stops.length === 0;
+
+  stops.forEach(function(stop, index) {
+    const row = document.createElement("div");
+    row.className = "trip-stop";
+
+    const number = document.createElement("span");
+    number.className = "trip-stop-number";
+    number.textContent = index + 1;
+
+    const name = document.createElement("span");
+    name.className = "trip-stop-name";
+    name.textContent = stop.name;
+
+    const actions = document.createElement("div");
+    actions.className = "trip-stop-actions";
+
+    const upButton = document.createElement("button");
+    upButton.type = "button";
+    upButton.textContent = "↑";
+    upButton.title = "Move stop up";
+    upButton.setAttribute("aria-label", "Move " + stop.name + " up");
+    upButton.disabled = index === 0;
+    upButton.addEventListener("click", function() {
+      moveTripStop(index, -1);
+    });
+
+    const downButton = document.createElement("button");
+    downButton.type = "button";
+    downButton.textContent = "↓";
+    downButton.title = "Move stop down";
+    downButton.setAttribute("aria-label", "Move " + stop.name + " down");
+    downButton.disabled = index === stops.length - 1;
+    downButton.addEventListener("click", function() {
+      moveTripStop(index, 1);
+    });
+
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.textContent = "×";
+    removeButton.title = "Remove stop";
+    removeButton.setAttribute("aria-label", "Remove " + stop.name);
+    removeButton.addEventListener("click", function() {
+      removeTripStop(index);
+    });
+
+    actions.append(upButton, downButton, removeButton);
+    row.append(number, name, actions);
+    tripStopsList.appendChild(row);
+  });
+
+  updateTripNumberedMarkers();
+  updateTripDrivingRoute();
+}
+
+// Clear all stops
+tripClearButton.addEventListener("click", function() {
+  if (!currentTrip || !currentTrip.stops.length) return;
+
+  if (!confirm("Remove all stops from this trip?")) return;
+
+  currentTrip.stops = [];
+  renderTripStops();
+});
+
+// Refresh Lucide icons
+if (window.lucide) {
+  lucide.createIcons();
+}
+
+
+/* ==========================================
+   TRIP PLANNER — STAGE 3
+   MAPTILER DRIVING ROUTES
+   ========================================== */
+
+// IMPORTANT: Replace the placeholder with your MapTiler API key.
+const tripRoutingApiKey = "uoXI4BPW3yTAen7xNVDd";
+
+const tripRouteSummary = document.getElementById("trip-route-summary");
+const tripRouteDistance = document.getElementById("trip-route-distance");
+const tripRouteDuration = document.getElementById("trip-route-duration");
+const tripRouteStatus = document.getElementById("trip-route-status");
+const tripRouteFitButton = document.getElementById("trip-route-fit");
+
+const TRIP_ROUTE_SOURCE = "trip-driving-route";
+const TRIP_ROUTE_LAYER = "trip-driving-route-line";
+
+let tripRouteCoordinates = [];
+let tripRouteRequestVersion = 0;
+let tripRouteAbortController = null;
+
+
+// ==========================================
+// 1. DECODE MAPTILER'S ENCODED POLYLINE
+// ==========================================
+
+function decodeTripPolyline(encoded, precision = 6) {
+  const coordinates = [];
+  const factor = Math.pow(10, precision);
+
+  let index = 0;
+  let latitude = 0;
+  let longitude = 0;
+
+  function readValue() {
+    let result = 0;
+    let shift = 0;
+    let byte;
+
+    do {
+      if (index >= encoded.length) {
+        throw new Error("Incomplete route geometry.");
+      }
+
+      byte = encoded.charCodeAt(index++) - 63;
+
+      result += (byte & 0x1f) * Math.pow(2, shift);
+      shift += 5;
+
+    } while (byte >= 0x20);
+
+    return result % 2
+      ? -(Math.floor(result / 2) + 1)
+      : Math.floor(result / 2);
+  }
+
+  while (index < encoded.length) {
+    latitude += readValue();
+    longitude += readValue();
+
+    coordinates.push([
+      longitude / factor,
+      latitude / factor
+    ]);
+  }
+
+  return coordinates;
+}
+
+
+// ==========================================
+// 2. FORMAT DRIVING TIME
+// ==========================================
+
+function formatTripDrivingTime(seconds) {
+  const minutes = Math.round(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const remaining = minutes % 60;
+
+  if (hours === 0) {
+    return `${minutes} min`;
+  }
+
+  if (remaining === 0) {
+    return `${hours} hr`;
+  }
+
+  return `${hours} hr ${remaining} min`;
+}
+
+
+// ==========================================
+// 3. CREATE GEOJSON FOR MAPLIBRE
+// ==========================================
+
+function tripRouteGeoJSON(coordinates) {
+  return {
+    type: "FeatureCollection",
+    features: coordinates.length >= 2 ? [
+      {
+        type: "Feature",
+        properties: {},
+        geometry: {
+          type: "LineString",
+          coordinates: coordinates
+        }
+      }
+    ] : []
+  };
+}
+
+
+// ==========================================
+// 4. DRAW THE ROUTE ON THE MAP
+// ==========================================
+
+function drawTripRoute() {
+  if (!map.isStyleLoaded()) return;
+
+  const routeData = tripRouteGeoJSON(tripRouteCoordinates);
+  const existingSource = map.getSource(TRIP_ROUTE_SOURCE);
+
+  if (existingSource) {
+    existingSource.setData(routeData);
+  } else {
+    map.addSource(TRIP_ROUTE_SOURCE, {
+      type: "geojson",
+      data: routeData
+    });
+  }
+
+  if (!map.getLayer(TRIP_ROUTE_LAYER)) {
+    map.addLayer({
+      id: TRIP_ROUTE_LAYER,
+      type: "line",
+      source: TRIP_ROUTE_SOURCE,
+
+      layout: {
+        "line-join": "round",
+        "line-cap": "round"
+      },
+
+      paint: {
+        "line-color": "#A4E83B",
+        "line-width": 5,
+        "line-opacity": 0.95
+      }
+    });
+  }
+}
+
+// Recreate route layer if the map style reloads.
+map.on("style.load", drawTripRoute);
+
+
+// ==========================================
+// 5. FIT THE ENTIRE ROUTE ON SCREEN
+// ==========================================
+
+function fitEntireTripRoute() {
+  if (tripRouteCoordinates.length < 2) return;
+
+  const bounds = new maplibregl.LngLatBounds();
+
+  tripRouteCoordinates.forEach(function(coordinate) {
+    bounds.extend(coordinate);
+  });
+
+  map.fitBounds(bounds, {
+    padding: 65,
+    maxZoom: 14,
+    duration: 800
+  });
+}
+
+tripRouteFitButton.addEventListener(
+  "click",
+  fitEntireTripRoute
+);
+
+
+// ==========================================
+// 6. CALCULATE THE DRIVING ROUTE
+// ==========================================
+
+async function updateTripDrivingRoute() {
+  const requestVersion = ++tripRouteRequestVersion;
+
+  // Cancel any previous route request.
+  if (tripRouteAbortController) {
+    tripRouteAbortController.abort();
+    tripRouteAbortController = null;
+  }
+
+  // Clear the previous route.
+  tripRouteCoordinates = [];
+  drawTripRoute();
+
+  tripRouteDistance.textContent = "—";
+  tripRouteDuration.textContent = "—";
+  tripRouteFitButton.disabled = true;
+
+  const stops = currentTrip ? currentTrip.stops : [];
+
+  // No route is needed for fewer than two stops.
+  if (stops.length < 2) {
+    tripRouteSummary.hidden = stops.length === 0;
+
+    if (stops.length === 1) {
+      tripRouteStatus.textContent =
+        "Add one more stop to calculate a driving route.";
+    }
+
+    return;
+  }
+
+  tripRouteSummary.hidden = false;
+  tripRouteStatus.textContent =
+    "Calculating driving route...";
+
+  if (
+    !tripRoutingApiKey ||
+    tripRoutingApiKey === "YOUR_MAPTILER_API_KEY"
+  ) {
+    tripRouteStatus.textContent =
+      "Please configure your MapTiler API key.";
+    return;
+  }
+
+  const controller = new AbortController();
+  tripRouteAbortController = controller;
+
+  try {
+    // Build the MapTiler Routing API request.
+    const url = new URL(
+      "https://api.maptiler.com/routing/v1/directions"
+    );
+
+    stops.forEach(function(stop) {
+      const longitude = stop.coordinates[0];
+      const latitude = stop.coordinates[1];
+
+      url.searchParams.append(
+        "location",
+        `${longitude},${latitude}`
+      );
+    });
+
+    url.searchParams.set("profile", "car");
+    url.searchParams.set("response.units", "mi");
+    url.searchParams.set("car.mode", "fastest");
+    url.searchParams.set("key", tripRoutingApiKey);
+
+    const response = await fetch(url.toString(), {
+      signal: controller.signal
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Routing request failed: HTTP ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+
+    // Ignore outdated requests.
+    if (requestVersion !== tripRouteRequestVersion) {
+      return;
+    }
+
+    const route = data.route;
+
+    if (
+      !route ||
+      !route.summary ||
+      !Array.isArray(route.legs) ||
+      route.legs.length === 0
+    ) {
+      throw new Error("No valid driving route returned.");
+    }
+
+    // Decode each route leg into MapLibre coordinates.
+    const coordinates = [];
+
+    route.legs.forEach(function(leg) {
+      let legCoordinates = [];
+
+      if (typeof leg.geometry === "string") {
+        legCoordinates = decodeTripPolyline(leg.geometry);
+
+      } else if (Array.isArray(leg.geometry)) {
+        legCoordinates = leg.geometry;
+      }
+
+      legCoordinates.forEach(function(point) {
+        if (
+          Array.isArray(point) &&
+          point.length >= 2 &&
+          Number.isFinite(point[0]) &&
+          Number.isFinite(point[1])
+        ) {
+          coordinates.push([point[0], point[1]]);
+        }
+      });
+    });
+
+    if (coordinates.length < 2) {
+      throw new Error("No valid route geometry returned.");
+    }
+
+    // MapTiler returns miles when response.units=mi.
+    const miles = Number(route.summary.totalLength);
+
+    // Driving time is returned in seconds.
+    const seconds = Number(route.summary.totalTime);
+
+    if (
+      !Number.isFinite(miles) ||
+      !Number.isFinite(seconds)
+    ) {
+      throw new Error("Invalid distance or driving time.");
+    }
+
+    // Update the displayed route and statistics.
+    tripRouteCoordinates = coordinates;
+
+    tripRouteDistance.textContent =
+      `${miles.toFixed(1)} mi`;
+
+    tripRouteDuration.textContent =
+      formatTripDrivingTime(seconds);
+
+    tripRouteStatus.textContent =
+      "Estimated driving time, excluding stops and live traffic.";
+
+    tripRouteFitButton.disabled = false;
+
+    drawTripRoute();
+
+  } catch (error) {
+    if (
+      error.name === "AbortError" ||
+      requestVersion !== tripRouteRequestVersion
+    ) {
+      return;
+    }
+
+    console.error("Trip routing error:", error);
+
+    tripRouteStatus.textContent =
+      "Unable to calculate this route. Check the browser console for details.";
+
+  } finally {
+    if (tripRouteAbortController === controller) {
+      tripRouteAbortController = null;
+    }
+  }
+}
+
+
+// ==========================================
+// 7. RENDER THE ROUTE SUMMARY ICONS
+// ==========================================
+
+if (window.lucide) {
+  lucide.createIcons();
+}
+
+
+
+  </script>
+
+<!-- Full-screen PDF trail map viewer -->
+<!-- PDF.js trail map viewer -->
+<div id="trail-map-viewer" class="trail-map-viewer" hidden>
+
+  <div class="trail-map-header">
+    <span>Trail Map</span>
+
+    <div class="trail-map-actions">
+      <button id="trail-map-zoom-out" type="button" aria-label="Zoom out">−</button>
+      <button id="trail-map-zoom-in" type="button" aria-label="Zoom in">+</button>
+      <button id="trail-map-fit" type="button">Fit</button>
+      <button id="trail-map-close" type="button" aria-label="Close trail map">×</button>
+    </div>
+  </div>
+
+  <div id="trail-map-pages" class="trail-map-pages" role="region" aria-label="PDF trail map">
+  </div>
+
+</div>
+
+
+<!-- PDF.js library -->
+<script type="module">
+  import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs";
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs";
+
+  window.pdfjsLib = pdfjsLib;
+</script>
+
+<!-- ======================================
+     TRIP PLANNER
+     ====================================== -->
+
+<!-- Open trip planner button -->
+<button id="trip-planner-button" type="button">
+  <i data-lucide="route"></i>
+  <span>Plan a Trip</span>
+</button>
+
+<!-- Trip planner panel -->
+<div id="trip-planner-panel" class="trip-planner-panel" hidden>
+
+  <div class="trip-planner-header">
+    <div class="trip-planner-heading">
+      <i data-lucide="route"></i>
+      <h2>Plan a Trip</h2>
+    </div>
+
+    <button id="trip-planner-close" type="button" aria-label="Close trip planner">
+      <i data-lucide="x"></i>
+    </button>
+  </div>
+
+  <!-- Home screen -->
+  <div id="trip-planner-home" class="trip-planner-section">
+
+    <p>Create a new adventure or revisit a saved trip.</p>
+
+    <button id="trip-new-button" class="trip-primary-button" type="button">
+      <i data-lucide="plus"></i>
+      New Trip
+    </button>
+
+    <button id="trip-saved-button" class="trip-secondary-button" type="button">
+      <i data-lucide="bookmark"></i>
+      Saved Trips
+    </button>
+
+  </div>
+
+  <!-- New trip screen -->
+  <div id="trip-planner-new" class="trip-planner-section" hidden>
+
+    <label for="trip-name-input">Trip name</label>
+
+    <input
+      id="trip-name-input"
+      type="text"
+      placeholder="e.g. Finger Lakes Weekend"
+      maxlength="80"
+    >
+
+    <button id="trip-create-button" class="trip-primary-button" type="button">
+      <i data-lucide="check"></i>
+      Create Trip
+    </button>
+
+    <button class="trip-back-button" type="button">
+      Back
+    </button>
+
+  </div>
+
+  <!-- Trip created screen -->
+  <div id="trip-planner-active" class="trip-planner-section" hidden>
+
+  <h3 id="trip-active-name"></h3>
+
+  <p id="trip-instructions">
+    Click any place marker on the map to add it to your trip.
+  </p>
+
+  <div id="trip-stops-list"></div>
+
+  <!-- ======================================
+     DRIVING ROUTE SUMMARY
+     ====================================== -->
+
+<div id="trip-route-summary" class="trip-route-summary" hidden>
+
+  <div class="trip-route-heading">
+    <i data-lucide="car-front"></i>
+    <span>Driving Route</span>
+  </div>
+
+  <div class="trip-route-stats">
+
+    <div>
+      <span class="trip-route-label">Distance</span>
+      <strong id="trip-route-distance">—</strong>
+    </div>
+
+    <div>
+      <span class="trip-route-label">Driving time</span>
+      <strong id="trip-route-duration">—</strong>
+    </div>
+
+  </div>
+
+  <p id="trip-route-status" role="status">
+    Add at least two stops to calculate a route.
+  </p>
+
+  <button id="trip-route-fit" type="button" disabled>
+    <i data-lucide="maximize"></i>
+    View Entire Route
+  </button>
+
+</div>
+
+  <p id="trip-empty-message">
+    No stops added yet. Select a place on the map to begin.
+  </p>
+
+  <button id="trip-clear-button" class="trip-secondary-button" type="button">
+    <i data-lucide="trash-2"></i>
+    Clear Stops
+  </button>
+
+  <button class="trip-back-button" type="button">
+    Back
+  </button>
+
+</div>
+
+  <!-- Saved trips screen -->
+  <div id="trip-planner-saved" class="trip-planner-section" hidden>
+
+    <h3>Saved Trips</h3>
+
+    <div id="trip-saved-list">
+      <p>No saved trips yet.</p>
+    </div>
+
+    <button class="trip-back-button" type="button">
+      Back
+    </button>
+
+  </div>
+
+</div>
+
+</body>
+
+</html>
