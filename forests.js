@@ -544,6 +544,519 @@ export const forests = [
     name: "Los Padres National Forest",
     file: "forests/los-padres-national-forest.geojson",
     color: "#8b5cf6"
+  },
+
+
+  {
+    id: "lyndon-b-johnson-national-grassland",
+    name: "Lyndon B Johnson National Grassland",
+    file: "forests/lyndon-b-johnson-national-grassland.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "malheur-national-forest",
+    name: "Malheur National Forest",
+    file: "forests/malheur-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "manti-la-sal-national-forest",
+    name: "Manti La Sal National Forest",
+    file: "forests/manti-la-sal-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "mark-twain-national-forest",
+    name: "Mark Twain National Forest",
+    file: "forests/mark-twain-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "mcclellan-creek-national-grassland",
+    name: "McClellan Creek National Grassland",
+    file: "forests/mcclellan-creek-national-grassland.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "medicine-bow-routt-national-forests-and-thunder-basin-national-grassland",
+    name: "Medicine Bow Routt National Forests and Thunder Basin National Grassland",
+    file: "forests/medicine-bow-routt-national-forests-and-thunder-basin-national-grassland.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "mendocine-national-forest",
+    name: "Mendocine National Forest",
+    file: "forests/mendocine-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "midewin-national-tallgrass-prairie",
+    name: "Midewin National Tallgrass Prairie",
+    file: "forests/midewin-national-tallgrass-prairie.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "modoc-national-forest",
+    name: "Modoc National Forest",
+    file: "forests/modoc-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "monongahela-national-forest",
+    name: "Monongahela National Forest",
+    file: "forests/monongahela-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "mount-st-helens-national-volcanic-monument",
+    name: "Mount St Helens National Volcanic Monument",
+    file: "forests/mount-st-helens-national-volcanic-monument.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "mt-baker-snoqualmine-national-forest",
+    name: "Mt Baker Snoqualmine National Forest",
+    file: "forests/mt-baker-snoqualmine-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "mt-hood-national-forest",
+    name: "Mt Hood National Forest",
+    file: "forests/mt-hood-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "nantahala-national-forest",
+    name: "Nantahala National Forest",
+    file: "forests/nantahala-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "nebraska-national-forest",
+    name: "Nebraska National Forest",
+    file: "forests/nebraska-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "nez-perce-clearwater-national-forest",
+    name: "Nez Perce Clearwater National Forest",
+    file: "forests/nez-perce-clearwater-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "ocala-national-forest",
+    name: "Ocala National Forest",
+    file: "forests/ocala-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "ochoco-national-forest",
+    name: "Ochoco National Forest",
+    file: "forests/ochoco-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "oglala-national-grassland",
+    name: "Oglala National grassland",
+    file: "forests/oglala-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "okanogan-wenatchee-national-forest",
+    name: "Okanogan Wenatchee National Forest",
+    file: "forests/okanogan-wenatchee-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "olympic-national-forest",
+    name: "Olympic National Forest",
+    file: "forests/olympic-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "osceola-national-forest",
+    name: "Osceola National Forest",
+    file: "forests/osceola-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "rogue-river-siskiyou-national-forest",
+    name: "Rogue River Siskiyou National Forest",
+    file: "forests/rogue-river-siskiyou-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "ottawa-national-forest",
+    name: "Ottawa National Forest",
+    file: "forests/ottawa-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "ouachita-national-forest",
+    name: "Ouachita National Forest",
+    file: "forests/ouachita-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "ozark-st-francis-national-forest",
+    name: "Ozark St Francis National Forest",
+    file: "forests/ozark-st-francis-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "pawnee-national-grassland",
+    name: "Pawnee National Grassland",
+    file: "forests/pawnee-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "payette-national-forest",
+    name: "Payette National Forest",
+    file: "forests/payette-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "sabine-national-forest",
+    name: "Sabine National Forest",
+    file: "forests/sabine-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "pike-san-isabel-national-forest",
+    name: "Pike San Isabel National Forest",
+    file: "forests/pike-san-isabel-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "pisgah-national-forest",
+    name: "Pisgah National Forest",
+    file: "forests/pisgah-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "plumas-national-forest",
+    name: "Plumas National Forest",
+    file: "forests/plumas-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "prescott-national-forest",
+    name: "Prescott National Forest",
+    file: "forests/prescott-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "rio-grande-national-forest",
+    name: "Rio Grande National Forest",
+    file: "forests/rio-grande-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "san-bernardino-national-forest",
+    name: "San Bernardino National Forest",
+    file: "forests/san-bernardino-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "salmon-challis-national-forest",
+    name: "Salmon Challis National Forest",
+    file: "forests/salmon-challis-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "sam-houston-national-forest",
+    name: "Sam Houston National Forest",
+    file: "forests/sam-houston-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "samuel-r-mckelvie-national-forest",
+    name: "Samuel R McKelvie National Forest",
+    file: "forests/samuel-r-mckelvie-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "rita-blanca-national-grassland",
+    name: "Rita Blanca National Grassland",
+    file: "forests/rita-blanca-national-grassland.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "routt-national-forest",
+    name: "Routt National Forest",
+    file: "forests/routt-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "san-isabel-national-forest",
+    name: "San Isabel National Forest",
+    file: "forests/san-isabel-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "san-juan-national-forest",
+    name: "San Juan National Forest",
+    file: "forests/san-juan-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "santa-fe-national-forest",
+    name: "Santa Fe National Forest",
+    file: "forests/santa-fe-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "savannah-river-site",
+    name: "Savannah River Site",
+    file: "forests/savannah-river-site.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "sawtooth-national-forest",
+    name: "Sawtooth National Forest",
+    file: "forests/sawtooth-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "sequoia-national-forest",
+    name: "Sequoia National Forest",
+    file: "forests/sequoia-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "shasta-trinity-national-forest",
+    name: "Shasta Trinity National Forest",
+    file: "forests/shasta-trinity-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "shawnee-national-forest",
+    name: "Shawnee National Forest",
+    file: "forests/shawnee/-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "sheyenne-national-forest",
+    name: "Sheyenne National Forest",
+    file: "forests/sheyenne-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "shoshone-national-forest",
+    name: "Shoshone National Forest",
+    file: "forests/shoshone-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "sierra-national-forest",
+    name: "Sierra National Forest",
+    file: "forests/sierra-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "siuslaw-national-forest",
+    name: "Siuslaw National Forest",
+    file: "forests/siuslaw-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "-national-forest",
+    name: " National Forest",
+    file: "forests/-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "six-rivers-national-forest",
+    name: "Six Rivers National Forest",
+    file: "forests/six-rivers-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "stanislaus-national-forest",
+    name: "Stanislaus National Forest",
+    file: "forests/stanislaus-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "superior-national-forest",
+    name: "Superior National Forest",
+    file: "forests/superior-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "tahoe-national-forest",
+    name: "Tahoe National Forest",
+    file: "forests/tahoe-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "talladega-national-forest",
+    name: "Talladega National Forest",
+    file: "forests/talladega-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "thunder-basin-national-forest",
+    name: "Thunder Basin National Forest",
+    file: "forests/thunder-basin-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "tombigbee-national-forest",
+    name: "Tombigbee National Forest",
+    file: "forests/tombigbee-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "tonto-national-forest",
+    name: "Tonto National Forest",
+    file: "forests/tonto-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "tuskegee-national-forest",
+    name: "Tuskegee National Forest",
+    file: "forests/tuskegee-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "uinta-wasatch-cache-national-forest",
+    name: "Uinta Wasatch Catche National Forest",
+    file: "forests/uinta-wasatch-cache-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "umatilla-national-forest",
+    name: "Umatilla National Forest",
+    file: "forests/umatilla-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "umpqua-national-forest",
+    name: "Umpqua National Forest",
+    file: "forests/umpqua-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "uwharrie-national-forest",
+    name: "Uwharrie National Forest",
+    file: "forests/uwharrie-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "wallowa-whitman-national-forest",
+    name: "Wallowa Whitman National Forest",
+    file: "forests/wallowa-whitman-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "wayne-national-forest",
+    name: "Wayne National Forest",
+    file: "forests/wayne-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "white-mountain-national-forest",
+    name: "White Mountain National Forest",
+    file: "forests/white-mountain-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "white-river-national-forest",
+    name: "White River National Forest",
+    file: "forests/white-river-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "willamette-national-forest",
+    name: "Willamette National Forest",
+    file: "forests/willamette-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "william-b-bankhead-national-forest",
+    name: "William B Bankhead National Forest",
+    file: "forests/william-b-bankhead-national-forest.geojson",
+    color: "#8b5cf6"
+  },
+
+  {
+    id: "butte-valley-national-forest",
+    name: "Butte Valley National Forest",
+    file: "forests/butte-valley-national-forest.geojson",
+    color: "#8b5cf6"
   }
+
 
 ];

@@ -1093,7 +1093,7 @@ export const places = [
     description: "Erie County Park, -78.82, 42.54."
   },
   {
-    name: "Bureau of Forestry",
+    name: "Erie County Bureau of Forestry",
     category: "Erie_County_Park",
     visited: true,
     coordinates: [-78.5513419, 42.5521200],
@@ -2951,6 +2951,244 @@ export const places = [
     visited: false,
     coordinates: [-79.459788, 42.041873],
     description: "Hiking, -79.459788, 42.041873"
+  },
+  {
+    name: "North Harmony State Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.5200, 42.0870],
+    description: "Hiking, -79.5200, 42.0870"
+  },
+  {
+    name: "Mount Pleasant State Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.54652, 42.1945],
+    description: "Hiking, -79.54652, 42.1945"
+  },
+  {
+    name: "Midway State Park",
+    category: "New_York_State_Park",
+    visited: false,
+    coordinates: [-79.42056, 42.20389],
+    description: "NY State Park, -79.42056, 42.20389"
+  },
+  {
+    name: "Chautauqua Institute",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.4669, 42.2097],
+    description: "Hiking, -79.4669, 42.2097"
+  },
+  {
+    name: "Dan Reed Pier Park",
+    category: "Beach",
+    visited: false,
+    coordinates: [-79.5957, 42.3424],
+    description: "Beach, -79.5957, 42.3424"
+  },
+  {
+    name: "Barcelona Lighthouse State Park",
+    category: "New_York_State_Park",
+    visited: false,
+    coordinates: [-79.5949, 42.3411],
+    description: "NY State Park, -79.5949, 42.3411"
+  },
+  {
+    name: "Blue Water Beach Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-79.53917, 42.36305],
+    description: "Campsite, -79.53917, 42.36305"
+  },
+  {
+    name: "Lake Erie State Park",
+    category: "New_York_State_Park",
+    visited: true,
+    coordinates: [-79.431, 42.423],
+    description: "NY State Park, -79.431, 42.423"
+  },
+  {
+    name: "Lake Erie SP Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-79.43194, 42.42278],
+    description: "Campsite, -79.43194, 42.42278"
+  },
+  {
+    name: "Evangola State Park",
+    category: "New _York_State_Park",
+    visited: true,
+    coordinates: [-79.1017058, 42.6067254],
+    description: "NY State Park, -79.1017058, 42.6067254"
+  },
+  {
+    name: "Evangola SP Campground",
+    category: "Campsite",
+    visited: true,
+    coordinates: [-79.10194, 42.60667],
+    description: "Campsite, -79.10194, 42.60667"
+  },
+  {
+    name: "Zoar Valley Paddling Club",
+    category: "Adventure_Activity",
+    visited: false,
+    coordinates: [-78.812011, 42.455787],
+    description: "Whitewater Kayak Company, -78.812011, 42.455787"
+  },
+  {
+    name: "Zoar Valley",
+    category: "Hiking_Spot",
+    visited: true,
+    coordinates: [-78.8777, 42.4433],
+    description: "Hiking, -78.8777, 42.4433"
+  },
+  {
+    name: "Deer Lick Conservation Area",
+    category: "Hiking_Spot",
+    visited: true,
+    coordinates: [-78.90568, 42.42105],
+    description: "Hiking, -78.90568, 42.42105"
+  },
+  {
+    name: "East Otto Forest Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.7785, 42.4314],
+    description: "Primitive Campsite, -78.7785, 42.4314"
+  },
+  {
+    name: "Pfeiffer Nature Centre",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-78.328056, 42.094444],
+    description: "Hiking, -78.328056, 42.094444"
+  },
+  {
+    name: "Riverhurst Campground",
+    category: "Campsite",
+    visited: true,
+    coordinates: [-78.3712, 42.0572],
+    description: "Campsite, -78.3712, 42.0572"
+  },
+  {
+    name: "Portville Drive-In",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.354106, 42.051069],
+    description: "Drive-In Movie Theatre, -78.354106, 42.051069"
+  },
+  {
+    name: "Stockton State Forest",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-79.397212, 42.280776],
+    description: "Hiking, -79.397212, 42.280776"
+  },
+  {
+    name: "College Lodge Forest",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.42927, 42.345077],
+    description: "Hiking, -79.42927, 42.345077"
+  },
+  {
+    name: "Luensman Overlook Park",
+    category: "Hiking_Spot",
+    visited: false,
+    coordinates: [-79.4580328, 42.3438369],
+    description: "Hiking, -79.4580328, 42.3438369"
+  },
+  {
+    name: "Kissing Bridge",
+    category: "Downhill_Skiing",
+    visited: true,
+    coordinates: [-78.6524, 42.5998],
+    description: "Ski Area, -78.6524, 42.5998"
+  },
+  {
+    name: "Sprague Brook Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.6307651, 42.5933312],
+    description: "Campsite, -78.6307651, 42.5933312"
+  },
+  {
+    name: "Alleghany Mountain Resort at Rainbow Lake",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.6991, 42.3470],
+    description: "Campsite, -78.6991, 42.3470"
+  },
+  {
+    name: "Holiday Valley Ski Resort",
+    category: "Downhill_Skiing",
+    visited: true,
+    coordinates: [-78.6681, 42.2625],
+    description: "Ski Area, -78.6681, 42.2625"
+  },
+  {
+    name: "Holimont Ski Resort",
+    category: "Downhill_Skiing",
+    visited: false,
+    coordinates: [-78.6923, 42.2743],
+    description: "Ski Area, -78.6923, 42.2743"
+  },
+  {
+    name: "Arrowhead Camping Area",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.4818, 42.4582],
+    description: "Campsite, -78.4818, 42.4582"
+  },
+  {
+    name: "Chestnut Ridge XC Ski Loop",
+    category: "Cross_Country_Skiing",
+    visited: false,
+    coordinates: [-78.740526, 42.720414],
+    description: "XC Skiing, -78.740526, 42.720414"
+  },
+  {
+    name: "Tifft Nature Preserve",
+    category: "Hiking_Spot",
+    visited: true,
+    coordinates: [-78.8581, 42.8445],
+    description: "Hiking, -78.8581°, 42.8445"
+  },
+  {
+    name: "Emery Park Ski Slope",
+    category: "Downhill_Skiing",
+    visited: true,
+    coordinates: [-78.589903, 42.717521],
+    description: "Downhill Skiing, -78.589903, 42.717521"
+  },
+  {
+    name: "Alpacas of Ellicotville",
+    category: "Non_Outdoor_Cool_Thing",
+    visited: false,
+    coordinates: [-78.6634592, 42.2712886],
+    description: "Alpaca Farm, -78.6634592, 42.2712886"
+  },
+  {
+    name: "Golden Hill State Forest",
+    category: "Hiking",
+    visited: false,
+    coordinates: [-78.5349, 42.2474],
+    description: "Hiking, -78.5349, 42.2474"
+  },
+  {
+    name: "Golden Hill SF Primitive Camping",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.53558, 42.244516],
+    description: "Primitive Campsite, -78.53558, 42.244516"
+  },
+  {
+    name: "Shamrock Pines Campground",
+    category: "Campsite",
+    visited: false,
+    coordinates: [-78.5184, 42.2976],
+    description: "Campsite, -78.5184, 42.2976"
   }
 
  
