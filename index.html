@@ -2242,7 +2242,94 @@
   box-sizing: border-box;
 }
 
-  </style>
+ /* Trip planner loop option */
+
+.trip-loop-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #243B53;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.trip-loop-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: #A4E83B;
+  flex-shrink: 0;
+}
+ 
+ /* Trip planner home base controls */
+
+#trip-home-base-details {
+  background: #243B53;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+#trip-home-base-details[hidden] {
+  display: none !important;
+}
+
+#trip-home-base-name {
+  color: white;
+  font-size: 14px;
+  margin: 0 0 10px 0;
+}
+
+#trip-select-home-base {
+  width: 100%;
+  background: transparent;
+  color: #A4E83B;
+  border: 1px solid #A4E83B;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+ 
+ /* Home base selection mode */
+
+#trip-planner-button.home-base-selecting {
+  border: 2px solid #FFB347;
+  box-shadow: 0 0 12px rgba(255,179,71,0.5);
+}
+
+#trip-planner-button.home-base-selecting::after {
+  content: "H";
+  background: #FFB347;
+  color: #14283D;
+}
+ 
+ /* Home base map marker */
+
+.trip-home-base-marker {
+  width: 36px;
+  height: 36px;
+  background: #14283D;
+  border: 2px solid #A4E83B;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+  box-sizing: border-box;
+  cursor: default;
+}
+
+.trip-home-base-marker svg {
+  width: 22px;
+  height: 22px;
+  color: #A4E83B;
+}
+ 
+ </style>
 
 </head>
 
@@ -4746,6 +4833,7 @@ const tripClearButton = document.getElementById("trip-clear-button");
 // Current trip (temporary until Stage 4)
 let currentTrip = null;
 let tripSelectionMode = false;
+let homeBaseSelectionMode = false;
 
 // Numbered markers drawn over the existing map markers
 let tripNumberedMarkers = [];
@@ -4754,6 +4842,27 @@ let tripNumberedMarkers = [];
 let tripPlannerScreen = "home";
 
 function showTripPlannerSection(section) {
+      if (section === tripPlannerActive) {
+    const hasHomeBase = !!(currentTrip && currentTrip.homeBase);
+
+    document.getElementById("trip-home-base-checkbox").checked =
+      hasHomeBase;
+
+    document.getElementById("trip-home-base-details").hidden =
+      !hasHomeBase;
+
+    document.getElementById("trip-home-base-name").textContent =
+      hasHomeBase ? "Home base selected" : "No home base selected";
+
+    document.getElementById("trip-select-home-base").textContent =
+      hasHomeBase ? "Change home base" : "Select home base on map";
+
+    renderHomeBaseMarker();
+  }
+    if (section === tripPlannerActive) {
+    document.getElementById("trip-loop-checkbox").checked =
+      currentTrip ? currentTrip.loop === true : false;
+  }
   tripPlannerHome.hidden = true;
   tripPlannerNew.hidden = true;
   tripPlannerActive.hidden = true;
@@ -4804,6 +4913,8 @@ function updateTripSelectionBadge() {
 
 // Restore the full trip planner
 function restoreTripPlanner() {
+  homeBaseSelectionMode = false;
+  tripPlannerButton.classList.remove("home-base-selecting");
   tripSelectionMode = false;
 
   tripPlannerButton.classList.remove("trip-selecting");
@@ -4813,6 +4924,103 @@ function restoreTripPlanner() {
 
   showTripPlannerSection(tripPlannerActive);
 }
+
+// Home base controls
+const tripHomeBaseCheckbox = document.getElementById("trip-home-base-checkbox");
+const tripHomeBaseDetails = document.getElementById("trip-home-base-details");
+const tripHomeBaseName = document.getElementById("trip-home-base-name");
+const tripSelectHomeBase = document.getElementById("trip-select-home-base");
+
+tripHomeBaseCheckbox.addEventListener("change", function() {
+  if (!currentTrip) return;
+
+  tripHomeBaseDetails.hidden = !tripHomeBaseCheckbox.checked;
+
+  if (!tripHomeBaseCheckbox.checked) {
+    currentTrip.homeBase = null;
+    renderHomeBaseMarker();
+    tripSelectHomeBase.textContent = "Select home base on map";
+    tripHomeBaseName.textContent = "No home base selected";
+    updateTripDrivingRoute();
+  }
+});
+
+// Start selecting a home base
+tripSelectHomeBase.addEventListener("click", function() {
+  if (!currentTrip) return;
+
+  homeBaseSelectionMode = true;
+
+  minimiseTripPlanner();
+
+  tripPlannerButton.classList.add("home-base-selecting");
+
+  alert("Tap a location on the map to set your home base.");
+});
+
+// Select home base by clicking the map
+map.on("click", function(event) {
+  if (!homeBaseSelectionMode || !currentTrip) return;
+
+  currentTrip.homeBase = {
+    name: "Home base",
+    coordinates: [
+      event.lngLat.lng,
+      event.lngLat.lat
+    ]
+  };
+
+  homeBaseSelectionMode = false;
+
+  tripPlannerButton.classList.remove("home-base-selecting");
+
+  tripHomeBaseCheckbox.checked = true;
+  tripHomeBaseDetails.hidden = false;
+  tripHomeBaseName.textContent = "Home base selected";
+  tripSelectHomeBase.textContent = "Change home base";
+
+  restoreTripPlanner();
+
+  renderHomeBaseMarker();
+  updateTripDrivingRoute();
+});
+
+// Display the home base marker
+let homeBaseMarker = null;
+
+function renderHomeBaseMarker() {
+
+  if (homeBaseMarker) {
+    homeBaseMarker.remove();
+    homeBaseMarker = null;
+  }
+
+  if (!currentTrip || !currentTrip.homeBase) return;
+
+  const element = document.createElement("div");
+
+  element.className = "trip-home-base-marker";
+  element.innerHTML = '<i data-lucide="house"></i>';
+
+  homeBaseMarker = new maplibregl.Marker({
+    element: element
+  })
+    .setLngLat(currentTrip.homeBase.coordinates)
+    .addTo(map);
+
+  lucide.createIcons();
+}
+
+// Loop route checkbox
+const tripLoopCheckbox = document.getElementById("trip-loop-checkbox");
+
+tripLoopCheckbox.addEventListener("change", function() {
+  if (!currentTrip) return;
+
+  currentTrip.loop = tripLoopCheckbox.checked;
+
+  updateTripDrivingRoute();
+});
 
 // Open planner
 tripPlannerButton.addEventListener("click", function() {
@@ -4876,7 +5084,9 @@ document.getElementById("trip-create-button").addEventListener("click", function
 
   currentTrip = {
     name: name,
-    stops: []
+    stops: [],
+    loop: false,
+    homeBase: null 
   };
 
   tripActiveName.textContent = name;
@@ -4906,7 +5116,8 @@ function tripPlaceKey(place) {
 }
 
 // Called when an existing map marker is clicked
-window.tripPlannerAddPlace = function(place) {
+  window.tripPlannerAddPlace = function(place) {
+    if (homeBaseSelectionMode) return;
   // Only add places while an active trip is being edited
   if (
     !currentTrip ||
@@ -5276,7 +5487,12 @@ async function updateTripDrivingRoute() {
   tripRouteDuration.textContent = "—";
   tripRouteFitButton.disabled = true;
 
-  const stops = currentTrip ? currentTrip.stops : [];
+  const stops = currentTrip
+    ? [
+        ...(currentTrip.homeBase ? [currentTrip.homeBase] : []),
+        ...currentTrip.stops
+      ]
+    : [];
 
   // No route is needed for fewer than two stops.
   if (stops.length < 2) {
@@ -5322,6 +5538,15 @@ async function updateTripDrivingRoute() {
       );
     });
 
+    // Return to the starting point if loop mode is enabled
+if (currentTrip.loop === true && stops.length > 1) {
+  const firstLocation = url.searchParams.get("location");
+
+  if (firstLocation) {
+    url.searchParams.append("location", firstLocation);
+  }
+}
+    
     url.searchParams.set("profile", "car");
     url.searchParams.set("response.units", "mi");
     url.searchParams.set("car.mode", "fastest");
@@ -5519,6 +5744,13 @@ function saveCurrentTrip() {
   }
 
   const tripToSave = {
+    homeBase: currentTrip.homeBase
+      ? {
+        name: currentTrip.homeBase.name,
+        coordinates: [...currentTrip.homeBase.coordinates]
+      }
+    : null,
+    loop: currentTrip.loop === true,
     id: currentTrip.savedId,
     name: currentTrip.name,
     stops: currentTrip.stops.map(function(stop) {
@@ -5655,10 +5887,13 @@ function openSavedTrip(tripId) {
     }));
 
     const hasUnsavedChanges =
-      !currentSavedVersion ||
-      currentTrip.name !== currentSavedVersion.name ||
-      JSON.stringify(currentStops) !==
-        JSON.stringify(currentSavedVersion.stops);
+  !currentSavedVersion ||
+  currentTrip.name !== currentSavedVersion.name ||
+  (currentTrip.loop === true) !== (currentSavedVersion.loop === true) ||
+  JSON.stringify(currentTrip.homeBase || null) !==
+    JSON.stringify(currentSavedVersion.homeBase || null) ||
+  JSON.stringify(currentStops) !==
+    JSON.stringify(currentSavedVersion.stops);
 
     if (hasUnsavedChanges) {
       const confirmed = confirm(
@@ -5678,6 +5913,13 @@ function openSavedTrip(tripId) {
       return {
         key: stop.key,
         name: stop.name,
+        loop: trip.loop === true,
+        homeBase: trip.homeBase
+  ? {
+      name: trip.homeBase.name,
+      coordinates: [...trip.homeBase.coordinates]
+    }
+  : null,
         coordinates: [...stop.coordinates]
       };
     })
@@ -5893,6 +6135,28 @@ if (window.lucide) {
     No stops added yet. Select a place on the map to begin.
   </p>
 
+<div id="trip-home-base-controls">
+
+  <label class="trip-loop-option">
+    <input type="checkbox" id="trip-home-base-checkbox">
+    <span>Use home base</span>
+  </label>
+
+  <div id="trip-home-base-details" hidden>
+    <p id="trip-home-base-name">No home base selected</p>
+
+    <button type="button" id="trip-select-home-base">
+      Select home base on map
+    </button>
+  </div>
+
+</div>
+
+  <label class="trip-loop-option">
+  <input type="checkbox" id="trip-loop-checkbox">
+  <span>Loop route — return to starting point</span>
+</label> 
+ 
   <!-- Save current trip -->
 <button id="trip-save-button" class="trip-primary-button" type="button">
   <i data-lucide="save"></i>
