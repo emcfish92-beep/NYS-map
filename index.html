@@ -2083,7 +2083,164 @@
   display: none !important;
 }
 
+/* ========================================
+   MAP CONTROLS — DARK THEME
+   ======================================== */
 
+.maplibregl-ctrl-group {
+  background: #14283D !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25) !important;
+}
+
+.maplibregl-ctrl-group button {
+  background-color: #14283D !important;
+}
+
+.maplibregl-ctrl-group button + button {
+  border-top: 1px solid #405B73 !important;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background-color: #243B53 !important;
+}
+
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon {
+  filter: invert(85%) sepia(65%) saturate(650%)
+          hue-rotate(35deg) brightness(105%);
+}
+
+/* Map distance scale */
+
+.maplibregl-ctrl-scale {
+  background: #14283D !important;
+  color: white !important;
+  border: 2px solid #A4E83B !important;
+  border-top: none !important;
+  border-radius: 0 0 5px 5px;
+  padding: 3px 8px !important;
+  font-family: Arial, sans-serif;
+}
+
+/* Map attribution */
+
+.maplibregl-ctrl-attrib {
+  background-color: #14283D !important;
+  color: white !important;
+  border-radius: 12px !important;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: white !important;
+}
+
+.maplibregl-ctrl-attrib-button {
+  filter: invert(1);
+}
+
+/* SEARCH BAR — DARK THEME */
+
+.place-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #14283D !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 8px 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+.place-search-box input {
+  background: transparent !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 0;
+  flex: 1;
+  min-width: 0;
+  outline: none;
+}
+
+.place-search-box input::placeholder {
+  color: #B8C9D8 !important;
+  opacity: 1;
+}
+
+.place-search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent !important;
+  color: #A4E83B !important;
+}
+
+.place-search-icon svg {
+  width: 18px;
+  height: 18px;
+  color: #A4E83B;
+}
+
+.place-search-results {
+  background: #14283D !important;
+  color: white !important;
+  border: 1px solid #405B73;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+}
+
+/* TRIP PLANNER — ACTIVE SELECTION MODE */
+
+#trip-planner-button.trip-selecting {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+
+  border: 2px solid #A4E83B;
+  border-radius: 12px;
+
+  background: #14283D;
+  box-shadow: 0 0 10px rgba(164,232,59,0.35);
+}
+
+#trip-planner-button.trip-selecting span {
+  display: none;
+}
+
+#trip-planner-button.trip-selecting svg {
+  width: 22px;
+  height: 22px;
+}
+
+#trip-planner-button.trip-selecting::after {
+  content: attr(data-stop-count);
+
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  min-width: 20px;
+  height: 20px;
+  padding: 0 3px;
+
+  border-radius: 50%;
+  background: #A4E83B;
+  color: #14283D;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
 
   </style>
 
@@ -3939,6 +4096,7 @@ class PlaceSearchControl {
     this.searchIcon.innerHTML = "⌕";
 
     this.input = document.createElement("input");
+    this.input.className = "place-search-input";
     this.input.type = "text";
     this.input.placeholder = "Search my places";
     this.input.autocomplete = "off";
@@ -4587,6 +4745,7 @@ const tripClearButton = document.getElementById("trip-clear-button");
 
 // Current trip (temporary until Stage 4)
 let currentTrip = null;
+let tripSelectionMode = false;
 
 // Numbered markers drawn over the existing map markers
 let tripNumberedMarkers = [];
@@ -4618,8 +4777,51 @@ function showTripPlannerSection(section) {
 document.body.appendChild(tripPlannerButton);
 document.body.appendChild(tripPlannerPanel);
 
+// Minimise planner for map selection
+function minimiseTripPlanner() {
+  if (!currentTrip) return;
+
+  tripSelectionMode = true;
+  tripPlannerScreen = "active";
+
+  tripPlannerPanel.hidden = true;
+  tripPlannerButton.hidden = false;
+  tripPlannerButton.style.display = "";
+
+  tripPlannerButton.classList.add("trip-selecting");
+
+  updateTripSelectionBadge();
+}
+
+// Update selected stop counter
+function updateTripSelectionBadge() {
+  const count = currentTrip
+    ? currentTrip.stops.length
+    : 0;
+
+  tripPlannerButton.dataset.stopCount = count;
+}
+
+// Restore the full trip planner
+function restoreTripPlanner() {
+  tripSelectionMode = false;
+
+  tripPlannerButton.classList.remove("trip-selecting");
+  tripPlannerButton.style.display = "none";
+
+  tripPlannerPanel.hidden = false;
+
+  showTripPlannerSection(tripPlannerActive);
+}
+
 // Open planner
 tripPlannerButton.addEventListener("click", function() {
+
+  if (tripSelectionMode && currentTrip) {
+    restoreTripPlanner();
+    return;
+  }
+
   tripPlannerPanel.hidden = false;
   tripPlannerButton.style.display = "none";
 
@@ -4628,12 +4830,25 @@ tripPlannerButton.addEventListener("click", function() {
   } else {
     showTripPlannerSection(tripPlannerHome);
   }
+
 });
 
 // Close planner
 tripPlannerClose.addEventListener("click", function() {
+
+  if (currentTrip && tripPlannerScreen === "active") {
+    minimiseTripPlanner();
+    return;
+  }
+
+  tripSelectionMode = false;
+
   tripPlannerPanel.hidden = true;
+  tripPlannerButton.hidden = false;
   tripPlannerButton.style.display = "";
+
+  tripPlannerButton.classList.remove("trip-selecting");
+
 });
 
 // Start a new trip
@@ -4695,7 +4910,7 @@ window.tripPlannerAddPlace = function(place) {
   // Only add places while an active trip is being edited
   if (
     !currentTrip ||
-    tripPlannerPanel.hidden ||
+    (tripPlannerPanel.hidden && !tripSelectionMode) ||
     tripPlannerScreen !== "active"
   ) {
     return;
